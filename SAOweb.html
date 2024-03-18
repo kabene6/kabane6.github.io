@@ -217,7 +217,7 @@
 
             .sidebar {
                 height: 100%;
-                width: 10vw; /* ビューポートの幅の25% */
+                width: 210px; /* ビューポートの幅の25% */
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -1055,7 +1055,11 @@
             
         });
 
-
+        // フォーカスが当たったときにズームを無効化する
+        document.addEventListener('focusin', function(event) {
+            event.preventDefault();
+            // 他のカスタム処理を追加することもできます
+        }, true);
         
 
 
@@ -1067,4 +1071,3 @@
     
 </body>
 </html>
-
