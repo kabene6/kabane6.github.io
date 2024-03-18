@@ -1057,16 +1057,19 @@
             
         });
 
-        // フォーカスが当たったときにズームを無効化する
-        document.addEventListener('focusin', function(event) {
-            event.preventDefault();
-            // 他のカスタム処理を追加することもできます
-        }, true);
-        
+        // ページのロード後に実行されるコード
+        document.addEventListener('DOMContentLoaded', function() {
+            // 全ての入力フィールドを取得
+            var inputFields = document.querySelectorAll('input, textarea');
 
-        document.addEventListener('touchmove', function(event) {
-            event.preventDefault();
-        }, { passive: false });
+            // 入力フィールドがタッチされたときの処理
+            inputFields.forEach(function(inputField) {
+                inputField.addEventListener('touchstart', function(event) {
+                    // タッチイベントのデフォルト動作を無効化（ズームしない）
+                    event.preventDefault();
+                });
+            });
+        });
 
         
 
