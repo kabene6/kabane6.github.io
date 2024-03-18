@@ -7,187 +7,753 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome の CSS -->
     
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
+        @media screen and (max-width: 600px) {
+        /* スマートフォン向けのスタイルをここに記述 */
 
-        .sidebar {
-            height: 100%;
-            width: 10vw; /* ビューポートの幅の25% */
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #f8f9fa; /* YouTubeのサイドバーの背景色 */
-            padding-top: 56px; /* YouTubeのヘッダーの高さ */
-            border-right: 1px solid #ccc; /* YouTubeのサイドバーとコンテンツエリアの仕切り線 */
-            overflow-y: auto; /* サイドバーがウィンドウの高さより長い場合にスクロールさせる */
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start; /* 左揃え */
-        }
 
-        .sidebar h2 {
-            margin: 0 16px 16px; /* 上下に余白を追加 */
-            padding: 16px 0;
-            font-size: 18px;
-            font-weight: bold;
-            color: #333; /* YouTubeのサイドバーのヘッダーのテキスト色 */
-            letter-spacing: 1px; /* 文字同士の余白 */
-        }
+            .sidebar {
+                height: 100%;
+                width: 170px; /* ビューポートの幅の25% */
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: #f8f9fa; /* YouTubeのサイドバーの背景色 */
+                padding-top: 56px; /* YouTubeのヘッダーの高さ */
+                border-right: 1px solid #ccc; /* YouTubeのサイドバーとコンテンツエリアの仕切り線 */
+                overflow-y: auto; /* サイドバーがウィンドウの高さより長い場合にスクロールさせる */
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start; /* 左揃え */
+            }
 
-        .sidebar a {
-            display: block;
-            padding: 10px 16px;
-            text-decoration: none;
-            font-size: 16px;
-            color: #606060; /* YouTubeのサイドバーのリンクのテキスト色 */
-            letter-spacing: 1px; /* 文字同士の余白 */
-        }
+            .sidebar h2 {
+                margin: 0 16px 16px; /* 上下に余白を追加 */
+                padding: 16px 0;
+                font-size: 15px;
+                font-weight: bold;
+                color: #333; /* YouTubeのサイドバーのヘッダーのテキスト色 */
+                letter-spacing: 1px; /* 文字同士の余白 */
+            }
 
-        .sidebar a i {
-            margin-right: 8px; /* アイコンとテキストの間隔を設定 */
-        }
+            .sidebar a {
+                display: block;
+                padding: 10px 16px;
+                text-decoration: none;
+                font-size: 14px;
+                color: #606060; /* YouTubeのサイドバーのリンクのテキスト色 */
+                letter-spacing: 1px; /* 文字同士の余白 */
+                white-space: nowrap; /* テキストの折り返しを禁止 */
+            }
 
-        .content {
-            margin-left: 250px; /* サイドバーの幅 */
-            padding: 20px;
+            .sidebar a i {
+                margin-right: 8px; /* アイコンとテキストの間隔を設定 */
+            }
+
+            .content {
+                margin-left: 165px; /* サイドバーの幅 */
+                padding: 20px;
+                
+            }
+
+            .input-field {
+                margin-bottom: 4px;
+                width: calc(50% - 20px); /* 幅を調整 */
+            }
+
+            .input-field label {
+                display: block;
+                font-weight: bold;
+                color: #606060;
+                font-size: 20px;
+                white-space: nowrap; /* テキストの折り返しを防ぐ */
+            }
+
+            .input-field input {
+                width: 140px;
+                padding: 11px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                font-size: 14px;
+                color: #333;
+                
+            }
+
             
+
+            #calculateBtn {
+                margin-top: 20px;
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .button-container button {
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .button-container button:first-child {
+                margin-right: 10px;
+            }
+
+            .button-container button:last-child {
+                margin-right: 0;
+            }
+
+            .button-container button:last-child {
+                background-color: #dc3545; /* 赤色 */
+            }
+
+            .input-field {
+                margin-bottom: 20px;
+            }
+
+            .input-field label {
+                display: block;
+                font-weight: bold;
+                color: #606060;
+            }
+
+            .checkboxes {
+                display: grid;
+                
+                grid-gap: 10px 10px; /* 横方向の間隔を20px、縦方向の間隔を10pxに設定 */
+            }
+
+            .checkbox-item {
+                display: flex;
+                align-items: center;
+                position: relative; /* 相対位置指定 */
+                top: -1435px; /* 上方向に20px移動 */
+                left: 450px; /* 左方向に20px移動 */
+            }
+
+            .checkbox-item input[type="checkbox"] {
+                margin-right: 9px;
+                width: 30px; /* チェックボックスの幅を変更 */
+                height: 40px; /* チェックボックスの高さを20pxに設定 */
+            }
+
+            .checkbox-item label {
+                font-size: 22px;
+                color: #333;
+                cursor: pointer;
+                padding-left: 10px; /* ラベルの左側に余白を追加 */
+                
+            }
+
+            #attackPower {
+                background-color: lightblue; /* 背景色を水色に設定 */
+                position: fixed;
+                bottom: 140px; /* 攻撃力の表示位置を調整 */
+                right: 20px;
+                font-weight: bold;
+                text-align: right; /* テキストを右揃えに */
+                padding: 5px 10px; /* 内側の余白を追加 */
+                z-index: 999; /* 他の要素の上に表示されるようにする */
+                display: inline-block; /* インラインブロック要素として表示 */
+                
+            }
+
+            #damage {
+                background-color: lightblue; /* 背景色を水色に設定 */
+                position: fixed;
+                bottom: 90px;
+                right: 20px;
+                font-weight: bold;
+                text-align: right; /* テキストを右揃えに */
+                padding: 5px 10px; /* 内側の余白を追加 */
+                z-index: 999; /* 他の要素の上に表示されるようにする */
+                display: inline-block; /* インラインブロック要素として表示 */
+            }
+
+
+
+            /* 計算ボタンとリセットボタンの配置を右下に変更 */
+            .button-container {
+                position: fixed;
+                bottom: 20px;
+                right: 1px;
+            } 
+
+            /* 攻撃力とダメージのスタイル */
+            #attackPower,
+            #damage {
+                font-size: 20px; /* テキストのフォントサイズを調整 */
+                padding: 5px 10px; /* テキストのパディングを調整 */
+            }
+
+            /* 計算ボタンとリセットボタンのスタイル */
+            #calculateBtn,
+            #resetBtn {
+                padding: 10px 30px; /* ボタンのパディングを調整 */
+                font-size: 19px; /* ボタンのフォントサイズを調整 */
+            }
+
+
         }
 
-        .input-field {
-            margin-bottom: 4px;
-            width: calc(50% - 20px); /* 幅を調整 */
-        }
 
-        .input-field label {
-            display: block;
-            font-weight: bold;
-            color: #606060;
-        }
+        /* PC向けのスタイル */
+        @media screen and (min-width: 1900px) {
+            /* PC向けのスタイルをここに記述 */
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+            }
 
-        .input-field input {
-            width: 100%;
-            padding: 6px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 14px;
-            color: #333;
-            width: 200px; /* 任意の幅に調整 */
-        }
+            .sidebar {
+                height: 100%;
+                width: 10vw; /* ビューポートの幅の25% */
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: #f8f9fa; /* YouTubeのサイドバーの背景色 */
+                padding-top: 56px; /* YouTubeのヘッダーの高さ */
+                border-right: 1px solid #ccc; /* YouTubeのサイドバーとコンテンツエリアの仕切り線 */
+                overflow-y: auto; /* サイドバーがウィンドウの高さより長い場合にスクロールさせる */
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start; /* 左揃え */
+            }
 
-        
+            .sidebar h2 {
+                margin: 0 16px 16px; /* 上下に余白を追加 */
+                padding: 16px 0;
+                font-size: 18px;
+                font-weight: bold;
+                color: #333; /* YouTubeのサイドバーのヘッダーのテキスト色 */
+                letter-spacing: 1px; /* 文字同士の余白 */
+            }
 
-        #calculateBtn {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+            .sidebar a {
+                display: block;
+                padding: 10px 16px;
+                text-decoration: none;
+                font-size: 16px;
+                color: #606060; /* YouTubeのサイドバーのリンクのテキスト色 */
+                letter-spacing: 1px; /* 文字同士の余白 */
+            }
 
-        .button-container button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+            .sidebar a i {
+                margin-right: 8px; /* アイコンとテキストの間隔を設定 */
+            }
 
-        .button-container button:first-child {
-            margin-right: 10px;
-        }
+            .content {
+                margin-left: 250px; /* サイドバーの幅 */
+                padding: 20px;
+                
+            }
 
-        .button-container button:last-child {
-            margin-right: 0;
-        }
+            .input-field {
+                margin-bottom: 4px;
+                width: calc(50% - 20px); /* 幅を調整 */
+            }
 
-        .button-container button:last-child {
-            background-color: #dc3545; /* 赤色 */
-        }
+            .input-field label {
+                display: block;
+                font-weight: bold;
+                color: #606060;
+            }
 
-        .input-field {
-            margin-bottom: 20px;
-        }
+            .input-field input {
+                width: 100%;
+                padding: 6px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                font-size: 14px;
+                color: #333;
+                width: 200px; /* 任意の幅に調整 */
+            }
 
-        .input-field label {
-            display: block;
-            font-weight: bold;
-            color: #606060;
-        }
-
-        .checkboxes {
-            display: grid;
             
-            grid-gap: 10px 10px; /* 横方向の間隔を20px、縦方向の間隔を10pxに設定 */
+
+            #calculateBtn {
+                margin-top: 20px;
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .button-container button {
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .button-container button:first-child {
+                margin-right: 10px;
+            }
+
+            .button-container button:last-child {
+                margin-right: 0;
+            }
+
+            .button-container button:last-child {
+                background-color: #dc3545; /* 赤色 */
+            }
+
+            .input-field {
+                margin-bottom: 20px;
+            }
+
+            .input-field label {
+                display: block;
+                font-weight: bold;
+                color: #606060;
+            }
+
+            .checkboxes {
+                display: grid;
+                
+                grid-gap: 10px 10px; /* 横方向の間隔を20px、縦方向の間隔を10pxに設定 */
+            }
+
+            .checkbox-item {
+                display: flex;
+                align-items: center;
+                position: relative; /* 相対位置指定 */
+                top: -1180px; /* 上方向に20px移動 */
+                left: 500px; /* 左方向に20px移動 */
+            }
+
+            .checkbox-item input[type="checkbox"] {
+                margin-right: 5px;
+                width: 20px; /* チェックボックスの幅を変更 */
+                height: 30px; /* チェックボックスの高さを20pxに設定 */
+            }
+
+            .checkbox-item label {
+                font-size: 18px;
+                color: #333;
+                cursor: pointer;
+                padding-left: 10px; /* ラベルの左側に余白を追加 */
+                
+            }
+
+            #attackPower {
+                background-color: lightblue; /* 背景色を水色に設定 */
+                position: fixed;
+                bottom: 140px; /* 攻撃力の表示位置を調整 */
+                right: 20px;
+                font-weight: bold;
+                text-align: right; /* テキストを右揃えに */
+                padding: 5px 10px; /* 内側の余白を追加 */
+                z-index: 999; /* 他の要素の上に表示されるようにする */
+                display: inline-block; /* インラインブロック要素として表示 */
+                
+            }
+
+            #damage {
+                background-color: lightblue; /* 背景色を水色に設定 */
+                position: fixed;
+                bottom: 90px;
+                right: 20px;
+                font-weight: bold;
+                text-align: right; /* テキストを右揃えに */
+                padding: 5px 10px; /* 内側の余白を追加 */
+                z-index: 999; /* 他の要素の上に表示されるようにする */
+                display: inline-block; /* インラインブロック要素として表示 */
+            }
+
+
+
+            /* 計算ボタンとリセットボタンの配置を右下に変更 */
+            .button-container {
+                position: fixed;
+                bottom: 20px;
+                right: 1px;
+            } 
         }
 
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            position: relative; /* 相対位置指定 */
-            top: -1180px; /* 上方向に20px移動 */
-            left: 500px; /* 左方向に20px移動 */
-        }
+        /* タブレット向けのスタイル */
+        @media screen and (min-width: 601px) and (max-width: 1000px) {
+            /* タブレット向けのスタイルをここに記述 */
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+            }
 
-        .checkbox-item input[type="checkbox"] {
-            margin-right: 5px;
-            width: 20px; /* チェックボックスの幅を変更 */
-            height: 30px; /* チェックボックスの高さを20pxに設定 */
-        }
+            .sidebar {
+                height: 100%;
+                width: 170px; /* ビューポートの幅の25% */
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: #f8f9fa; /* YouTubeのサイドバーの背景色 */
+                padding-top: 56px; /* YouTubeのヘッダーの高さ */
+                border-right: 1px solid #ccc; /* YouTubeのサイドバーとコンテンツエリアの仕切り線 */
+                overflow-y: auto; /* サイドバーがウィンドウの高さより長い場合にスクロールさせる */
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start; /* 左揃え */
+            }
 
-        .checkbox-item label {
-            font-size: 18px;
-            color: #333;
-            cursor: pointer;
-            padding-left: 10px; /* ラベルの左側に余白を追加 */
+            .sidebar h2 {
+                margin: 0 16px 16px; /* 上下に余白を追加 */
+                padding: 16px 0;
+                font-size: 18px;
+                font-weight: bold;
+                color: #333; /* YouTubeのサイドバーのヘッダーのテキスト色 */
+                letter-spacing: 1px; /* 文字同士の余白 */
+            }
+
+            .sidebar a {
+                display: block;
+                padding: 10px 16px;
+                text-decoration: none;
+                font-size: 16px;
+                color: #606060; /* YouTubeのサイドバーのリンクのテキスト色 */
+                letter-spacing: 1px; /* 文字同士の余白 */
+                white-space: nowrap; /* テキストの折り返しを禁止 */
+            }
+
+            .sidebar a i {
+                margin-right: 8px; /* アイコンとテキストの間隔を設定 */
+            }
+
+            .content {
+                margin-left: 250px; /* サイドバーの幅 */
+                padding: 20px;
+                
+            }
+
+            .input-field {
+                margin-bottom: 4px;
+                width: calc(50% - 20px); /* 幅を調整 */
+            }
+
+            .input-field label {
+                display: block;
+                font-weight: bold;
+                color: #606060;
+            }
+
+            .input-field input {
+                width: 100%;
+                padding: 6px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                font-size: 14px;
+                color: #333;
+                width: 200px; /* 任意の幅に調整 */
+            }
+
             
-        }
 
-        #attackPower {
-            background-color: lightblue; /* 背景色を水色に設定 */
-            position: fixed;
-            bottom: 140px; /* 攻撃力の表示位置を調整 */
-            right: 20px;
-            font-weight: bold;
-            text-align: right; /* テキストを右揃えに */
-            padding: 5px 10px; /* 内側の余白を追加 */
-            z-index: 999; /* 他の要素の上に表示されるようにする */
-            display: inline-block; /* インラインブロック要素として表示 */
+            #calculateBtn {
+                margin-top: 20px;
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .button-container button {
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .button-container button:first-child {
+                margin-right: 10px;
+            }
+
+            .button-container button:last-child {
+                margin-right: 0;
+            }
+
+            .button-container button:last-child {
+                background-color: #dc3545; /* 赤色 */
+            }
+
+            .input-field {
+                margin-bottom: 20px;
+            }
+
+            .input-field label {
+                display: block;
+                font-weight: bold;
+                color: #606060;
+            }
+
+            .checkboxes {
+                display: grid;
+                
+                grid-gap: 10px 10px; /* 横方向の間隔を20px、縦方向の間隔を10pxに設定 */
+            }
+
+            .checkbox-item {
+                display: flex;
+                align-items: center;
+                position: relative; /* 相対位置指定 */
+                top: -1180px; /* 上方向に20px移動 */
+                left: 500px; /* 左方向に20px移動 */
+            }
+
+            .checkbox-item input[type="checkbox"] {
+                margin-right: 5px;
+                width: 20px; /* チェックボックスの幅を変更 */
+                height: 30px; /* チェックボックスの高さを20pxに設定 */
+            }
+
+            .checkbox-item label {
+                font-size: 18px;
+                color: #333;
+                cursor: pointer;
+                padding-left: 10px; /* ラベルの左側に余白を追加 */
+                
+            }
+
+            #attackPower {
+                background-color: lightblue; /* 背景色を水色に設定 */
+                position: fixed;
+                bottom: 140px; /* 攻撃力の表示位置を調整 */
+                right: 20px;
+                font-weight: bold;
+                text-align: right; /* テキストを右揃えに */
+                padding: 5px 10px; /* 内側の余白を追加 */
+                z-index: 999; /* 他の要素の上に表示されるようにする */
+                display: inline-block; /* インラインブロック要素として表示 */
+                
+            }
+
+            #damage {
+                background-color: lightblue; /* 背景色を水色に設定 */
+                position: fixed;
+                bottom: 90px;
+                right: 20px;
+                font-weight: bold;
+                text-align: right; /* テキストを右揃えに */
+                padding: 5px 10px; /* 内側の余白を追加 */
+                z-index: 999; /* 他の要素の上に表示されるようにする */
+                display: inline-block; /* インラインブロック要素として表示 */
+            }
+
+
+
+            /* 計算ボタンとリセットボタンの配置を右下に変更 */
+            .button-container {
+                position: fixed;
+                bottom: 20px;
+                right: 1px;
+            } 
+        }
+        /* 1001px から 1899px の範囲に適用されるスタイル */
+        @media screen and (min-width: 1001px) and (max-width: 1899px) {
+            /* タブレット向けのスタイルをここに記述 */
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+            }
+
+            .sidebar {
+                height: 100%;
+                width: 18vw; /* ビューポートの幅の25% */
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: #f8f9fa; /* YouTubeのサイドバーの背景色 */
+                padding-top: 56px; /* YouTubeのヘッダーの高さ */
+                border-right: 1px solid #ccc; /* YouTubeのサイドバーとコンテンツエリアの仕切り線 */
+                overflow-y: auto; /* サイドバーがウィンドウの高さより長い場合にスクロールさせる */
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start; /* 左揃え */
+            }
+
+            .sidebar h2 {
+                margin: 0 16px 16px; /* 上下に余白を追加 */
+                padding: 16px 0;
+                font-size: 18px;
+                font-weight: bold;
+                color: #333; /* YouTubeのサイドバーのヘッダーのテキスト色 */
+                letter-spacing: 1px; /* 文字同士の余白 */
+            }
+
+            .sidebar a {
+                display: block;
+                padding: 10px 16px;
+                text-decoration: none;
+                font-size: 16px;
+                color: #606060; /* YouTubeのサイドバーのリンクのテキスト色 */
+                letter-spacing: 1px; /* 文字同士の余白 */
+                white-space: nowrap; /* テキストの折り返しを禁止 */
+            }
+
+            .sidebar a i {
+                margin-right: 8px; /* アイコンとテキストの間隔を設定 */
+            }
+
+            .content {
+                margin-left: 250px; /* サイドバーの幅 */
+                padding: 20px;
+                
+            }
+
+            .input-field {
+                margin-bottom: 4px;
+                width: calc(50% - 20px); /* 幅を調整 */
+            }
+
+            .input-field label {
+                display: block;
+                font-weight: bold;
+                color: #606060;
+            }
+
+            .input-field input {
+                width: 100%;
+                padding: 6px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                font-size: 14px;
+                color: #333;
+                width: 200px; /* 任意の幅に調整 */
+            }
+
             
+
+            #calculateBtn {
+                margin-top: 20px;
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .button-container button {
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .button-container button:first-child {
+                margin-right: 10px;
+            }
+
+            .button-container button:last-child {
+                margin-right: 0;
+            }
+
+            .button-container button:last-child {
+                background-color: #dc3545; /* 赤色 */
+            }
+
+            .input-field {
+                margin-bottom: 20px;
+            }
+
+            .input-field label {
+                display: block;
+                font-weight: bold;
+                color: #606060;
+            }
+
+            .checkboxes {
+                display: grid;
+                
+                grid-gap: 10px 10px; /* 横方向の間隔を20px、縦方向の間隔を10pxに設定 */
+            }
+
+            .checkbox-item {
+                display: flex;
+                align-items: center;
+                position: relative; /* 相対位置指定 */
+                top: -1180px; /* 上方向に20px移動 */
+                left: 500px; /* 左方向に20px移動 */
+            }
+
+            .checkbox-item input[type="checkbox"] {
+                margin-right: 5px;
+                width: 20px; /* チェックボックスの幅を変更 */
+                height: 30px; /* チェックボックスの高さを20pxに設定 */
+            }
+
+            .checkbox-item label {
+                font-size: 18px;
+                color: #333;
+                cursor: pointer;
+                padding-left: 10px; /* ラベルの左側に余白を追加 */
+                
+            }
+
+            #attackPower {
+                background-color: lightblue; /* 背景色を水色に設定 */
+                position: fixed;
+                bottom: 140px; /* 攻撃力の表示位置を調整 */
+                right: 20px;
+                font-weight: bold;
+                text-align: right; /* テキストを右揃えに */
+                padding: 5px 10px; /* 内側の余白を追加 */
+                z-index: 999; /* 他の要素の上に表示されるようにする */
+                display: inline-block; /* インラインブロック要素として表示 */
+                
+            }
+
+            #damage {
+                background-color: lightblue; /* 背景色を水色に設定 */
+                position: fixed;
+                bottom: 90px;
+                right: 20px;
+                font-weight: bold;
+                text-align: right; /* テキストを右揃えに */
+                padding: 5px 10px; /* 内側の余白を追加 */
+                z-index: 999; /* 他の要素の上に表示されるようにする */
+                display: inline-block; /* インラインブロック要素として表示 */
+            }
+
+
+
+            /* 計算ボタンとリセットボタンの配置を右下に変更 */
+            .button-container {
+                position: fixed;
+                bottom: 20px;
+                right: 1px;
+            } 
         }
-
-        #damage {
-            background-color: lightblue; /* 背景色を水色に設定 */
-            position: fixed;
-            bottom: 90px;
-            right: 20px;
-            font-weight: bold;
-            text-align: right; /* テキストを右揃えに */
-            padding: 5px 10px; /* 内側の余白を追加 */
-            z-index: 999; /* 他の要素の上に表示されるようにする */
-            display: inline-block; /* インラインブロック要素として表示 */
-        }
-
-
-
-        /* 計算ボタンとリセットボタンの配置を右下に変更 */
-        .button-container {
-            position: fixed;
-            bottom: 20px;
-            right: 1px;
-        } 
-
     </style>
 </head>
 <body>
+    
     <div class="sidebar">
         <h2>メニュー</h2>
         <a href="#"><i class="fas fa-calculator"></i> ダメージ計算</a>
@@ -482,11 +1048,14 @@
         });
 
 
-    
+        
+
+
         
 
 
 
     </script>
+    
 </body>
 </html>
