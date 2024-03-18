@@ -1,0 +1,95 @@
+.button-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-container button:first-child {
+    margin-right: 10px;
+}
+
+.button-container button:last-child {
+    margin-right: 0;
+}
+
+.button-container button:last-child {
+    background-color: #dc3545; /* 赤色 */
+}
+
+.input-field {
+    margin-bottom: 20px;
+}
+
+.input-field label {
+    display: block;
+    font-weight: bold;
+    color: #606060;
+}
+
+.checkboxes {
+    display: grid;
+    
+    grid-gap: 10px 10px; /* 横方向の間隔を20px、縦方向の間隔を10pxに設定 */
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    position: relative; /* 相対位置指定 */
+    top: -922px; /* 上方向に20px移動 */
+    left: 500px; /* 左方向に20px移動 */
+}
+
+.checkbox-item input[type="checkbox"] {
+    margin-right: 5px;
+    width: 20px; /* チェックボックスの幅を変更 */
+    height: 30px; /* チェックボックスの高さを20pxに設定 */
+}
+
+.checkbox-item label {
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+    padding-left: 10px; /* ラベルの左側に余白を追加 */
+    
+}
+
+#attackPower {
+    background-color: lightblue; /* 背景色を水色に設定 */
+    position: fixed;
+    bottom: 140px; /* 攻撃力の表示位置を調整 */
+    right: 20px;
+    font-weight: bold;
+    text-align: right; /* テキストを右揃えに */
+    padding: 5px 10px; /* 内側の余白を追加 */
+    z-index: 999; /* 他の要素の上に表示されるようにする */
+    display: inline-block; /* インラインブロック要素として表示 */
+    
+}
+
+#damage {
+    background-color: lightblue; /* 背景色を水色に設定 */
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    font-weight: bold;
+    text-align: right; /* テキストを右揃えに */
+    padding: 5px 10px; /* 内側の余白を追加 */
+    z-index: 999; /* 他の要素の上に表示されるようにする */
+    display: inline-block; /* インラインブロック要素として表示 */
+}
+
+
+
+/* 計算ボタンとリセットボタンの配置を右下に変更 */
+.button-container {
+    position: fixed;
+    bottom: 20px;
+    right: 1px;
+}
+
+

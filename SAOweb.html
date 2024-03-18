@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAOIFダメージ計算ツール</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome の CSS -->
+    <link rel="stylesheet" href="C:\Users\chour\OneDrive\デスクトップ\SAO.web\SAOweb.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #f8f9fa; /* YouTubeのサイドバーの背景色 */
+            padding-top: 56px; /* YouTubeのヘッダーの高さ */
+            border-right: 1px solid #ccc; /* YouTubeのサイドバーとコンテンツエリアの仕切り線 */
+            overflow-y: auto; /* サイドバーがウィンドウの高さより長い場合にスクロールさせる */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* 左揃え */
+        }
+
+        .sidebar h2 {
+            margin: 0 16px 16px; /* 上下に余白を追加 */
+            padding: 16px 0;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333; /* YouTubeのサイドバーのヘッダーのテキスト色 */
+            letter-spacing: 1px; /* 文字同士の余白 */
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px 16px;
+            text-decoration: none;
+            font-size: 16px;
+            color: #606060; /* YouTubeのサイドバーのリンクのテキスト色 */
+            letter-spacing: 1px; /* 文字同士の余白 */
+        }
+
+        .sidebar a i {
+            margin-right: 8px; /* アイコンとテキストの間隔を設定 */
+        }
+
+        .content {
+            margin-left: 250px; /* サイドバーの幅 */
+            padding: 20px;
+            background-color: #f9f9f9; /* メインのコンテンツ領域の背景色 */
+        }
+
+        .input-field {
+            margin-bottom: 4px;
+            width: calc(50% - 20px); /* 幅を調整 */
+        }
+
+        .input-field label {
+            display: block;
+            font-weight: bold;
+            color: #606060;
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+            color: #333;
+            width: 200px; /* 任意の幅に調整 */
+        }
+
+        
+
+        #calculateBtn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>メニュー</h2>
+        <a href="#"><i class="fas fa-calculator"></i> ダメージ計算</a>
+        <a href="#"><i class="fas fa-chart-line"></i> ステータス管理</a>
+        <a href="#"><i class="fas fa-question-circle"></i> 使い方</a>
+        <a href="https://twitter.com/6_sao_" target="_blank"><i class="fab fa-twitter"></i> X(旧Twitter)</a>
+    </div>
+    <div class="content">
+        <div class="input-field">
+            <label for="attackBase">攻撃基礎</label>
+            <input type="number" id="attackBase" name="attackBase">
+        </div>
+        <div class="input-field">
+            <label for="attackRate">攻撃上昇率(%)</label>
+            <input type="number" id="attackRate" name="attackRate">
+        </div>
+        <div class="input-field">
+            <label for="defenseBase">防御基礎</label>
+            <input type="number" id="defenseBase" name="defenseBase">
+        </div>
+        <div class="input-field">
+            <label for="defenseRate">防御上昇率(%)</label>
+            <input type="number" id="defenseRate" name="defenseRate">
+        </div>
+        <div class="input-field">
+            <label for="skillPower">スキル威力(%)</label>
+            <input type="number" id="skillPower" name="skillPower">
+        </div>
+        <div class="input-field">
+            <label for="damageMultiplier">ダメージ倍率(%)</label>
+            <input type="number" id="damageMultiplier" name="damageMultiplier">
+        </div>
+        <div class="input-field">
+            <label for="awakeningRate">覚醒率(%)</label>
+            <input type="number" id="awakeningRate" name="awakeningRate">
+        </div>
+        <div class="input-field">
+            <label for="additionalDamage">追加ダメージ</label>
+            <input type="number" id="additionalDamage" name="additionalDamage">
+        </div>
+        <div class="input-field">
+            <label for="maxHP">最大HP</label>
+            <input type="number" id="maxHP" name="maxHP">
+        </div>
+        <div class="input-field">
+            <label for="currentHP">HP</label>
+            <input type="number" id="currentHP" name="currentHP">
+        </div>
+        <div class="input-field">
+            <label for="offTargetMod">タゲ外MOD(%)</label>
+            <input type="number" id="offTargetMod" name="offTargetMod">
+        </div>
+        <div class="input-field">
+            <label for="switchChain">スイッチチェイン(%)</label>
+            <input type="number" id="switchChain" name="switchChain">
+        </div>
+        <div class="input-field">
+            <label for="comboBuff">コンビネーションバフ(%)</label>
+            <input type="number" id="comboBuff" name="comboBuff">
+        </div>
+        <div class="input-field">
+            <label for="enemyDefense">敵の防御力</label>
+            <input type="number" id="enemyDefense" name="enemyDefense">
+        </div>
+        <div class="input-field">
+            <label for="enemyDamageBuff">敵のダメージ軽減バフ率(%)</label>
+            <input type="number" id="enemyDamageBuff" name="enemyDamageBuff">
+        </div>
+        <div class="input-field">
+            <label for="seal">烙印</label>
+            <input type="number" id="seal" name="seal">
+        </div>
+        <div class="button-container">
+            <button id="calculateBtn"><i class="fas fa-calculator"></i> 計算</button>
+            <button id="resetBtn"><i class="fas fa-sync-alt"></i> リセット</button>
+        </div>
+        
+        <div id="attackPower"><i class="fas fa-fist-raised"></i> 攻撃力: 1</div>
+        <div id="damage"><i class="fas fa-heartbeat"></i> ダメージ: 1</div>
+
+
+        
+       
+
+    </div>
+    <div class="input-field">
+        
+        <div class="checkboxes">
+            <div class="checkbox-item">
+                <input type="checkbox" id="weaponAttribute" name="weaponAttribute">
+                <label for="weaponAttribute">武器属性</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="natureAttribute" name="natureAttribute">
+                <label for="natureAttribute">自然属性</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="switch1" name="switch1">
+                <label for="switch1">スイッチ1</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="switch2" name="switch2">
+                <label for="switch2">スイッチ2</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="overcharge" name="overcharge">
+                <label for="overcharge">オーバーチャージ</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="critical" name="critical">
+                <label for="critical">クリティカル</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="imprint" name="imprint">
+                <label for="imprint">刻印</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="minorImprint" name="minorImprint">
+                <label for="minorImprint">小刻印</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="deathMark" name="deathMark">
+                <label for="deathMark">死兆印</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="burstMark" name="burstMark">
+                <label for="burstMark">突衰印</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="executionersEye" name="executionersEye">
+                <label for="executionersEye">執行者の眼</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="adversity3" name="adversity3">
+                <label for="adversity3">逆境3</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="adversity4" name="adversity4">
+                <label for="adversity4">逆境4</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="violentTiger" name="violentTiger">
+                <label for="violentTiger">暴虎</label>
+            </div>
+            
+        </div>
+    </div>
+    
+    <script>
+        
+        document.getElementById('calculateBtn').addEventListener('click', function() {
+            // 入力値を取得
+            const attackBase = parseFloat(document.getElementById('attackBase').value) || 0;
+            const attackRate = (parseFloat(document.getElementById('attackRate').value) || 0) / 100;
+            const defenseBase = parseFloat(document.getElementById('defenseBase').value) || 0;
+            const defenseRate = (parseFloat(document.getElementById('defenseRate').value) || 0) / 100;
+            const skillPower = (parseFloat(document.getElementById('skillPower').value) || 0) / 100;
+            const damageMultiplier = (parseFloat(document.getElementById('damageMultiplier').value) || 0) / 100;
+            const awakeningRate = (parseFloat(document.getElementById('awakeningRate').value) || 0) / 100;
+            const additionalDamage = parseFloat(document.getElementById('additionalDamage').value) || 0;
+            const maxHP = parseFloat(document.getElementById('maxHP').value) || 1;
+            const currentHP = parseFloat(document.getElementById('currentHP').value) || 1;
+            const offTargetMod = (parseFloat(document.getElementById('offTargetMod').value) || 0) / 100;
+            const switchChain = (parseFloat(document.getElementById('switchChain').value) || 0) / 100;
+            const comboBuff = (parseFloat(document.getElementById('comboBuff').value) || 0) / 100;
+            const enemyDefense = parseFloat(document.getElementById('enemyDefense').value) || 0;
+            const enemyDamageBuff = (parseFloat(document.getElementById('enemyDamageBuff').value) || 0) / 100;
+            const seal = parseFloat(document.getElementById('seal').value) || 0;
+            const weaponAttributeCheckbox = document.getElementById('weaponAttribute');
+            const naturalAttributeCheckbox = document.getElementById('natureAttribute');
+            const criticalCheckbox = document.getElementById('critical');
+            const imprintCheckbox = document.getElementById('imprint');
+            const minorImprintCheckbox = document.getElementById('minorImprint');
+            const deathMarkCheckbox = document.getElementById('deathMark');
+            const burstMarkCheckbox = document.getElementById('burstMark');
+            const executionersEyeCheckbox = document.getElementById('executionersEye');
+            const violentTigerChecked = document.getElementById('violentTiger').checked;
+            const adversity3Checked = document.getElementById('adversity3').checked;
+            const adversity4Checked = document.getElementById('adversity4').checked;
+            // 特殊効果のチェックボックスの値を取得
+            const switch1Checked = document.getElementById('switch1').checked;
+            const switch2Checked = document.getElementById('switch2').checked;
+            const overchargeChecked = document.getElementById('overcharge').checked;
+
+            // スイッチ1、スイッチ2、オーバーチャージの特殊効果を計算
+            let specialEffectMultiplier = 1;
+            if (switch1Checked || switch2Checked || overchargeChecked) {
+                specialEffectMultiplier = 1.2;
+            }
+
+
+            // ダメージ倍率の初期値
+            let damageMultiplierTotal = 0;
+
+            // 特殊効果の計算
+            if (adversity3Checked) {
+                damageMultiplierTotal += (1 - currentHP / maxHP) * 0.3;
+            }
+            if (adversity4Checked) {
+                damageMultiplierTotal += (1 - currentHP / maxHP) * 0.5;
+            }
+
+            // 武器属性、自然属性、クリティカルにチェックが入った場合、ダメージ倍率に0.5追加
+            if (weaponAttributeCheckbox.checked) {
+                damageMultiplierTotal += 0.5;
+            }
+            if (naturalAttributeCheckbox.checked) {
+                damageMultiplierTotal += 0.5;
+            }
+            if (criticalCheckbox.checked) {
+                damageMultiplierTotal += 0.5;
+            }
+
+
+            
+
+            // 刻印、小刻印、死兆印、突衰印、執行者の眼にチェックが入った場合、imprintMultiplierに対応する値を加算
+            let imprintMultiplier = 0;
+            if (imprintCheckbox.checked) {
+                imprintMultiplier += 1.0;
+            }
+            if (minorImprintCheckbox.checked) {
+                imprintMultiplier += 0.5;
+            }
+            if (deathMarkCheckbox.checked) {
+                imprintMultiplier += 0.1;
+            }
+            if (burstMarkCheckbox.checked) {
+                imprintMultiplier += 1.5;
+            }
+            if (executionersEyeCheckbox.checked) {
+                imprintMultiplier += 1.0;
+            }
+
+            // 全体スキル威力と刻印倍率の計算
+            const totalSkillPower = (skillPower * specialEffectMultiplier) + comboBuff;
+            let offTargetModMultiplier = offTargetMod * (1 - currentHP / maxHP);
+            offTargetModMultiplier = Math.max(0, offTargetModMultiplier);
+            imprintMultiplier += offTargetModMultiplier;
+            imprintMultiplier += (seal * 0.5) / 100;
+
+            // スイッチ2にチェックが入った場合、ダメージ倍率に0.15を加算
+            if (document.getElementById('switch2').checked) {
+                damageMultiplierTotal += 0.15;
+            }
+
+            // オーバーチャージにチェックが入った場合、ダメージ倍率に2.0を加算
+            if (document.getElementById('overcharge').checked) {
+                damageMultiplierTotal += 2.0;
+            }
+
+
+            // ダメージ倍率の計算
+            let totalDamageMultiplier = damageMultiplier - enemyDamageBuff + Math.max(0, switchChain - 1) + damageMultiplierTotal;
+
+            // 暴虎の効果を計算
+            let violentTigerEffect = 0;
+            if (violentTigerChecked) {
+                violentTigerEffect = 2000 * (1 - currentHP / maxHP);
+            }
+
+            // 攻撃基礎に暴虎の効果を加算
+            let attackBase1 = attackBase + violentTigerEffect;
+
+            // 攻撃力の計算
+            const attackPower = Math.max(1, (attackBase1 + (defenseBase * (1 + defenseRate)) * 2) * (1 + attackRate));
+
+            // ダメージの計算
+            const damage1 = Math.max(0, Math.max(0, attackPower * totalSkillPower * (1 + awakeningRate) - enemyDefense) * (1 + totalDamageMultiplier));
+            const damage2 = Math.max(0, Math.max(0, attackPower * totalSkillPower - enemyDefense) * (1 + totalDamageMultiplier) * (imprintMultiplier));
+            const damage3 = additionalDamage * (1 + awakeningRate) * (1 + totalDamageMultiplier) * (1 + imprintMultiplier);
+            const totalDamage = damage1 + damage2 + damage3;
+            const damage = Math.max(1, totalDamage);
+
+            // 結果を表示
+            document.getElementById('attackPower').innerHTML = `<i class="fas fa-fist-raised"></i> 攻撃力: ${attackPower.toFixed(0)}`;
+            document.getElementById('damage').innerHTML = `<i class="fas fa-heartbeat"></i> ダメージ: ${damage.toFixed(0)}`;
+
+
+
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', function() {
+            // 入力フィールドの値をリセット
+            document.querySelectorAll('.input-field input').forEach(input => input.value = '');
+            // チェックボックスの状態をリセット
+            document.querySelectorAll('.checkbox-item input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
+            // 計算結果を空にする
+            document.getElementById('attackPower').innerHTML = `<i class="fas fa-fist-raised"></i> 攻撃力: 1`;
+            document.getElementById('damage').innerHTML = `<i class="fas fa-heartbeat"></i> ダメージ: 1`;
+            
+        });
+
+
+    
+        
+
+
+
+    </script>
+</body>
+</html>
