@@ -13,6 +13,9 @@
             font-size: 16px !important;
         }
 
+        
+
+
         @media screen and (max-width: 600px) {
         /* スマートフォン向けのスタイルをここに記述 */
 
@@ -64,7 +67,7 @@
             }
 
             .input-field {
-                margin-bottom: 4px;
+                margin-bottom: 14px;
                 width: calc(50% - 20px); /* 幅を調整 */
             }
 
@@ -78,9 +81,9 @@
 
             .input-field input {
                 width: 140px;
-                padding: 11px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
+                padding: 14px;
+                border: 14px solid #ccc;
+                border-radius: 14px;
                 box-sizing: border-box;
                 font-size: 16px;
                 color: #333;
@@ -1070,6 +1073,21 @@
 
 
 
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elements = document.querySelectorAll('.unselectable');
+    
+            elements.forEach(function(element) {
+                element.addEventListener('selectstart', function(event) {
+                    event.preventDefault();
+                });
+    
+                element.addEventListener('mousedown', function(event) {
+                    event.preventDefault();
+                });
+            });
+        });
     </script>
     
 </body>
