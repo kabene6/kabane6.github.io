@@ -519,6 +519,9 @@
                 color: #000000;
                 white-space: nowrap; /* テキストの折り返しを防ぐ */
             }
+
+            
+
         }
 
         /* タブレット向けのスタイル */
@@ -696,7 +699,65 @@
                 display: inline-block; /* インラインブロック要素として表示 */
             }
 
+            .slider-container {
+                position: relative;
+            }
 
+            .range-slider {
+                width: 20%;
+                margin: 50px auto;
+                position: absolute;
+                top: 1300px;
+                left: 20px;
+            }
+
+            input[type="range"] {
+                -webkit-appearance: none;
+                width: 100%;
+                height: 20px;
+                background: #d3d3d3;
+                border-radius: 10px;
+                outline: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            input[type="range"]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                width: 20px;
+                height: 20px;
+                background: #007bff;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            input[type="range"]::-moz-range-thumb {
+                width: 20px;
+                height: 20px;
+                background: #007bff;
+                border: none;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            .value {
+                text-align: center;
+                font-family: 'フォント名', sans-serif; /* サイドバーと同じフォントファミリーを指定 */
+                font-size: 16px; /* サイドバーと同じフォントサイズを指定 */
+                color: #000000; /* サイドバーと同じ色を指定 */
+            }
+
+            .slider-label {
+                position: absolute;
+                top: -30px; /* レンジスライダーの上に配置するための適切な位置を設定 */
+                left: 50%; /* レンジスライダーの中央に配置 */
+                transform: translateX(-50%); /* レンジスライダーの中央に配置 */
+                font-family: 'フォント名', sans-serif;
+                font-size: 16px;
+                font-weight: normal;
+                color: #000000;
+                white-space: nowrap; /* テキストの折り返しを防ぐ */
+            }
 
             /* 計算ボタンとリセットボタンの配置を右下に変更 */
             .button-container {
@@ -888,6 +949,66 @@
                 bottom: 20px;
                 right: 1px;
             } 
+
+            .slider-container {
+                position: relative;
+            }
+
+            .range-slider {
+                width: 10%;
+                margin: 50px auto;
+                position: absolute;
+                top: 20px;
+                left: 700px;
+            }
+
+            input[type="range"] {
+                -webkit-appearance: none;
+                width: 100%;
+                height: 20px;
+                background: #d3d3d3;
+                border-radius: 10px;
+                outline: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            input[type="range"]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                width: 20px;
+                height: 20px;
+                background: #007bff;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            input[type="range"]::-moz-range-thumb {
+                width: 20px;
+                height: 20px;
+                background: #007bff;
+                border: none;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            .value {
+                text-align: center;
+                font-family: 'フォント名', sans-serif; /* サイドバーと同じフォントファミリーを指定 */
+                font-size: 16px; /* サイドバーと同じフォントサイズを指定 */
+                color: #000000; /* サイドバーと同じ色を指定 */
+            }
+
+            .slider-label {
+                position: absolute;
+                top: -30px; /* レンジスライダーの上に配置するための適切な位置を設定 */
+                left: 50%; /* レンジスライダーの中央に配置 */
+                transform: translateX(-50%); /* レンジスライダーの中央に配置 */
+                font-family: 'フォント名', sans-serif;
+                font-size: 16px;
+                font-weight: normal;
+                color: #000000;
+                white-space: nowrap; /* テキストの折り返しを防ぐ */
+            }
         }
 
         /* チェックボックスとそのラベルをボタンよりも下のレイヤーに表示 */
@@ -911,8 +1032,104 @@
             color: #000000; /* サイドバーのテキストと同じ色を指定 */
         }
 
+        /* サイドバーのスタイル */
+        .sidebar {
+            /* 他の要素よりも高い z-index を指定 */
+            z-index: 2;
+        }
+
+        .button-container {
+            z-index: 3;
+        }
+
         
 
+        .slider-label2 {
+            position: absolute;
+            top: 50px; /* 闘争本能ラベルの位置を調整 */
+            left: 50%; /* 中央に配置 */
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            white-space: nowrap;
+        }
+
+        .slider2 {
+            position: absolute;
+            top: 80px; /* レンジスライダー2の位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .value2 {
+            position: absolute;
+            top: 105px; /* レンジスライダー2の値の表示位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .slider-label3 {
+            position: absolute;
+            top: 130px; /* 闘争本能ラベルの位置を調整 */
+            left: 50%; /* 中央に配置 */
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            white-space: nowrap;
+        }
+
+        .slider3 {
+            position: absolute;
+            top: 160px; /* レンジスライダー2の位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .value3 {
+            position: absolute;
+            top: 185px; /* レンジスライダー2の値の表示位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .slider-label4 {
+            position: absolute;
+            top: 210px; /* 闘争本能ラベルの位置を調整 */
+            left: 50%; /* 中央に配置 */
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            white-space: nowrap;
+        }
+
+        .slider4 {
+            position: absolute;
+            top: 240px; /* レンジスライダー2の位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .value4 {
+            position: absolute;
+            top: 265px; /* レンジスライダー2の値の表示位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            color: #000000;
+        }
 
     </style>
     
@@ -1075,6 +1292,15 @@
         <label for="rangeSlider" class="slider-label">基礎の構え</label>
         <input type="range" min="0" max="7" value="0" step="1" id="rangeSlider">
         <div class="value" id="sliderValue">0</div>
+        <label for="rangeSlider2" class="slider-label slider-label2">闘争本能</label>
+        <input type="range" min="0" max="7" value="0" step="1" id="rangeSlider2" class="slider2">
+        <div class="value2" id="sliderValue2">0</div> <!-- ここに数値を表示する要素を追加 -->
+        <label for="rangeSlider3" class="slider-label slider-label3">武器の知識</label>
+        <input type="range" min="0" max="7" value="0" step="1" id="rangeSlider3" class="slider3">
+        <div class="value3" id="sliderValue3">0</div>
+        <label for="rangeSlider4" class="slider-label slider-label4">剣技熟達</label>
+        <input type="range" min="0" max="8" value="0" step="1" id="rangeSlider4" class="slider4">
+        <div class="value4" id="sliderValue4">0</div>
     </div>
     
     <script>
@@ -1112,6 +1338,7 @@
             const switch1Checked = document.getElementById('switch1').checked;
             const switch2Checked = document.getElementById('switch2').checked;
             const overchargeChecked = document.getElementById('overcharge').checked;
+            
 
             // スイッチ1、スイッチ2、オーバーチャージの特殊効果を計算
             let specialEffectMultiplier = 1;
@@ -1163,8 +1390,15 @@
                 imprintMultiplier += 1.0;
             }
 
+            
+           
+            
+
+
+            const skillPower1 = parseFloat(document.getElementById('rangeSlider4').value) || 0; // レンジスライダー2の値を取得
+
             // 全体スキル威力と刻印倍率の計算
-            const totalSkillPower = (skillPower * specialEffectMultiplier) + comboBuff;
+            const totalSkillPower = ((skillPower + skillPower1 * 0.1) * specialEffectMultiplier) + comboBuff;
             let offTargetModMultiplier = offTargetMod * (1 - currentHP / maxHP);
             offTargetModMultiplier = Math.max(0, offTargetModMultiplier);
             imprintMultiplier += offTargetModMultiplier;
@@ -1190,11 +1424,16 @@
                 violentTigerEffect = 2000 * (1 - currentHP / maxHP);
             }
 
+            const rangeSlider2Value = parseFloat(document.getElementById('rangeSlider2').value) || 0; // レンジスライダー2の値を取得
+
             // 攻撃基礎に暴虎の効果を加算
-            let attackBase1 = attackBase + violentTigerEffect;
+            let attackBase1 = attackBase + violentTigerEffect + rangeSlider2Value * 10;
+
+            const weaponKnowledge = parseFloat(document.getElementById('rangeSlider3').value) || 0;
+
 
             // 攻撃力の計算
-            const attackPower = Math.max(1, (attackBase1 + (defenseBase * (1 + defenseRate)) * 2) * (1 + attackRate));
+            const attackPower = Math.max(1, (attackBase1 + (defenseBase * (1 + defenseRate)) * 2) * (1 + attackRate + weaponKnowledge * 0.05));
 
             // ダメージの計算
             const damage1 = Math.max(0, Math.max(0, attackPower * totalSkillPower * (1 + awakeningRate) - enemyDefense) * (1 + totalDamageMultiplier));
@@ -1226,16 +1465,7 @@
         const rangeSlider = document.getElementById('rangeSlider');
         const sliderValue = document.getElementById('sliderValue'); // 追加ダメージを表示する要素
 
-        rangeSlider.addEventListener('mousedown', function() {
-                // レンジスライダーがクリックされたときにページ全体のスクロールを無効化
-                document.body.style.overflow = 'hidden';
-            });
-
-            rangeSlider.addEventListener('mouseup', function() {
-                // レンジスライダーが離されたときにページ全体のスクロールを有効化
-                document.body.style.overflow = 'auto';
-            });
-
+        
         // additionalDamageの初期値を0に設定
         let additionalDamage1 = 0;
 
@@ -1251,9 +1481,37 @@
             sliderValue.textContent = value;
         });
 
+        // レンジスライダー2の要素を取得
+        const rangeSlider2 = document.getElementById('rangeSlider2');
+        const sliderValue2 = document.getElementById('sliderValue2');
+
+        // レンジスライダー2の値が変更されたときに発生するイベントをリッスン
+        rangeSlider2.addEventListener('input', function() {
+            // レンジスライダー2の値を取得して表示する要素にセット
+            sliderValue2.textContent = rangeSlider2.value;
+        });
+
+        // レンジスライダー3の要素を取得
+        const rangeSlider3 = document.getElementById('rangeSlider3');
+        const sliderValue3 = document.getElementById('sliderValue3');
+
+        // レンジスライダー3の値が変更されたときに発生するイベントをリッスン
+        rangeSlider3.addEventListener('input', function() {
+            // レンジスライダー3の値を取得して表示する要素にセット
+            sliderValue3.textContent = rangeSlider3.value;
+        });
+
+        // レンジスライダー4の要素を取得
+        const rangeSlider4 = document.getElementById('rangeSlider4');
+        const sliderValue4 = document.getElementById('sliderValue4');
+
+        // レンジスライダー4の値が変更されたときに発生するイベントをリッスン
+        rangeSlider4.addEventListener('input', function() {
+            // レンジスライダー4の値を取得して表示する要素にセット
+            sliderValue4.textContent = rangeSlider4.value;
+        });
 
 
-        
 
 
 
