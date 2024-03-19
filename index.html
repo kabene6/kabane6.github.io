@@ -340,6 +340,7 @@
                 font-weight: bold;
                 color: #606060;
                 
+                
             }
 
             .input-field input {
@@ -1014,7 +1015,7 @@
         /* チェックボックスとそのラベルをボタンよりも下のレイヤーに表示 */
         .checkbox-item {
             position: relative;
-            z-index: -1;
+            z-index: 0;
         }
 
         /* 入力フィールドラベルとチェックボックスラベルのスタイル */
@@ -1169,6 +1170,11 @@
         .back-to-top.fade-out {
             opacity: 0;
         }
+
+        html, body {
+            user-select: none;
+        }
+
 
     </style>
     
@@ -1340,7 +1346,7 @@
         <input type="range" min="0" max="7" value="0" step="1" id="rangeSlider3" class="slider3">
         <div class="value3" id="sliderValue3">0</div>
         <label for="rangeSlider4" class="slider-label slider-label4">剣技熟達</label>
-        <input type="range" min="0" max="8" value="0" step="1" id="rangeSlider4" class="slider4">
+        <input type="range" min="0" max="9" value="0" step="1" id="rangeSlider4" class="slider4">
         <div class="value4" id="sliderValue4">0</div>
     </div>
     
@@ -1487,7 +1493,7 @@
             document.getElementById('attackPower').innerHTML = `<i class="fas fa-fist-raised"></i> 攻撃力: ${attackPower.toFixed(0)}`;
             document.getElementById('damage').innerHTML = `<i class="fas fa-heartbeat"></i> ダメージ: ${damage.toFixed(0)}`;
 
-
+            
 
         });
 
@@ -1572,8 +1578,7 @@
             });
         });
 
-
-
+        
 
     </script>
     
