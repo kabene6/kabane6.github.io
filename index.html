@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SAOIFダメージ計算ツール</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome の CSS -->
     
@@ -1225,6 +1225,16 @@
         // レンジスライダー要素と基礎の構えラベル要素を取得
         const rangeSlider = document.getElementById('rangeSlider');
         const sliderValue = document.getElementById('sliderValue'); // 追加ダメージを表示する要素
+
+        rangeSlider.addEventListener('mousedown', function() {
+                // レンジスライダーがクリックされたときにページ全体のスクロールを無効化
+                document.body.style.overflow = 'hidden';
+            });
+
+            rangeSlider.addEventListener('mouseup', function() {
+                // レンジスライダーが離されたときにページ全体のスクロールを有効化
+                document.body.style.overflow = 'auto';
+            });
 
         // additionalDamageの初期値を0に設定
         let additionalDamage1 = 0;
