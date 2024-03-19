@@ -29,25 +29,21 @@
         .header {
             background-color: #f8f9fa; /* ヘッダーの背景色 */
             padding: 20px; /* 上下左右に余白を設定 */
-            text-align: center; /* テキストを中央揃えに */
+            display: flex; /* Flexboxを使用して中央揃えに */
+            justify-content: center; /* テキストを中央揃えに */
         }
 
         /* ヘッダー内のテキストスタイル */
         .header h1 {
             margin: 0;
-            font-size: 24px; /* モバイル用にフォントサイズを小さく */
+            font-size: 36px;
             color: #333; /* テキストの色 */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* フォントをSegoe UIに設定 */
             font-weight: bold; /* フォントを太字に */
             text-transform: uppercase; /* テキストを大文字に */
             letter-spacing: 2px; /* 文字間隔を設定 */
-        }
-
-        /* デバイスの幅が600px以下の場合のスタイル */
-        @media screen and (max-width: 600px) {
-            .header h1 {
-                font-size: 20px; /* スマートフォン用にさらにフォントサイズを小さく */
-            }
+            margin-left: auto; /* 左側の余白を自動で調整 */
+            margin-right: auto; /* 右側の余白を自動で調整 */
         }
 
         @media screen and (max-width: 600px) {
