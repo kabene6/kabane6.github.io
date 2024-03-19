@@ -17,7 +17,6 @@
         input:focus {
             outline: none; /* フォーカス時の枠線を非表示にする */
         }
-
         
 
         @media screen and (max-width: 600px) {
@@ -779,7 +778,13 @@
             z-index: -1;
         }
 
-        
+        /* 入力フィールドラベルとチェックボックスラベルのスタイル */
+        .input-field label,
+        .checkbox-item label {
+            font-family: 'フォント名', sans-serif; /* サイドバーのテキストと同じフォントファミリーを指定 */
+            font-size: 16px; /* サイドバーのテキストと同じフォントサイズを指定 */
+            color: #606060; /* サイドバーのテキストと同じ色を指定 */
+        }
     </style>
     
 </head>
