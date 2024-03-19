@@ -35,7 +35,7 @@
         /* ヘッダー内のテキストスタイル */
         .header h1 {
             margin: 0;
-            font-size: 36px;
+            font-size: 24px; /* モバイル用にフォントサイズを小さく */
             color: #333; /* テキストの色 */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* フォントをSegoe UIに設定 */
             font-weight: bold; /* フォントを太字に */
@@ -43,6 +43,12 @@
             letter-spacing: 2px; /* 文字間隔を設定 */
         }
 
+        /* デバイスの幅が600px以下の場合のスタイル */
+        @media screen and (max-width: 600px) {
+            .header h1 {
+                font-size: 20px; /* スマートフォン用にさらにフォントサイズを小さく */
+            }
+        }
 
         @media screen and (max-width: 600px) {
         /* スマートフォン向けのスタイルをここに記述 */
