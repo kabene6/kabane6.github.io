@@ -18,33 +18,7 @@
             outline: none; /* フォーカス時の枠線を非表示にする */
         }
 
-        /* 共通のスタイル */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif; /* フォントをArialに設定 */
-        }
-
-        /* ヘッダーのスタイル */
-        .header {
-            background-color: #f8f9fa; /* ヘッダーの背景色 */
-            padding: 20px; /* 上下左右に余白を設定 */
-            display: flex; /* Flexboxを使用して中央揃えに */
-            justify-content: center; /* テキストを中央揃えに */
-        }
-
-        /* ヘッダー内のテキストスタイル */
-        .header h1 {
-            margin: 0;
-            font-size: 36px;
-            color: #333; /* テキストの色 */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* フォントをSegoe UIに設定 */
-            font-weight: bold; /* フォントを太字に */
-            text-transform: uppercase; /* テキストを大文字に */
-            letter-spacing: 2px; /* 文字間隔を設定 */
-            margin-left: auto; /* 左側の余白を自動で調整 */
-            margin-right: auto; /* 右側の余白を自動で調整 */
-        }
+        
 
         @media screen and (max-width: 600px) {
         /* スマートフォン向けのスタイルをここに記述 */
@@ -804,10 +778,7 @@
     
 </head>
 <body>
-    <!-- ヘッダー -->
-    <div class="header">
-        <h1>SAOIFダメージ計算ツール</h1> <!-- ヘッダーテキスト -->
-    </div>
+    
     <div class="sidebar">
         <h2>メニュー</h2>
         <a href="#"><i class="fas fa-calculator"></i> ダメージ計算</a>
