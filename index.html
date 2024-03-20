@@ -2078,6 +2078,23 @@
             margin-bottom: 800px; /* 例: 下部に50pxの余白を追加 */
         }
 
+        /* メニューアイテムのホバー時のスタイル */
+        .sidebar a:hover {
+            background-color: #555;
+        }
+
+        /* セーブボタンとロードボタンのスタイル */
+        .sidebar button {
+            display: block;
+            width: 100%;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            color: #000000;
+            cursor: pointer;
+        }
+
+        
     </style>
     
 </head>
@@ -2092,12 +2109,13 @@
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScufeGq0Qvpn_RuejTY8YYVksQwzmuDV_e9RDvQvPoRUym4-Q/viewform?usp=sf_link" target="_blank" class="contact-button">
             <i class="fas fa-envelope"></i> お問い合わせ
         </a>
-        
         <!-- 保存ボタン -->
-        <button id="saveButton">データを保存する</button>
+        <a id="saveButton"><i class="fas fa-save"></i> データ保存</a>
         
         <!-- データ読み込みボタン -->
-        <button id="loadButton">保存したデータを読み込む</button>
+        <a id="loadButton"><i class="fas fa-upload"></i> データ読み込み</a>
+        
+        
 
         <!-- 戻るボタン -->
         <a href="#" class="back-to-top" title="ページの先頭へ戻る"><i class="fas fa-arrow-up"></i></a>
@@ -2846,19 +2864,23 @@
 
 
     </script>
-    <script>
-        // 保存ボタンのクリックイベントリスナー
+     <script>
+        // 保存されたデータの配列（仮のデータ）
+        const savedDataArray = [
+            { name: "データ1", data: { /* データ1の内容 */ } },
+            { name: "データ2", data: { /* データ2の内容 */ } },
+            // 他の保存されたデータも同様に追加
+        ];
+
+         // 保存ボタンのクリックイベントリスナー
         document.getElementById('saveButton').addEventListener('click', function() {
             // 入力されたデータを収集
             const inputData = {
-                attackBase: document.getElementById('attackBase').value,
-                attackRate: document.getElementById('attackRate').value,
-                defenseBase: document.getElementById('defenseBase').value
-                // 他のデータの収集も同様に追加
+                // データの収集方法をここに記述
             };
 
-            // データをクッキーに保存（有効期限やパスは適切なものに置き換える）
-            document.cookie = `savedData=${JSON.stringify(inputData)}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
+            // データをクッキーに保存
+            document.cookie = `savedData=${JSON.stringify(inputData)}`;
 
             alert('データが保存されました！');
         });
@@ -2866,10 +2888,7 @@
         // データ読み込みボタンのクリックイベントリスナー
         document.getElementById('loadButton').addEventListener('click', function() {
             // クッキーから保存したデータを読み込む
-            const savedData = document.cookie
-                .split('; ')
-                .find(row => row.startsWith('savedData='))
-                ?.split('=')[1];
+            const savedData = document.cookie.replace(/(?:(?:^|.*;\s*)savedData\s*\=\s*([^;]*).*$)|^.*$/, "$1");
             
             // 読み込んだデータを表示
             if (savedData) {
@@ -2878,6 +2897,38 @@
             } else {
                 alert('保存されたデータはありません！');
             }
+        });
+
+        // 保存されたデータをセレクトボックスに追加する関数
+        function populateSavedDataSelect() {
+            const savedDataSelect = document.getElementById('savedDataSelect');
+            savedDataArray.forEach(function(savedData, index) {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = savedData.name;
+                savedDataSelect.appendChild(option);
+            });
+        }
+
+        // セレクトボックスの変更時のイベントリスナー
+        document.getElementById('savedDataSelect').addEventListener('change', function() {
+            const selectedIndex = this.value;
+            if (selectedIndex !== "") {
+                const selectedData = savedDataArray[selectedIndex].data;
+                // チェックボックスの状態を適用
+                for (const key in selectedData.checkboxes) {
+                    document.getElementById(key).checked = selectedData.checkboxes[key];
+                }
+                // スライダーの値を適用
+                for (const key in selectedData.sliders) {
+                    document.getElementById(key).value = selectedData.sliders[key];
+                }
+            }
+        });
+
+        // ページ読み込み時にセレクトボックスに保存されたデータを追加
+        window.addEventListener('load', function() {
+            populateSavedDataSelect();
         });
     </script>
     
