@@ -2856,31 +2856,6 @@
         });
 
 
-
-        
-
-
-    
-        // 保存されたデータの配列（仮のデータ）
-        const savedDataArray = [
-            { name: "データ1", data: { /* データ1の内容 */ } },
-            { name: "データ2", data: { /* データ2の内容 */ } },
-            // 他の保存されたデータも同様に追加
-        ];
-
-         // 保存ボタンのクリックイベントリスナー
-        document.getElementById('saveButton').addEventListener('click', function() {
-            // 入力されたデータを収集
-            const inputData = {
-                // データの収集方法をここに記述
-            };
-
-            // データをクッキーに保存
-            document.cookie = `savedData=${JSON.stringify(inputData)}`;
-
-            alert('データが保存されました！');
-        });
-
         // 保存ボタンのクリックイベントリスナー
         document.getElementById('saveButton').addEventListener('click', function() {
             // 入力されたデータを収集
@@ -2918,6 +2893,32 @@
                 alert('保存されたデータはありません！');
             }
         });
+
+        
+
+
+    
+        // 保存されたデータの配列（仮のデータ）
+        const savedDataArray = [
+            { name: "データ1", data: { /* データ1の内容 */ } },
+            { name: "データ2", data: { /* データ2の内容 */ } },
+            // 他の保存されたデータも同様に追加
+        ];
+
+         // 保存ボタンのクリックイベントリスナー
+        document.getElementById('saveButton').addEventListener('click', function() {
+            // 入力されたデータを収集
+            const inputData = {
+                // データの収集方法をここに記述
+            };
+
+            // データをクッキーに保存
+            document.cookie = `savedData=${JSON.stringify(inputData)}`;
+
+            alert('データが保存されました！');
+        });
+
+        
 
     </script>
     
