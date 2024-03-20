@@ -1224,10 +1224,68 @@
             color: #000000;
         }
 
+        .slider-label9 {
+            position: absolute;
+            top: 530px; /* 闘争本能ラベルの位置を調整 */
+            left: 50%; /* 中央に配置 */
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            white-space: nowrap;
+        }
+
+        .slider9 {
+            position: absolute;
+            top: 560px; /* レンジスライダー2の位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .value9 {
+            position: absolute;
+            top: 585px; /* レンジスライダー2の値の表示位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .slider-label10 {
+            position: absolute;
+            top: 610px; /* 闘争本能ラベルの位置を調整 */
+            left: 50%; /* 中央に配置 */
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            white-space: nowrap;
+        }
+
+        .slider10 {
+            position: absolute;
+            top: 640px; /* レンジスライダー2の位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .value10 {
+            position: absolute;
+            top: 665px; /* レンジスライダー2の値の表示位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            color: #000000;
+        }
+
         .back-to-top {
             display: none;
             position: fixed;
-            bottom: 10px;
+            bottom: 20px;
             left: 20px;
             z-index: 99;
             background-color: rgb(146, 228, 214);
@@ -1290,7 +1348,9 @@
         .value5,
         .value6,
         .value7,
-        .value8 {
+        .value8,
+        .value9,
+        .value10 {
             font-family: 'Arial', sans-serif;
             font-size: 18px;
             color: #606060;
@@ -1478,6 +1538,12 @@
         <label for="rangeSlider8" class="slider-label slider-label8">単体,全体剣技熟達(Lv.)</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider8" class="slider8">
         <div class="value8" id="sliderValue8">0</div>
+        <label for="rangeSlider9" class="slider-label slider-label9">トランセンデント盾(Lv.)</label>
+        <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider9" class="slider9">
+        <div class="value9" id="sliderValue9">0</div>
+        <label for="rangeSlider10" class="slider-label slider-label10">パワフルブロー打弱(Lv.)</label>
+        <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider10" class="slider10">
+        <div class="value10" id="sliderValue10">0</div>
 
 
     </div>
@@ -1593,9 +1659,11 @@
                 damageMultiplierTotal += 2.0;
             }
 
+            const shieldRate = parseFloat(document.getElementById('rangeSlider9').value) || 0;
+            const clubRate = parseFloat(document.getElementById('rangeSlider10').value) || 0;
 
             // ダメージ倍率の計算
-            let totalDamageMultiplier = damageMultiplier - enemyDamageBuff + Math.max(0, switchChain - 1) + damageMultiplierTotal;
+            let totalDamageMultiplier = damageMultiplier - enemyDamageBuff + Math.max(0, switchChain - 1) + damageMultiplierTotal + shieldRate * 0.05 + clubRate * 0.01;
 
             // 暴虎の効果を計算
             let violentTigerEffect = 0;
@@ -1725,6 +1793,26 @@
         rangeSlider8.addEventListener('input', function() {
             // レンジスライダー8の値を取得して表示する要素にセット
             sliderValue8.textContent = rangeSlider8.value;
+        });
+
+        // レンジスライダー9の要素を取得
+        const rangeSlider9 = document.getElementById('rangeSlider9');
+        const sliderValue9 = document.getElementById('sliderValue9');
+
+        // レンジスライダー9の値が変更されたときに発生するイベントをリッスン
+        rangeSlider9.addEventListener('input', function() {
+            // レンジスライダー9の値を取得して表示する要素にセット
+            sliderValue9.textContent = rangeSlider9.value;
+        });
+
+        // レンジスライダー10の要素を取得
+        const rangeSlider10 = document.getElementById('rangeSlider10');
+        const sliderValue10 = document.getElementById('sliderValue10');
+
+        // レンジスライダー10の値が変更されたときに発生するイベントをリッスン
+        rangeSlider10.addEventListener('input', function() {
+            // レンジスライダー10の値を取得して表示する要素にセット
+            sliderValue10.textContent = rangeSlider10.value;
         });
 
 
