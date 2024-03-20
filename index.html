@@ -2856,30 +2856,29 @@
         });
 
 
-        
-
-    
         // 保存ボタンのクリックイベントリスナー
-        document.getElementById('saveButtn').addEventListener('click', function(event) {
-            event.preventDefault(); // デフォルトのイベントをキャンセル
+        document.getElementById('saveButton').addEventListener('click', function() {
             // 入力されたデータを収集
             const inputData = {
+                // テキスト入力フィールドの値を収集
                 textFieldValue: document.getElementById('textField').value,
+                // チェックボックスの状態を収集
                 checkboxState: document.getElementById('checkbox').checked,
+                // レンジスライダーの値を収集
                 sliderValue: document.getElementById('rangeSlider').value
+                // 他の入力フィールドや要素の状態も必要に応じて収集する
             };
 
-            // データをローカルストレージに保存
-            localStorage.setItem('savedData', JSON.stringify(inputData));
+            // データをクッキーに保存
+            document.cookie = `savedData=${JSON.stringify(inputData)}`;
 
             alert('データが保存されました！');
         });
 
         // データ読み込みボタンのクリックイベントリスナー
-        document.getElementById('loadButton').addEventListener('click', function(event) {
-            event.preventDefault(); // デフォルトのイベントをキャンセル
-            // ローカルストレージから保存したデータを読み込む
-            const savedData = localStorage.getItem('savedData');
+        document.getElementById('loadButton').addEventListener('click', function() {
+            // クッキーから保存したデータを読み込む
+            const savedData = document.cookie.replace(/(?:(?:^|.*;\s*)savedData\s*\=\s*([^;]*).*$)|^.*$/, "$1");
             
             // 読み込んだデータを表示
             if (savedData) {
@@ -2888,47 +2887,42 @@
                 document.getElementById('textField').value = parsedData.textFieldValue;
                 document.getElementById('checkbox').checked = parsedData.checkboxState;
                 document.getElementById('rangeSlider').value = parsedData.sliderValue;
-                // スライダーの値を更新
-                document.getElementById('sliderValue').textContent = parsedData.sliderValue;
+                // 他の要素の状態も必要に応じて復元する
                 alert('保存したデータを読み込みました！');
             } else {
                 alert('保存されたデータはありません！');
             }
         });
 
+        
 
-        // 保存されたデータをセレクトボックスに追加する関数
-        function populateSavedDataSelect() {
-            const savedDataSelect = document.getElementById('savedDataSelect');
-            savedDataArray.forEach(function(savedData, index) {
-                const option = document.createElement('option');
-                option.value = index;
-                option.textContent = savedData.name;
-                savedDataSelect.appendChild(option);
-            });
-        }
 
-        // セレクトボックスの変更時のイベントリスナー
-        document.getElementById('savedDataSelect').addEventListener('change', function() {
-            const selectedIndex = this.value;
-            if (selectedIndex !== "") {
-                const selectedData = savedDataArray[selectedIndex].data;
-                // チェックボックスの状態を適用
-                for (const key in selectedData.checkboxes) {
-                    document.getElementById(key).checked = selectedData.checkboxes[key];
-                }
-                // スライダーの値を適用
-                for (const key in selectedData.sliders) {
-                    document.getElementById(key).value = selectedData.sliders[key];
-                }
-            }
+    
+        // 保存されたデータの配列（仮のデータ）
+        const savedDataArray = [
+            { name: "データ1", data: { /* データ1の内容 */ } },
+            { name: "データ2", data: { /* データ2の内容 */ } },
+            // 他の保存されたデータも同様に追加
+        ];
+
+         // 保存ボタンのクリックイベントリスナー
+        document.getElementById('saveButton').addEventListener('click', function() {
+            // 入力されたデータを収集
+            const inputData = {
+                // データの収集方法をここに記述
+                
+            };
+
+            // データをクッキーに保存
+            document.cookie = `savedData=${JSON.stringify(inputData)}`;
+
+            alert('データが保存されました！');
         });
 
-        // ページ読み込み時にセレクトボックスに保存されたデータを追加
-        window.addEventListener('load', function() {
-            populateSavedDataSelect();
-        });
+        
+
     </script>
+    
 
 
 </body>
