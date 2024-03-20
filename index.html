@@ -2074,10 +2074,71 @@
             margin-top: 5px; /* 数値表示の上の余白を設定 */
         }
 
+        
+
         body {
-            margin-bottom: 800px; /* 例: 下部に50pxの余白を追加 */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px;
+            width: 200px;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            overflow-y: auto;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-bottom: 5px;
+        }
+
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #f2f2f2;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+            position: static; /* 固定位置を解除し、通常のフローに従って配置 */
+            width: 100%; /* 幅を100%に設定 */
+        }
+
+        footer p {
+            font-weight: bold;
+        }
+
+        footer ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        footer ul li {
+            margin-bottom: 5px;
+        }
+
+        /* このスタイルはページ内リンクのターゲットによるスクロールのアニメーションを滑らかにするものです */
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
     
 </head>
@@ -2085,14 +2146,18 @@
     
     <div class="sidebar">
         <h2>メニュー</h2>
-        <a href="#"><i class="fas fa-calculator"></i> ダメージ計算</a>
-        <a href="#"><i class="fas fa-chart-line"></i> ステータス管理</a>
+        <a href="#" target="_blank"><i class="fas fa-calculator"></i> ダメージ計算</a>
+        <a href="#status-section" target="_blank"><i class="fas fa-chart-line"></i> ステータス管理</a>
         <a href="#"><i class="fas fa-question-circle"></i> 使い方</a>
         <a href="https://twitter.com/6_sao_" target="_blank"><i class="fab fa-twitter"></i> X(旧Twitter)</a>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScufeGq0Qvpn_RuejTY8YYVksQwzmuDV_e9RDvQvPoRUym4-Q/viewform?usp=sf_link" target="_blank" class="contact-button">
             <i class="fas fa-envelope"></i> お問い合わせ
         </a>
+        
+            
+        <a href="#notice"><i class="fas fa-exclamation-circle"></i> 注意事項</a>
 
+        
         
         <!-- 戻るボタン -->
         <a href="#" class="back-to-top" title="ページの先頭へ戻る"><i class="fas fa-arrow-up"></i></a>
@@ -2351,6 +2416,7 @@
 
 
     </div>
+    
     <script>
         
         document.getElementById('calculateBtn').addEventListener('click', function() {
@@ -2872,11 +2938,31 @@
             });
         });
 
-        
+        document.addEventListener('DOMContentLoaded', function() {
+            // 注意事項へのリンク要素を取得
+            const noticeLink = document.querySelector('a[href="#notice"]');
+            // リンクがクリックされたときの処理を追加
+            noticeLink.addEventListener('click', function(event) {
+                event.preventDefault(); // リンクのデフォルトの動作をキャンセル
+                const noticeSection = document.getElementById('notice'); // 注意事項のセクションを取得
+                noticeSection.scrollIntoView({ behavior: 'smooth' }); // スムーズにスクロール
+            });
+        });
 
     </script>
+    
+    <footer id="notice">
+        <p>注意事項:</p>
+        <ul>
+            <li>内容1</li>
+            <li>内容2</li>
+            <li>内容3</li>
+        </ul>
+    </footer>
+    
     
 
 
 </body>
+
 </html>
