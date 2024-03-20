@@ -2092,6 +2092,11 @@
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScufeGq0Qvpn_RuejTY8YYVksQwzmuDV_e9RDvQvPoRUym4-Q/viewform?usp=sf_link" target="_blank" class="contact-button">
             <i class="fas fa-envelope"></i> お問い合わせ
         </a>
+        <label for="playerName">プレイヤー名:</label>
+        <input type="text" id="playerName" name="playerName">
+        <button id="saveButton">保存する</button>
+        <button id="loadButton">読み込む</button>
+        
         <!-- 戻るボタン -->
         <a href="#" class="back-to-top" title="ページの先頭へ戻る"><i class="fas fa-arrow-up"></i></a>
         
@@ -2870,7 +2875,154 @@
             });
         });
 
+        // 保存ボタンのクリックイベントリスナー
+        document.getElementById('saveButton').addEventListener('click', function() {
+            // 入力されたプレイヤー名を取得
+            const playerName = document.getElementById('playerName').value;
+            // 入力されたデータを収集
+            const inputData = {
+                attackBase: document.getElementById('attackBase').value,
+                attackRate: document.getElementById('attackRate').value,
+                defenseBase: document.getElementById('defenseBase').value,
+                defenseRate: document.getElementById('defenseRate').value,
+                skillPower: document.getElementById('skillPower').value,
+                damageMultiplier: document.getElementById('damageMultiplier').value,
+                awakeningRate: document.getElementById('awakeningRate').value,
+                additionalDamage: document.getElementById('additionalDamage').value,
+                maxHP: document.getElementById('maxHP').value,
+                currentHP: document.getElementById('currentHP').value,
+                offTargetMod: document.getElementById('offTargetMod').value,
+                switchChain: document.getElementById('switchChain').value,
+                comboBuff: document.getElementById('comboBuff').value,
+                enemyDefense: document.getElementById('enemyDefense').value,
+                enemyDamageBuff: document.getElementById('enemyDamageBuff').value,
+                seal: document.getElementById('seal').value,
+                switch1: document.getElementById('switch1').checked,
+                switch2: document.getElementById('switch2').checked,
+                weaponAttribute: document.getElementById('weaponAttribute').checked,
+                natureAttribute: document.getElementById('natureAttribute').checked,
+                overcharge: document.getElementById('overcharge').checked,
+                critical: document.getElementById('critical').checked,
+                imprint: document.getElementById('imprint').checked,
+                minorImprint: document.getElementById('minorImprint').checked,
+                deathMark: document.getElementById('deathMark').checked,
+                burstMark: document.getElementById('burstMark').checked,
+                executionersEye: document.getElementById('executionersEye').checked,
+                adversity3: document.getElementById('adversity3').checked,
+                adversity4: document.getElementById('adversity4').checked,
+                violentTiger: document.getElementById('violentTiger').checked,
+                rangeSliderValue: document.getElementById('rangeSlider').value,
+                rangeSlider3Value: document.getElementById('rangeSlider3').value,
+                rangeSlider4Value: document.getElementById('rangeSlider4').value,
+                rangeSlider5Value: document.getElementById('rangeSlider5').value,
+                rangeSlider6Value: document.getElementById('rangeSlider6').value,
+                rangeSlider7Value: document.getElementById('rangeSlider7').value,
+                rangeSlider8Value: document.getElementById('rangeSlider8').value,
+                rangeSlider9Value: document.getElementById('rangeSlider9').value,
+                rangeSlider10Value: document.getElementById('rangeSlider10').value,
+                rangeSlider11Value: document.getElementById('rangeSlider11').value,
+                rangeSlider12Value: document.getElementById('rangeSlider12').value,
+                rangeSlider13Value: document.getElementById('rangeSlider13').value,
+                rangeSlider14Value: document.getElementById('rangeSlider14').value,
+                rangeSlider15Value: document.getElementById('rangeSlider15').value,
+                rangeSlider16Value: document.getElementById('rangeSlider16').value,
+                rangeSlider17Value: document.getElementById('rangeSlider17').value,
+                rangeSlider18Value: document.getElementById('rangeSlider18').value,
+                rangeSlider19Value: document.getElementById('rangeSlider19').value,
+                rangeSlider20Value: document.getElementById('rangeSlider20').value,
+                rangeSlider21Value: document.getElementById('rangeSlider21').value,
+                rangeSlider22Value: document.getElementById('rangeSlider22').value,
+                rangeSlider23Value: document.getElementById('rangeSlider23').value,
+                rangeSlider24Value: document.getElementById('rangeSlider24').value,
+                rangeSlider25Value: document.getElementById('rangeSlider25').value,
+                rangeSlider26Value: document.getElementById('rangeSlider26').value,
+                rangeSlider27Value: document.getElementById('rangeSlider27').value,
+                rangeSlider28Value: document.getElementById('rangeSlider28').value,
+                rangeSlider29Value: document.getElementById('rangeSlider29').value
+            };
+
+            // ランダムなキーを生成して保存
+            const key = generateRandomKey();
+            saveData(playerName, key, inputData);
+
+            alert('データが保存されました！');
+        });
         
+
+        // ロードボタンのクリックイベントリスナー
+        document.getElementById('loadButton').addEventListener('click', function() {
+            // Cookieから保存したデータを読み込む
+            const savedData = document.cookie.replace(/(?:(?:^|.*;\s*)savedData\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+            
+            // 読み込んだデータを表示
+            if (savedData) {
+                const parsedData = JSON.parse(savedData);
+                // 読み込んだデータを元に要素の状態を復元
+                document.getElementById('attackBase').value = parsedData.attackBase;
+                document.getElementById('attackRate').value = parsedData.attackRate;
+                document.getElementById('defenseBase').value = parsedData.defenseBase;
+                document.getElementById('defenseRate').value = parsedData.defenseRate;
+                document.getElementById('skillPower').value = parsedData.skillPower;
+                document.getElementById('damageMultiplier').value = parsedData.damageMultiplier;
+                document.getElementById('awakeningRate').value = parsedData.awakeningRate;
+                document.getElementById('additionalDamage').value = parsedData.additionalDamage;
+                document.getElementById('maxHP').value = parsedData.maxHP;
+                document.getElementById('currentHP').value = parsedData.currentHP;
+                document.getElementById('offTargetMod').value = parsedData.offTargetMod;
+                document.getElementById('switchChain').value = parsedData.switchChain;
+                document.getElementById('comboBuff').value = parsedData.comboBuff;
+                document.getElementById('enemyDefense').value = parsedData.enemyDefense;
+                document.getElementById('enemyDamageBuff').value = parsedData.enemyDamageBuff;
+                document.getElementById('seal').value = parsedData.seal;
+                // チェックボックスの状態を復元
+                document.getElementById('weaponAttribute').checked = parsedData.weaponAttribute;
+                document.getElementById('natureAttribute').checked = parsedData.natureAttribute;
+                document.getElementById('switch1').checked = parsedData.switch1;
+                document.getElementById('switch2').checked = parsedData.switch2;
+                document.getElementById('overcharge').checked = parsedData.overcharge;
+                document.getElementById('critical').checked = parsedData.critical;
+                document.getElementById('imprint').checked = parsedData.imprint;
+                document.getElementById('minorImprint').checked = parsedData.minorImprint;
+                document.getElementById('deathMark').checked = parsedData.deathMark;
+                document.getElementById('burstMark').checked = parsedData.burstMark;
+                document.getElementById('executionersEye').checked = parsedData.executionersEye;
+                document.getElementById('adversity3').checked = parsedData.adversity3;
+                document.getElementById('adversity4').checked = parsedData.adversity4;
+                document.getElementById('violentTiger').checked = parsedData.violentTiger;
+                // レンジスライダーの状態を復元
+                document.getElementById('rangeSlider').value = parsedData.rangeSlider;
+                document.getElementById('rangeSlider3').value = parsedData.rangeSlider3;
+                document.getElementById('rangeSlider4').value = parsedData.rangeSlider4;
+                document.getElementById('rangeSlider5').value = parsedData.rangeSlider5;
+                document.getElementById('rangeSlider6').value = parsedData.rangeSlider6;
+                document.getElementById('rangeSlider7').value = parsedData.rangeSlider7;
+                document.getElementById('rangeSlider8').value = parsedData.rangeSlider8;
+                document.getElementById('rangeSlider9').value = parsedData.rangeSlider9;
+                document.getElementById('rangeSlider10').value = parsedData.rangeSlider10;
+                document.getElementById('rangeSlider11').value = parsedData.rangeSlider11;
+                document.getElementById('rangeSlider12').value = parsedData.rangeSlider12;
+                document.getElementById('rangeSlider13').value = parsedData.rangeSlider13;
+                document.getElementById('rangeSlider14').value = parsedData.rangeSlider14;
+                document.getElementById('rangeSlider15').value = parsedData.rangeSlider15;
+                document.getElementById('rangeSlider16').value = parsedData.rangeSlider16;
+                document.getElementById('rangeSlider17').value = parsedData.rangeSlider17;
+                document.getElementById('rangeSlider18').value = parsedData.rangeSlider18;
+                document.getElementById('rangeSlider19').value = parsedData.rangeSlider19;
+                document.getElementById('rangeSlider20').value = parsedData.rangeSlider20;
+                document.getElementById('rangeSlider21').value = parsedData.rangeSlider21;
+                document.getElementById('rangeSlider22').value = parsedData.rangeSlider22;
+                document.getElementById('rangeSlider23').value = parsedData.rangeSlider23;
+                document.getElementById('rangeSlider24').value = parsedData.rangeSlider24;
+                document.getElementById('rangeSlider25').value = parsedData.rangeSlider25;
+                document.getElementById('rangeSlider26').value = parsedData.rangeSlider26;
+                // 各スライダーの表示値を更新
+                updateAllSliderValues();
+                alert('保存したデータを読み込みました！');
+            } else {
+                alert('保存されたデータはありません！');
+            }
+        });
+
 
     </script>
     
