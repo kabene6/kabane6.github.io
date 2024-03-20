@@ -2078,20 +2078,6 @@
             margin-bottom: 800px; /* 例: 下部に50pxの余白を追加 */
         }
 
-        
-
-        /* セーブボタンとロードボタンのスタイル */
-        .sidebar button {
-            display: block;
-            width: 100%;
-            padding: 10px 20px;
-            margin-top: 20px;
-            border: none;
-            color: #000000;
-            cursor: pointer;
-        }
-
-        
     </style>
     
 </head>
@@ -2106,14 +2092,6 @@
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScufeGq0Qvpn_RuejTY8YYVksQwzmuDV_e9RDvQvPoRUym4-Q/viewform?usp=sf_link" target="_blank" class="contact-button">
             <i class="fas fa-envelope"></i> お問い合わせ
         </a>
-        <!-- 保存ボタン -->
-        <a id="saveButton"><i class="fas fa-save"></i> データ保存</a>
-        
-        <!-- データ読み込みボタン -->
-        <a id="loadButton"><i class="fas fa-upload"></i> データ読み込み</a>
-        
-        
-
         <!-- 戻るボタン -->
         <a href="#" class="back-to-top" title="ページの先頭へ戻る"><i class="fas fa-arrow-up"></i></a>
         
@@ -2856,67 +2834,25 @@
         });
 
 
-        // 保存ボタンのクリックイベントリスナー
-        document.getElementById('saveButton').addEventListener('click', function() {
-            // 入力されたデータを収集
-            const inputData = {
-                // テキスト入力フィールドの値を収集
-                textFieldValue: document.getElementById('textField').value,
-                // チェックボックスの状態を収集
-                checkboxState: document.getElementById('checkbox').checked,
-                // レンジスライダーの値を収集
-                sliderValue: document.getElementById('rangeSlider').value
-                // 他の入力フィールドや要素の状態も必要に応じて収集する
-            };
 
-            // データをクッキーに保存
-            document.cookie = `savedData=${JSON.stringify(inputData)}`;
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.querySelector('.back-to-top');
 
-            alert('データが保存されました！');
-        });
+            // ページのスクロール位置を監視してボタンを表示または非表示にする
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 200) { // スクロール位置が200pxより大きい場合
+                    backToTopButton.classList.add('fade-in');
+                    backToTopButton.classList.remove('fade-out');
+                } else {
+                    backToTopButton.classList.remove('fade-in');
+                    backToTopButton.classList.add('fade-out');
+                }
+            });
 
-        // データ読み込みボタンのクリックイベントリスナー
-        document.getElementById('loadButton').addEventListener('click', function() {
-            // クッキーから保存したデータを読み込む
-            const savedData = document.cookie.replace(/(?:(?:^|.*;\s*)savedData\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-            
-            // 読み込んだデータを表示
-            if (savedData) {
-                const parsedData = JSON.parse(savedData);
-                // 読み込んだデータを元に要素の状態を復元
-                document.getElementById('textField').value = parsedData.textFieldValue;
-                document.getElementById('checkbox').checked = parsedData.checkboxState;
-                document.getElementById('rangeSlider').value = parsedData.sliderValue;
-                // 他の要素の状態も必要に応じて復元する
-                alert('保存したデータを読み込みました！');
-            } else {
-                alert('保存されたデータはありません！');
-            }
-        });
-
-        
-
-
-    
-        // 保存されたデータの配列（仮のデータ）
-        const savedDataArray = [
-            { name: "データ1", data: { /* データ1の内容 */ } },
-            { name: "データ2", data: { /* データ2の内容 */ } },
-            // 他の保存されたデータも同様に追加
-        ];
-
-         // 保存ボタンのクリックイベントリスナー
-        document.getElementById('saveButton').addEventListener('click', function() {
-            // 入力されたデータを収集
-            const inputData = {
-                // データの収集方法をここに記述
-                
-            };
-
-            // データをクッキーに保存
-            document.cookie = `savedData=${JSON.stringify(inputData)}`;
-
-            alert('データが保存されました！');
+            // ボタンをクリックしたときにページの上部にスクロールする
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
 
         
