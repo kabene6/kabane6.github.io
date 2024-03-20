@@ -2535,11 +2535,26 @@
             document.querySelectorAll('.input-field input').forEach(input => input.value = '');
             // チェックボックスの状態をリセット
             document.querySelectorAll('.checkbox-item input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
+            // レンジスライダーの値をリセット
+            document.querySelectorAll('.range-slider input[type="range"]').forEach(slider => {
+                slider.value = slider.getAttribute('min');
+                const sliderId = slider.id;
+                const sliderValueId = `sliderValue${sliderId.replace('rangeSlider', '')}`;
+                document.getElementById(sliderValueId).textContent = slider.getAttribute('min');
+            });
+            // range-slider-group 内のレンジスライダーの値もリセット
+            document.querySelectorAll('.range-slider-group input[type="range"]').forEach(slider => {
+                slider.value = slider.getAttribute('min');
+                const sliderId = slider.id;
+                const sliderValueId = `sliderValue${sliderId.replace('rangeSlider', '')}`;
+                document.getElementById(sliderValueId).textContent = slider.getAttribute('min');
+            });
             // 計算結果を空にする
             document.getElementById('attackPower').innerHTML = `<i class="fas fa-fist-raised"></i> 攻撃力: 1`;
             document.getElementById('damage').innerHTML = `<i class="fas fa-heartbeat"></i> ダメージ: 1`;
-            
         });
+
+
 
         // レンジスライダー要素と基礎の構えラベル要素を取得
         const rangeSlider = document.getElementById('rangeSlider');
