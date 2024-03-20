@@ -227,7 +227,7 @@
                 margin: 50px auto;
                 position: absolute;
                 top: 1300px;
-                left: 190px;
+                left: 200px;
             }
 
             input[type="range"] {
@@ -2092,6 +2092,13 @@
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScufeGq0Qvpn_RuejTY8YYVksQwzmuDV_e9RDvQvPoRUym4-Q/viewform?usp=sf_link" target="_blank" class="contact-button">
             <i class="fas fa-envelope"></i> お問い合わせ
         </a>
+        
+        <!-- 保存ボタン -->
+        <button id="saveButton">データを保存する</button>
+        
+        <!-- データ読み込みボタン -->
+        <button id="loadButton">保存したデータを読み込む</button>
+
         <!-- 戻るボタン -->
         <a href="#" class="back-to-top" title="ページの先頭へ戻る"><i class="fas fa-arrow-up"></i></a>
         
@@ -2835,28 +2842,43 @@
 
 
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const backToTopButton = document.querySelector('.back-to-top');
-
-            // ページのスクロール位置を監視してボタンを表示または非表示にする
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 200) { // スクロール位置が200pxより大きい場合
-                    backToTopButton.classList.add('fade-in');
-                    backToTopButton.classList.remove('fade-out');
-                } else {
-                    backToTopButton.classList.remove('fade-in');
-                    backToTopButton.classList.add('fade-out');
-                }
-            });
-
-            // ボタンをクリックしたときにページの上部にスクロールする
-            backToTopButton.addEventListener('click', function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
-
         
 
+
+    </script>
+    <script>
+        // 保存ボタンのクリックイベントリスナー
+        document.getElementById('saveButton').addEventListener('click', function() {
+            // 入力されたデータを収集
+            const inputData = {
+                attackBase: document.getElementById('attackBase').value,
+                attackRate: document.getElementById('attackRate').value,
+                defenseBase: document.getElementById('defenseBase').value
+                // 他のデータの収集も同様に追加
+            };
+
+            // データをクッキーに保存（有効期限やパスは適切なものに置き換える）
+            document.cookie = `savedData=${JSON.stringify(inputData)}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
+
+            alert('データが保存されました！');
+        });
+
+        // データ読み込みボタンのクリックイベントリスナー
+        document.getElementById('loadButton').addEventListener('click', function() {
+            // クッキーから保存したデータを読み込む
+            const savedData = document.cookie
+                .split('; ')
+                .find(row => row.startsWith('savedData='))
+                ?.split('=')[1];
+            
+            // 読み込んだデータを表示
+            if (savedData) {
+                const parsedData = JSON.parse(savedData);
+                alert(`保存したデータ: ${JSON.stringify(parsedData)}`);
+            } else {
+                alert('保存されたデータはありません！');
+            }
+        });
     </script>
     
 
