@@ -3002,16 +3002,20 @@
             
             // ローカルストレージに保存する
             localStorage.setItem('inputData', JSON.stringify(inputData));
+            
+            // 新しいタブのURLにデータを追加して開く
+            const urlWithParams = window.location.href + '?data=' + encodeURIComponent(JSON.stringify(inputData));
+            window.open(urlWithParams, '_blank');
         });
 
         // 新しいタブでページが読み込まれたときに保存されたデータを取得して再現する
         document.addEventListener('DOMContentLoaded', function() {
-            // ローカルストレージから保存されたデータを取得する
-            const savedData = localStorage.getItem('inputData');
+            const urlParams = new URLSearchParams(window.location.search);
+            const savedDataString = urlParams.get('data');
             
-            // 保存されたデータがあれば再現する
-            if (savedData) {
-                const inputData = JSON.parse(savedData);
+            // URLパラメータからデータが取得できれば再現する
+            if (savedDataString) {
+                const inputData = JSON.parse(decodeURIComponent(savedDataString));
                 // ここで各入力要素に保存されたデータを適用する
             }
         });
