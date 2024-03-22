@@ -2993,31 +2993,37 @@
             });
         });
 
-        // ダメージ計算ボタンのクリックイベントリスナーを追加
-        document.getElementById('calculateDamageButton').addEventListener('click', function(event) {
-            // 現在の入力データやチェックボックス、レンジスライダーの状態を取得して保存する
-            const inputData = {
-                // ここに各入力要素の値を保存する
-            };
-            
-            // ローカルストレージに保存する
-            localStorage.setItem('inputData', JSON.stringify(inputData));
-            
-            // 新しいタブのURLにデータを追加して開く
-            const urlWithParams = window.location.href + '?data=' + encodeURIComponent(JSON.stringify(inputData));
-            window.open(urlWithParams, '_blank');
-        });
-
-        // 新しいタブでページが読み込まれたときに保存されたデータを取得して再現する
         document.addEventListener('DOMContentLoaded', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const savedDataString = urlParams.get('data');
+            // ページが読み込まれたときに保存されたデータがあれば再現する
+            const savedData = JSON.parse(localStorage.getItem('savedData'));
             
-            // URLパラメータからデータが取得できれば再現する
-            if (savedDataString) {
-                const inputData = JSON.parse(decodeURIComponent(savedDataString));
-                // ここで各入力要素に保存されたデータを適用する
+            if (savedData) {
+                // 各入力フィールドの値を保存されたデータで更新する
+                document.getElementById('attackBase').value = savedData.attackBase;
+                document.getElementById('attackRate').value = savedData.attackRate;
+                document.getElementById('defenseBase').value = savedData.defenseBase;
+                document.getElementById('defenseRate').value = savedData.defenseRate;
+                // 他のフィールドについても同様に更新する
             }
+            
+            // 計算ボタンのクリックイベントリスナーを追加
+            document.getElementById('calculateBtn').addEventListener('click', function(event) {
+                // 各入力フィールドの値を取得して保存する
+                const inputData = {
+                    attackBase: document.getElementById('attackBase').value,
+                    attackRate: document.getElementById('attackRate').value,
+                    defenseBase: document.getElementById('defenseBase').value,
+                    defenseRate: document.getElementById('defenseRate').value,
+                    // 他のフィールドについても同様に保存する
+                };
+                
+                // 保存されたデータを更新する
+                localStorage.setItem('savedData', JSON.stringify(inputData));
+                
+                // 新しいタブを開いて再現する
+                const url = window.location.href;
+                window.open(url, '_blank');
+            });
         });
 
 
