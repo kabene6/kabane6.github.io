@@ -2993,6 +2993,30 @@
             });
         });
 
+        // ダメージ計算ボタンのクリックイベントリスナーを追加
+        document.getElementById('calculateDamageButton').addEventListener('click', function(event) {
+            // 現在の入力データやチェックボックス、レンジスライダーの状態を取得して保存する
+            const inputData = {
+                // ここに各入力要素の値を保存する
+            };
+            
+            // ローカルストレージに保存する
+            localStorage.setItem('inputData', JSON.stringify(inputData));
+        });
+
+        // 新しいタブでページが読み込まれたときに保存されたデータを取得して再現する
+        document.addEventListener('DOMContentLoaded', function() {
+            // ローカルストレージから保存されたデータを取得する
+            const savedData = localStorage.getItem('inputData');
+            
+            // 保存されたデータがあれば再現する
+            if (savedData) {
+                const inputData = JSON.parse(savedData);
+                // ここで各入力要素に保存されたデータを適用する
+            }
+        });
+
+
     </script>
     
     <footer id="notice">
