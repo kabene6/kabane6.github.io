@@ -2190,6 +2190,11 @@
     <div class="sidebar">
         <h2>メニュー</h2>
         <a href="#" id="calculateLink" target="_blank"><i class="fas fa-calculator"></i> ダメージ計算</a>
+        <a href="#" id="saveButton"><i class="fas fa-save"></i>データ保存</a>
+        <a href="https://www.webdentaku.com/" target="_blank">
+            <i class="fas fa-calculator"></i> 電卓
+        </a>
+          
         <a href="#status-section" target="_blank"><i class="fas fa-chart-line"></i> ステータス管理</a>
         <a href="#"><i class="fas fa-question-circle"></i> 使い方</a>
         <a href="https://twitter.com/6_sao_" target="_blank"><i class="fab fa-twitter"></i> X(旧Twitter)</a>
@@ -3093,8 +3098,10 @@
                 
             }
             
+            const saveButton = document.getElementById('saveButton');
+
             // ダメージ計算リンクのクリックイベントリスナーを追加
-            document.getElementById('calculateLink').addEventListener('click', function(event) {
+            document.getElementById('saveButton').addEventListener('click', function(event) {
                 // 各入力フィールドの値を取得して保存する
                 const inputData = {
                     attackBase: document.getElementById('attackBase').value,
@@ -3156,8 +3163,8 @@
                     rangeSlider27: document.getElementById('rangeSlider27').value,
                     rangeSlider28: document.getElementById('rangeSlider28').value,
                     rangeSlider29: document.getElementById('rangeSlider29').value,
-                    rangeSlider29: document.getElementById('sliderValue').textContent,
-                    rangeSlider29: document.getElementById('sliderValue3').textContent,
+                    rangeSlider: document.getElementById('sliderValue').textContent,
+                    rangeSlider3: document.getElementById('sliderValue3').textContent,
                     rangeSlider4: document.getElementById('sliderValue4').textContent,
                     rangeSlider5: document.getElementById('sliderValue5').textContent,
                     rangeSlider6: document.getElementById('sliderValue6').textContent,
