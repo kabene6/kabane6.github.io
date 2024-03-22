@@ -2189,7 +2189,7 @@
     
     <div class="sidebar">
         <h2>メニュー</h2>
-        <a href="#" target="_blank"><i class="fas fa-calculator"></i> ダメージ計算</a>
+        <a href="#" id="calculateLink" target="_blank"><i class="fas fa-calculator"></i> ダメージ計算</a>
         <a href="#status-section" target="_blank"><i class="fas fa-chart-line"></i> ステータス管理</a>
         <a href="#"><i class="fas fa-question-circle"></i> 使い方</a>
         <a href="https://twitter.com/6_sao_" target="_blank"><i class="fab fa-twitter"></i> X(旧Twitter)</a>
@@ -2700,6 +2700,8 @@
             sliderValue3.textContent = rangeSlider3.value;
         });
 
+        
+
         // レンジスライダー4の要素を取得
         const rangeSlider4 = document.getElementById('rangeSlider4');
         const sliderValue4 = document.getElementById('sliderValue4');
@@ -3003,26 +3005,189 @@
                 document.getElementById('attackRate').value = savedData.attackRate;
                 document.getElementById('defenseBase').value = savedData.defenseBase;
                 document.getElementById('defenseRate').value = savedData.defenseRate;
-                // 他のフィールドについても同様に更新する
+                document.getElementById('skillPower').value = savedData.skillPower;
+                document.getElementById('damageMultiplier').value = savedData.damageMultiplier;
+                document.getElementById('awakeningRate').value = savedData.awakeningRate;
+                document.getElementById('additionalDamage').value = savedData.additionalDamage;
+                document.getElementById('maxHP').value = savedData.maxHP;
+                document.getElementById('currentHP').value = savedData.currentHP;
+                document.getElementById('offTargetMod').value = savedData.offTargetMod;
+                document.getElementById('switchChain').value = savedData.switchChain;
+                document.getElementById('comboBuff').value = savedData.comboBuff;
+                document.getElementById('enemyDefense').value = savedData.enemyDefense;
+                document.getElementById('enemyDamageBuff').value = savedData.enemyDamageBuff;
+                document.getElementById('seal').value = savedData.seal;
+                document.getElementById('weaponAttribute').checked = savedData.weaponAttribute;
+                document.getElementById('natureAttribute').checked = savedData.natureAttribute;
+
+                document.getElementById('switch1').checked = savedData.switch1;
+                document.getElementById('switch2').checked = savedData.switch2;
+                document.getElementById('overcharge').checked = savedData.overcharge;
+                document.getElementById('critical').checked = savedData.critical;
+                document.getElementById('imprint').checked = savedData.imprint;
+                document.getElementById('minorImprint').checked = savedData.minorImprint;
+                document.getElementById('deathMark').checked = savedData.deathMark;
+                document.getElementById('burstMark').checked = savedData.burstMark;
+                document.getElementById('executionersEye').checked = savedData.executionersEye;
+                document.getElementById('adversity3').checked = savedData.adversity3;
+                document.getElementById('adversity4').checked = savedData.adversity4;
+                document.getElementById('violentTiger').checked = savedData.violentTiger;
+
+                // レンジスライダーの値を更新する
+                document.getElementById('rangeSlider').value = savedData.rangeSlider;
+                document.getElementById('rangeSlider3').value = savedData.rangeSlider3;
+                document.getElementById('rangeSlider4').value = savedData.rangeSlider4;
+                document.getElementById('rangeSlider5').value = savedData.rangeSlider5;
+                document.getElementById('rangeSlider6').value = savedData.rangeSlider6;
+                document.getElementById('rangeSlider7').value = savedData.rangeSlider7;
+                document.getElementById('rangeSlider8').value = savedData.rangeSlider8;
+                document.getElementById('rangeSlider9').value = savedData.rangeSlider9;
+                document.getElementById('rangeSlider10').value = savedData.rangeSlider10;
+                document.getElementById('rangeSlider11').value = savedData.rangeSlider11;
+                document.getElementById('rangeSlider12').value = savedData.rangeSlider12;
+                document.getElementById('rangeSlider13').value = savedData.rangeSlider13;
+                document.getElementById('rangeSlider14').value = savedData.rangeSlider14;
+                document.getElementById('rangeSlider15').value = savedData.rangeSlider15;
+                document.getElementById('rangeSlider16').value = savedData.rangeSlider16;
+                document.getElementById('rangeSlider17').value = savedData.rangeSlider17;
+                document.getElementById('rangeSlider18').value = savedData.rangeSlider18;
+                document.getElementById('rangeSlider19').value = savedData.rangeSlider19;
+                document.getElementById('rangeSlider20').value = savedData.rangeSlider20;
+                document.getElementById('rangeSlider21').value = savedData.rangeSlider21;
+                document.getElementById('rangeSlider22').value = savedData.rangeSlider22;
+                document.getElementById('rangeSlider23').value = savedData.rangeSlider23;
+                document.getElementById('rangeSlider24').value = savedData.rangeSlider24;
+                document.getElementById('rangeSlider25').value = savedData.rangeSlider25;
+                document.getElementById('rangeSlider26').value = savedData.rangeSlider26;
+                document.getElementById('rangeSlider27').value = savedData.rangeSlider27;
+                document.getElementById('rangeSlider28').value = savedData.rangeSlider28;
+                document.getElementById('rangeSlider29').value = savedData.rangeSlider29;
+                document.getElementById('sliderValue').textContent = savedData.rangeSlider;
+                document.getElementById('sliderValue3').textContent = savedData.rangeSlider3;
+                document.getElementById('sliderValue4').textContent = savedData.rangeSlider4;
+                document.getElementById('sliderValue5').textContent = savedData.rangeSlider5;
+                document.getElementById('sliderValue6').textContent = savedData.rangeSlider6;
+                document.getElementById('sliderValue7').textContent = savedData.rangeSlider7;
+                document.getElementById('sliderValue8').textContent = savedData.rangeSlider8;
+                document.getElementById('sliderValue9').textContent = savedData.rangeSlider9;
+                document.getElementById('sliderValue10').textContent = savedData.rangeSlider10;
+                document.getElementById('sliderValue11').textContent = savedData.rangeSlider11;
+                document.getElementById('sliderValue12').textContent = savedData.rangeSlider12;
+                document.getElementById('sliderValue13').textContent = savedData.rangeSlider13;
+                document.getElementById('sliderValue14').textContent = savedData.rangeSlider14;
+                document.getElementById('sliderValue15').textContent = savedData.rangeSlider15;
+                document.getElementById('sliderValue16').textContent = savedData.rangeSlider16;
+                document.getElementById('sliderValue17').textContent = savedData.rangeSlider17;
+                document.getElementById('sliderValue18').textContent = savedData.rangeSlider18;
+                document.getElementById('sliderValue19').textContent = savedData.rangeSlider19;
+                document.getElementById('sliderValue20').textContent = savedData.rangeSlider20;
+                document.getElementById('sliderValue21').textContent = savedData.rangeSlider21;
+                document.getElementById('sliderValue22').textContent = savedData.rangeSlider22;
+                document.getElementById('sliderValue23').textContent = savedData.rangeSlider23;
+                document.getElementById('sliderValue24').textContent = savedData.rangeSlider24;
+                document.getElementById('sliderValue25').textContent = savedData.rangeSlider25;
+                document.getElementById('sliderValue26').textContent = savedData.rangeSlider26;
+                document.getElementById('sliderValue27').textContent = savedData.rangeSlider27;
+                document.getElementById('sliderValue28').textContent = savedData.rangeSlider28;
+                document.getElementById('sliderValue29').textContent = savedData.rangeSlider29;
+                
             }
             
-            // 計算ボタンのクリックイベントリスナーを追加
-            document.getElementById('calculateBtn').addEventListener('click', function(event) {
+            // ダメージ計算リンクのクリックイベントリスナーを追加
+            document.getElementById('calculateLink').addEventListener('click', function(event) {
                 // 各入力フィールドの値を取得して保存する
                 const inputData = {
                     attackBase: document.getElementById('attackBase').value,
                     attackRate: document.getElementById('attackRate').value,
                     defenseBase: document.getElementById('defenseBase').value,
                     defenseRate: document.getElementById('defenseRate').value,
-                    // 他のフィールドについても同様に保存する
+                    skillPower: document.getElementById('skillPower').value,
+                    damageMultiplier: document.getElementById('damageMultiplier').value,
+                    awakeningRate: document.getElementById('awakeningRate').value,
+                    additionalDamage: document.getElementById('additionalDamage').value,
+                    maxHP: document.getElementById('maxHP').value,
+                    currentHP: document.getElementById('currentHP').value,
+                    offTargetMod: document.getElementById('offTargetMod').value,
+                    switchChain: document.getElementById('switchChain').value,
+                    comboBuff: document.getElementById('comboBuff').value,
+                    enemyDefense: document.getElementById('enemyDefense').value,
+                    enemyDamageBuff: document.getElementById('enemyDamageBuff').value,
+                    seal: document.getElementById('seal').value,
+                    weaponAttribute: document.getElementById('weaponAttribute').checked,
+                    natureAttribute: document.getElementById('natureAttribute').checked,
+
+                    switch1: document.getElementById('switch1').checked,
+                    switch2: document.getElementById('switch2').checked,
+                    overcharge: document.getElementById('overcharge').checked,
+                    critical: document.getElementById('critical').checked,
+                    imprint: document.getElementById('imprint').checked,
+                    minorImprint: document.getElementById('minorImprint').checked,
+                    deathMark: document.getElementById('deathMark').checked,
+                    burstMark: document.getElementById('burstMark').checked,
+                    executionersEye: document.getElementById('executionersEye').checked,
+                    adversity3: document.getElementById('adversity3').checked,
+                    adversity4: document.getElementById('adversity4').checked,
+                    violentTiger: document.getElementById('violentTiger').checked,
+                    rangeSlider: document.getElementById('rangeSlider').value,
+                    rangeSlider3: document.getElementById('rangeSlider3').value,
+                    rangeSlider4: document.getElementById('rangeSlider4').value,
+                    rangeSlider5: document.getElementById('rangeSlider5').value,
+                    rangeSlider6: document.getElementById('rangeSlider6').value,
+                    rangeSlider7: document.getElementById('rangeSlider7').value,
+                    rangeSlider8: document.getElementById('rangeSlider8').value,
+                    rangeSlider9: document.getElementById('rangeSlider9').value,
+                    rangeSlider10: document.getElementById('rangeSlider10').value,
+                    rangeSlider11: document.getElementById('rangeSlider11').value,
+                    rangeSlider12: document.getElementById('rangeSlider12').value,
+                    rangeSlider13: document.getElementById('rangeSlider13').value,
+                    rangeSlider14: document.getElementById('rangeSlider14').value,
+                    rangeSlider15: document.getElementById('rangeSlider15').value,
+                    rangeSlider16: document.getElementById('rangeSlider16').value,
+                    rangeSlider17: document.getElementById('rangeSlider17').value,
+                    rangeSlider18: document.getElementById('rangeSlider18').value,
+                    rangeSlider19: document.getElementById('rangeSlider19').value,
+                    rangeSlider20: document.getElementById('rangeSlider20').value,
+                    rangeSlider21: document.getElementById('rangeSlider21').value,
+                    rangeSlider22: document.getElementById('rangeSlider22').value,
+                    rangeSlider23: document.getElementById('rangeSlider23').value,
+                    rangeSlider24: document.getElementById('rangeSlider24').value,
+                    rangeSlider25: document.getElementById('rangeSlider25').value,
+                    rangeSlider26: document.getElementById('rangeSlider26').value,
+                    rangeSlider27: document.getElementById('rangeSlider27').value,
+                    rangeSlider28: document.getElementById('rangeSlider28').value,
+                    rangeSlider29: document.getElementById('rangeSlider29').value,
+                    rangeSlider29: document.getElementById('sliderValue').textContent,
+                    rangeSlider29: document.getElementById('sliderValue3').textContent,
+                    rangeSlider4: document.getElementById('sliderValue4').textContent,
+                    rangeSlider5: document.getElementById('sliderValue5').textContent,
+                    rangeSlider6: document.getElementById('sliderValue6').textContent,
+                    rangeSlider7: document.getElementById('sliderValue7').textContent,
+                    rangeSlider8: document.getElementById('sliderValue8').textContent,
+                    rangeSlider9: document.getElementById('sliderValue9').textContent,
+                    rangeSlider10: document.getElementById('sliderValue10').textContent,
+                    rangeSlider11: document.getElementById('sliderValue11').textContent,
+                    rangeSlider12: document.getElementById('sliderValue12').textContent,
+                    rangeSlider13: document.getElementById('sliderValue13').textContent,
+                    rangeSlider14: document.getElementById('sliderValue14').textContent,
+                    rangeSlider15: document.getElementById('sliderValue15').textContent,
+                    rangeSlider16: document.getElementById('sliderValue16').textContent,
+                    rangeSlider17: document.getElementById('sliderValue17').textContent,
+                    rangeSlider18: document.getElementById('sliderValue18').textContent,
+                    rangeSlider19: document.getElementById('sliderValue19').textContent,
+                    rangeSlider20: document.getElementById('sliderValue20').textContent,
+                    rangeSlider21: document.getElementById('sliderValue21').textContent,
+                    rangeSlider22: document.getElementById('sliderValue22').textContent,
+                    rangeSlider23: document.getElementById('sliderValue23').textContent,
+                    rangeSlider24: document.getElementById('sliderValue24').textContent,
+                    rangeSlider25: document.getElementById('sliderValue25').textContent,
+                    rangeSlider26: document.getElementById('sliderValue26').textContent,
+                    rangeSlider27: document.getElementById('sliderValue27').textContent,
+                    rangeSlider28: document.getElementById('sliderValue28').textContent,
+                    rangeSlider29: document.getElementById('sliderValue29').textContent
                 };
                 
                 // 保存されたデータを更新する
                 localStorage.setItem('savedData', JSON.stringify(inputData));
-                
-                // 新しいタブを開いて再現する
-                const url = window.location.href;
-                window.open(url, '_blank');
             });
         });
 
