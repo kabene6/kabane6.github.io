@@ -2230,8 +2230,7 @@
         
             
         <a href="#notice"><i class="fas fa-exclamation-circle"></i> 注意事項</a>
-        <a id="skillButton" href="#"><i class="far fa-hand-pointer"></i>
-            熟練スキル</a>
+        <a id="skillButton" href="#"><i class="far fa-hand-pointer"></i>熟練スキル</a>
 
         
         
@@ -3245,6 +3244,11 @@
             document.getElementById('sliderValue7').textContent = 10;
         });
 
+        // ページの最上部にスクロールしないようにする
+        document.getElementById('skillButton').addEventListener('click', function(event) {
+            event.preventDefault(); // デフォルトの動作をキャンセル
+            // ここにボタンがクリックされたときの処理を記述します
+        });
 
 
     </script>
