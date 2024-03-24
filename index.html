@@ -2328,11 +2328,11 @@
             </div>
             <div class="checkbox-item">
                 <input type="checkbox" id="switch1" name="switch1">
-                <label for="switch1">スイッチ1</label>
+                <label for="switch1">スイッチ1段目</label>
             </div>
             <div class="checkbox-item">
                 <input type="checkbox" id="switch2" name="switch2">
-                <label for="switch2">スイッチ2</label>
+                <label for="switch2">スイッチ2段目</label>
             </div>
             <div class="checkbox-item">
                 <input type="checkbox" id="overcharge" name="overcharge">
@@ -2611,9 +2611,12 @@
             const daggerBase = parseFloat(document.getElementById('rangeSlider18').value) || 0;
             const bowRate1 = parseFloat(document.getElementById('rangeSlider27').value) || 0;
             
+            // 計算後の値を求める
+            let result = Math.max(1, (switchChain * 0.1 - 0.1) + 1);
+            result = Math.min(1.6, result); // 上限を1.6に制限する
 
             // ダメージ倍率の計算
-            let totalDamageMultiplier = damageMultiplier - enemyDamageBuff + Math.max (0, (switchChain * 0.1 - 0.1) + 1) + damageMultiplierTotal + shieldRate * 0.05 + clubRate * 0.01 + swordRate * 0.01 + swordCombo * 0.01 + swordCritical * 0.01 + swordCritical1 * 0.01
+            let totalDamageMultiplier = damageMultiplier - enemyDamageBuff + result + damageMultiplierTotal + shieldRate * 0.05 + clubRate * 0.01 + swordRate * 0.01 + swordCombo * 0.01 + swordCritical * 0.01 + swordCritical1 * 0.01
             + ClubeRate1 * 0.01 + daggerBase * 0.02 + bowRate1 * 0.01; 
 
             // 暴虎の効果を計算
