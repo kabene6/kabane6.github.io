@@ -3234,12 +3234,12 @@
                 // ダイアログを非表示にする
                 dialog.style.display = "none";
 
-                // ダイアログを閉じた情報をローカルストレージに保存
-                localStorage.setItem("dialogClosed", "true");
+                // ダイアログを閉じた情報をセッションストレージに保存
+                sessionStorage.setItem("dialogClosed", "true");
             });
 
-            // ダイアログを閉じた情報をローカルストレージから取得
-            var dialogClosed = localStorage.getItem("dialogClosed");
+            // ダイアログを閉じた情報をセッションストレージから取得
+            var dialogClosed = sessionStorage.getItem("dialogClosed");
 
             // ユーザーエージェントを使用してデバイスがスマートフォンかどうかを判別
             var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -3249,6 +3249,7 @@
                 dialog.style.display = "block";
             }
         });
+
 
     </script>
     
