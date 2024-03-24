@@ -2181,6 +2181,21 @@
             scroll-behavior: smooth;
         }
 
+        /* IDがrangeSliderの動かす部分の色を赤に設定 */
+        #rangeSlider::-webkit-slider-thumb {
+            background-color: red;
+        }
+
+        /* IDがrangeSlider3の動かす部分の色を赤に設定 */
+        #rangeSlider3::-webkit-slider-thumb {
+            background-color: red;
+        }
+
+        /* IDがrangeSlider4の動かす部分の色を赤に設定 */
+        #rangeSlider4::-webkit-slider-thumb {
+            background-color: red;
+        }
+
         
     </style>
     
@@ -2267,7 +2282,7 @@
             <input type="number" id="offTargetMod" name="offTargetMod">
         </div>
         <div class="input-field">
-            <label for="switchChain">スイッチチェイン(%)</label>
+            <label for="switchChain">スイッチチェイン数</label>
             <input type="number" id="switchChain" name="switchChain">
         </div>
         <div class="input-field">
@@ -2378,7 +2393,7 @@
         <label for="rangeSlider6" class="slider-label slider-label6">盾の知識(Lv.)</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider6" class="slider6">
         <div class="value6" id="sliderValue6">0</div>
-        <label for="rangeSlider7" class="slider-label slider-label7">武器技熟練(Lv.)</label>
+        <label for="rangeSlider7" class="slider-label slider-label7">武器技練熟(Lv.)</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider7" class="slider7">
         <div class="value7" id="sliderValue7">0</div>
         <label for="rangeSlider8" class="slider-label slider-label8">単体,全体剣技熟達(Lv.)</label>
@@ -2474,6 +2489,10 @@
 
 
     </div>
+    <div id="dialog" style="display: none;">
+        <p>Androidの方は設定で【︙】→【設定】→【ユーザー補助機能】→【強制的にズームを有効にする】が必要です。</p>
+        <button id="closeButton">閉じる</button>
+    </div>
     
     <script>
         
@@ -2490,7 +2509,7 @@
             const maxHP = parseFloat(document.getElementById('maxHP').value) || 1;
             const currentHP = parseFloat(document.getElementById('currentHP').value) || 1;
             const offTargetMod = (parseFloat(document.getElementById('offTargetMod').value) || 0) / 100;
-            const switchChain = (parseFloat(document.getElementById('switchChain').value) || 0) / 100;
+            const switchChain = parseFloat(document.getElementById('switchChain').value) || 0;
             const comboBuff = (parseFloat(document.getElementById('comboBuff').value) || 0) / 100;
             const enemyDefense = parseFloat(document.getElementById('enemyDefense').value) || 0;
             const enemyDamageBuff = (parseFloat(document.getElementById('enemyDamageBuff').value) || 0) / 100;
@@ -2598,7 +2617,7 @@
             
 
             // ダメージ倍率の計算
-            let totalDamageMultiplier = damageMultiplier - enemyDamageBuff + Math.max(0, switchChain - 1) + damageMultiplierTotal + shieldRate * 0.05 + clubRate * 0.01 + swordRate * 0.01 + swordCombo * 0.01 + swordCritical * 0.01 + swordCritical1 * 0.01
+            let totalDamageMultiplier = damageMultiplier - enemyDamageBuff + Math.max (0, (switchChain * 0.1 - 0.1) + 1) + damageMultiplierTotal + shieldRate * 0.05 + clubRate * 0.01 + swordRate * 0.01 + swordCombo * 0.01 + swordCritical * 0.01 + swordCritical1 * 0.01
             + ClubeRate1 * 0.01 + daggerBase * 0.02 + bowRate1 * 0.01; 
 
             // 暴虎の効果を計算
@@ -3207,6 +3226,29 @@
             });
         });
 
+        document.addEventListener("DOMContentLoaded", function() {
+            var dialog = document.getElementById("dialog");
+
+            // ダイアログを閉じるボタンのクリックイベントリスナーを追加
+            document.getElementById("closeButton").addEventListener("click", function() {
+                // ダイアログを非表示にする
+                dialog.style.display = "none";
+
+                // ダイアログを閉じた情報をローカルストレージに保存
+                localStorage.setItem("dialogClosed", "true");
+            });
+
+            // ダイアログを閉じた情報をローカルストレージから取得
+            var dialogClosed = localStorage.getItem("dialogClosed");
+
+            // ユーザーエージェントを使用してデバイスがスマートフォンかどうかを判別
+            var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+            // スマートフォンの場合かつダイアログが閉じられていない場合は、ダイアログを表示する
+            if (isMobile && !dialogClosed) {
+                dialog.style.display = "block";
+            }
+        });
 
     </script>
     
