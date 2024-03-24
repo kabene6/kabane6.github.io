@@ -2182,19 +2182,19 @@
         }
 
         /* IDがrangeSliderの動かす部分の色を赤に設定 */
-        #rangeSlider::-webkit-slider-thumb {
-            background-color: red;
-        }
+    #rangeSlider::-webkit-slider-thumb {
+        background-color: red;
+    }
 
-        /* IDがrangeSlider3の動かす部分の色を赤に設定 */
-        #rangeSlider3::-webkit-slider-thumb {
-            background-color: red;
-        }
+    /* IDがrangeSlider3の動かす部分の色を赤に設定 */
+    #rangeSlider3::-webkit-slider-thumb {
+        background-color: red;
+    }
 
-        /* IDがrangeSlider4の動かす部分の色を赤に設定 */
-        #rangeSlider4::-webkit-slider-thumb {
-            background-color: red;
-        }
+    /* IDがrangeSlider4の動かす部分の色を赤に設定 */
+    #rangeSlider4::-webkit-slider-thumb {
+        background-color: red;
+    }
 
         
     </style>
@@ -2488,10 +2488,6 @@
 
 
 
-    </div>
-    <div id="dialog" style="display: none;">
-        <p>Androidの方は設定で【︙】→【設定】→【ユーザー補助機能】→【強制的にズームを有効にする】が必要です。</p>
-        <button id="closeButton">閉じる</button>
     </div>
     
     <script>
@@ -3224,30 +3220,6 @@
                 // 保存されたデータを更新する
                 localStorage.setItem('savedData', JSON.stringify(inputData));
             });
-        });
-
-        document.addEventListener("DOMContentLoaded", function() {
-            var dialog = document.getElementById("dialog");
-
-            // ダイアログを閉じるボタンのクリックイベントリスナーを追加
-            document.getElementById("closeButton").addEventListener("click", function() {
-                // ダイアログを非表示にする
-                dialog.style.display = "none";
-
-                // ダイアログを閉じた情報をセッションストレージに保存
-                sessionStorage.setItem("dialogClosed", "true");
-            });
-
-            // ダイアログを閉じた情報をセッションストレージから取得
-            var dialogClosed = sessionStorage.getItem("dialogClosed");
-
-            // ユーザーエージェントを使用してデバイスがスマートフォンかどうかを判別
-            var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-            // スマートフォンの場合かつダイアログが閉じられていない場合は、ダイアログを表示する
-            if (isMobile && !dialogClosed) {
-                dialog.style.display = "block";
-            }
         });
 
 
