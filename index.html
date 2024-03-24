@@ -3256,6 +3256,20 @@
             // ここにボタンがクリックされたときの処理を記述します
         });
         
+        // 保存ボタンをクリックしたときの処理
+        document.getElementById('saveButton').addEventListener('click', function(event) {
+            // 各入力フィールドの値を取得して保存する
+            const inputData = {
+                // データの取得処理
+            };
+
+            // 保存されたデータを更新する
+            localStorage.setItem('savedData', JSON.stringify(inputData));
+
+            // ダイアログ風のメッセージを表示
+            alert('データを保存しました！');
+        });
+
 
     </script>
     
