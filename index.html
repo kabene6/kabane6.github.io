@@ -2609,6 +2609,8 @@
                 damageMultiplierTotal += 2.0;
             }
 
+            
+
             const shieldRate = parseFloat(document.getElementById('rangeSlider9').value) || 0;
             const clubRate = parseFloat(document.getElementById('rangeSlider10').value) || 0;
             const swordRate = parseFloat(document.getElementById('rangeSlider11').value) || 0;
@@ -2619,9 +2621,15 @@
             const daggerBase = parseFloat(document.getElementById('rangeSlider18').value) || 0;
             const bowRate1 = parseFloat(document.getElementById('rangeSlider27').value) || 0;
             
-            // 計算後の値を求める
-            let result = Math.max(1, (switchChain * 0.1 - 0.1) + 1);
-            result = Math.min(1.6, result); // 上限を1.6に制限する
+            let result;
+
+            if (switchChain > 0) {
+                result = Math.max(1, (switchChain * 0.1 - 0.1) + 1);
+                result = Math.min(1.6, result); // 上限を1.6に制限する
+            } else {
+                result = 0; // スイッチチェインが0の場合、結果を0に設定する
+            }
+
 
             // ダメージ倍率の計算
             let totalDamageMultiplier = damageMultiplier - enemyDamageBuff + result + damageMultiplierTotal + shieldRate * 0.05 + clubRate * 0.01 + swordRate * 0.01 + swordCombo * 0.01 + swordCritical * 0.01 + swordCritical1 * 0.01
@@ -2632,6 +2640,10 @@
             if (violentTigerChecked) {
                 violentTigerEffect = 2000 * (1 - currentHP / maxHP);
             }
+
+            const value = parseFloat(document.getElementById('rangeSlider').value) || 0;
+
+            
 
             const sowrd1Combo = parseFloat(document.getElementById('rangeSlider13').value) || 0;
             const dagger50 = parseFloat(document.getElementById('rangeSlider17').value) || 0;
@@ -2672,7 +2684,7 @@
             // ダメージの計算
             const damage1 = Math.max(0, Math.max(0, attackPower * totalSkillPower * (1 + awakeningRate - adjustedChaosCollection) - enemyDefense) * (1 + totalDamageMultiplier));
             const damage2 = Math.max(0, Math.max(0, attackPower * totalSkillPower - enemyDefense) * (1 + totalDamageMultiplier) * (imprintMultiplier));
-            const damage3 = (additionalDamage+additionalDamage1) * (1 + awakeningRate - adjustedChaosCollection) * (1 + totalDamageMultiplier) * (1 + imprintMultiplier);
+            const damage3 = (additionalDamage + value * 50) * (1 + awakeningRate ) * (1 + totalDamageMultiplier) * (1 + imprintMultiplier);
             const totalDamage = damage1 + damage2 + damage3;
             const damage = Math.max(1, totalDamage);
 
@@ -2715,19 +2727,16 @@
         const sliderValue = document.getElementById('sliderValue'); // 追加ダメージを表示する要素
 
         
-        // additionalDamageの初期値を0に設定
-        let additionalDamage1 = 0;
+        
 
         // レンジスライダーの値が変更されたときのイベントリスナーを設定
         rangeSlider.addEventListener('input', function() {
-            // レンジスライダーの値を取得
-            const value = parseInt(this.value) || 0; // 数値に変換し、0未満の場合は0にする
+            
 
-            // additionalDamageにレンジスライダーの値を50倍して代入
-            additionalDamage1 = value * 50;
+            
 
             // 値を表示する要素に値を設定
-            sliderValue.textContent = value;
+            sliderValue.textContent = rangeSlider.value;
         });
 
         
