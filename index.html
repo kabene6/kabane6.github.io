@@ -2623,9 +2623,9 @@
             
             let result;
 
-            if (switchChain > 0) {
-                result = Math.max(1, (switchChain * 0.1 - 0.1) + 1);
-                result = Math.min(1.6, result); // 上限を1.6に制限する
+            if (switchChain > 1) {
+                result =  (switchChain * 0.1 - 0.1) ;
+                result = Math.min(0.6, result); // 上限を1.6に制限する
             } else {
                 result = 0; // スイッチチェインが0の場合、結果を0に設定する
             }
