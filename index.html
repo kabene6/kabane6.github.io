@@ -154,7 +154,7 @@
                 display: flex;
                 align-items: center;
                 position: relative; /* 相対位置指定 */
-                top: -1300px; /* 上方向に20px移動 */
+                top: -1540px; /* 上方向に20px移動 */
                 left: 450px; /* 左方向に20px移動 */
             }
 
@@ -228,7 +228,7 @@
                 width: 30%;
                 margin: 50px auto;
                 position: absolute;
-                top: 1350px;
+                top: 1510px;
                 left: 200px;
             }
 
@@ -284,7 +284,7 @@
                 width: 30%;
                 margin: 50px auto;
                 position: absolute;
-                top: 1350px; /* 適切な位置に調整してください */
+                top: 1510px; /* 適切な位置に調整してください */
                 left: 460px; /* 適切な位置に調整してください */
             }
 
@@ -465,7 +465,7 @@
                 display: flex;
                 align-items: center;
                 position: relative; /* 相対位置指定 */
-                top: -1295px; /* 上方向に20px移動 */
+                top: -1375px; /* 上方向に20px移動 */
                 left: 500px; /* 左方向に20px移動 */
             }
 
@@ -758,7 +758,7 @@
                 display: flex;
                 align-items: center;
                 position: relative; /* 相対位置指定 */
-                top: -1290px; /* 上方向に20px移動 */
+                top: -1530px; /* 上方向に20px移動 */
                 left: 500px; /* 左方向に20px移動 */
             }
 
@@ -809,7 +809,7 @@
                 width: 20%;
                 margin: 50px auto;
                 position: absolute;
-                top: 1300px;
+                top: 1460px;
                 left: 300px;
             }
 
@@ -865,7 +865,7 @@
                 width: 20%;
                 margin: 50px auto;
                 position: absolute;
-                top: 1300px; /* 適切な位置に調整してください */
+                top: 1460px; /* 適切な位置に調整してください */
                 left: 520px; /* 適切な位置に調整してください */
             }
 
@@ -1053,7 +1053,7 @@
                 display: flex;
                 align-items: center;
                 position: relative; /* 相対位置指定 */
-                top: -1290px; /* 上方向に20px移動 */
+                top: -1370px; /* 上方向に20px移動 */
                 left: 500px; /* 左方向に20px移動 */
             }
 
@@ -2297,8 +2297,12 @@
             <input type="number" id="enemyDefense" name="enemyDefense">
         </div>
         <div class="input-field">
-            <label for="enemyDamageBuff">敵のダメージ軽減率(%)</label>
+            <label for="enemyDamageBuff">敵の属性耐性(%)</label>
             <input type="number" id="enemyDamageBuff" name="enemyDamageBuff">
+        </div>
+        <div class="input-field">
+            <label for="enemyDamageBuff1">敵のダメージ軽減バフ(%)</label>
+            <input type="number" id="enemyDamageBuff1" name="enemyDamageBuff1">
         </div>
         <div class="input-field">
             <label for="chaosCollection">カオスリコレクション(%)</label>
@@ -2516,6 +2520,7 @@
             const comboBuff = (parseFloat(document.getElementById('comboBuff').value) || 0) / 100;
             const enemyDefense = parseFloat(document.getElementById('enemyDefense').value) || 0;
             const enemyDamageBuff = (parseFloat(document.getElementById('enemyDamageBuff').value) || 0) / 100;
+            const enemyDamageBuff1 = (parseFloat(document.getElementById('enemyDamageBuff1').value) || 0) / 100;
             const chaosCollection = (parseFloat(document.getElementById('chaosCollection').value) || 0) / 100;
             const seal = parseFloat(document.getElementById('seal').value) || 0;
             const weaponAttributeCheckbox = document.getElementById('weaponAttribute');
@@ -2651,8 +2656,7 @@
             const spearstep = parseFloat(document.getElementById('rangeSlider24').value) || 0;
             const bow100 = parseFloat(document.getElementById('rangeSlider29').value) || 0;
 
-            // 覚醒率がカオスリコレクションを上回った場合、カオスリコレクションの値を0にする
-            const adjustedChaosCollection = awakeningRate > chaosCollection ? 0 : chaosCollection;
+            
 
 
             // 攻撃基礎に暴虎の効果を加算
@@ -2682,11 +2686,20 @@
             const attackPower = Math.max(1, (attackBase1 + (defenseBase * (1 + defenseRate + shieldattack * 0.005)) * 2) * (1 + attackRate + weaponKnowledge * 0.05 + weaponattack * 0.01 + daggerRate * 0.01 + dagger396 * 0.001 + axe50 * 0.01 + axebreak * 0.0025 + spear1 * 0.01 + spearstep1 * 0.03 + bow50 * 0.01));
 
             // ダメージの計算
-            const damage1 = Math.max(0, Math.max(0, attackPower * totalSkillPower * (1 + awakeningRate - adjustedChaosCollection) - enemyDefense) * (1 + totalDamageMultiplier));
-            const damage2 = Math.max(0, Math.max(0, attackPower * totalSkillPower - enemyDefense) * (1 + totalDamageMultiplier) * (imprintMultiplier));
-            const damage3 = (additionalDamage + value * 50) * (1 + awakeningRate ) * (1 + totalDamageMultiplier) * (1 + imprintMultiplier);
-            const totalDamage = damage1 + damage2 + damage3;
+            const damage1 = Math.max(0, Math.max(0, attackPower * totalSkillPower * (1 + awakeningRate) - enemyDefense) * (1 + totalDamageMultiplier));
+            const damage2 = Math.max(0, attackPower * totalSkillPower - enemyDefense) * Math.max(1, 1 + totalDamageMultiplier) * (imprintMultiplier - enemyDamageBuff1);
+            const damage3 = Math.max(0 ,additionalDamage + value * 50) * (1 + awakeningRate) * Math.max(0, 1 + totalDamageMultiplier) * (1 + imprintMultiplier - enemyDamageBuff1);
+            
+            let totalDamage;
+
+            if (awakeningRate >= chaosCollection ) {
+                totalDamage = (damage1 + damage2 + damage3);
+            } else {
+                totalDamage = (damage1 + damage2 + damage3) * (1 - chaosCollection - awakeningRate);
+            }
+
             const damage = Math.max(1, totalDamage);
+
 
             // 結果を表示
             document.getElementById('attackPower').innerHTML = `<i class="fas fa-fist-raised"></i> 攻撃力: ${attackPower.toFixed(0)}`;
@@ -3067,6 +3080,7 @@
                 document.getElementById('comboBuff').value = savedData.comboBuff;
                 document.getElementById('enemyDefense').value = savedData.enemyDefense;
                 document.getElementById('enemyDamageBuff').value = savedData.enemyDamageBuff;
+                document.getElementById('enemyDamageBuff1').value = savedData.enemyDamageBuff1;
                 document.getElementById('chaosCollection').value = savedData.chaosCollection;
                 document.getElementById('seal').value = savedData.seal;
                 document.getElementById('weaponAttribute').checked = savedData.weaponAttribute;
@@ -3166,6 +3180,7 @@
                     comboBuff: document.getElementById('comboBuff').value,
                     enemyDefense: document.getElementById('enemyDefense').value,
                     enemyDamageBuff: document.getElementById('enemyDamageBuff').value,
+                    enemyDamageBuff: document.getElementById('enemyDamageBuff1').value,
                     chaosCollection: document.getElementById('chaosCollection').value,
                     seal: document.getElementById('seal').value,
                     weaponAttribute: document.getElementById('weaponAttribute').checked,
