@@ -2695,7 +2695,7 @@
             if (awakeningRate >= chaosCollection ) {
                 totalDamage = (damage1 + damage2 + damage3);
             } else {
-                totalDamage = (damage1 + damage2 + damage3) * (1 - chaosCollection - awakeningRate);
+                totalDamage = (damage1 + damage2 + damage3) * (1 - (chaosCollection - awakeningRate));
             }
 
             const damage = Math.max(1, totalDamage);
