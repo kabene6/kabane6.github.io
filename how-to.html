@@ -3235,6 +3235,8 @@
                         color: #606060;
                         margin-bottom: 5px; /* ラベル間の間隔を設定 */
                     }
+
+                    
         }
 
         #attackPower,
@@ -3349,7 +3351,8 @@
         label,
         .menu-container,
         .slider-label,
-        button
+        button,
+        main
         
         {
             font-family: "Zen Maru Gothic", serif;
@@ -3457,7 +3460,9 @@
         .value26,
         .value27,
         .value28,
-        .value29 {
+        .value29,
+        main
+        {
             color: inherit; /* 継承された色を使用 */
         }
 
@@ -3499,6 +3504,12 @@
         margin-right: 10px;
         }
 
+        main {
+            max-width: 800px; /* PCおよびタブレットの画面サイズの上限 */
+            margin: 0 auto; /* ページを中央に配置 */
+            
+        }
+
         .slider:before {
         position: absolute;
         content: "";
@@ -3524,9 +3535,50 @@
         
 
         
+        .hidden-content {
+            display: none;
+        }
+    
 
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9のアスペクト比を保つためのパディング */
+            overflow: hidden;
+        }
 
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
 
+        
+
+        /* PCおよびタブレットの画面サイズに対するスタイル */
+        @media only screen and (min-width: 768px) {
+            iframe {
+                max-width: 100%; /* 横幅の最大サイズ */
+                height: 400px; /* 高さの最大サイズ */
+            }
+        }
+
+        section {
+            text-align: center; /* セクション内のテキストを中央揃え */
+        }
+
+        /* 画像を中央に配置するためのスタイル */
+        .image-container {
+            text-align: center; /* 画像を中央に配置 */
+        }
+        .image-container img {
+            max-width: 100%; /* 画像の幅を最大で親要素に合わせる */
+            height: auto; /* アスペクト比を維持したまま高さを自動調整 */
+            display: block; /* インライン要素としてではなく、ブロック要素として扱う */
+            margin: 0 auto; /* 左右の余白を自動で設定して中央に配置 */
+        }
     </style>
 </head>
 <!-- Google tag (gtag.js) -->
@@ -3565,13 +3617,12 @@
             
         <a href="#notice"><i class="fas fa-exclamation-circle"></i> 注意事項</a>
         <a id="skillButton" href="#"><i class="far fa-hand-pointer"></i>熟練スキル</a>
-        <a href="#" id="saveButton"><i class="fas fa-save"></i>データ保存</a>
-        <select id="savedSets">
-            <!-- ここに保存されたセットのオプションが追加されます -->
-        </select>
-        <a id="loadSelectedSet"><i class="fas fa-download"></i> 選択したデータを呼び出す</a>
-        <a id="deleteSelectedSet"><i class="fa-regular fa-trash-can"></i> 選択したデータを削除する</a>
-        <a id="deleteAllSets"><i class="fas fa-trash-alt"></i>データをすべて削除する</a>
+        <a href="#" id="saveButton" style="display: none;"><i class="fas fa-save"></i>データ保存</a>
+
+        
+        
+        
+        
         <label for="darkModeToggle" class="dark-mode-toggle">
             <input type="checkbox" id="darkModeToggle" class="toggle-checkbox">
             <span class="slider"></span>
@@ -3580,7 +3631,7 @@
         
         </nav>
     </div>
-    <div class="content">
+    <div class="content hidden-content">
         <div class="input-field">
             <label for="attackBase"><span>必須</span>攻撃固定値</label>
             <input type="number" id="attackBase" name="attackBase" required>
@@ -3669,12 +3720,12 @@
         </div>
         
         <div class="input-field">
-            <label for="seal">烙印(スタック)</label>
+            <label for="seal">烙印</label>
             <input type="number" id="seal" name="seal">
         </div>
         
     </div>
-    <div class="checkboxes">
+    <div class="checkboxes hidden-content">
         <div class="checkbox-item">
             <input type="checkbox" id="weaponAttribute" name="weaponAttribute">
             <label for="weaponAttribute">武器属性</label>
@@ -3733,7 +3784,7 @@
         </div>
         
     </div>
-    <div class="range-slider">
+    <div class="range-slider hidden-content">
         <label for="rangeSlider" class="slider-label slider-label1">基礎の構え</label>
         <input type="range" min="0" max="7" value="0" step="1" id="rangeSlider">
         <div class="value" id="sliderValue">0</div>
@@ -3782,7 +3833,7 @@
         <div class="value15" id="sliderValue15">0</div>
 
     </div>
-    <div class="range-slider-group">
+    <div class="range-slider-group hidden-content">
 
         
 
@@ -3846,13 +3897,190 @@
 
     </div>
     
-    <div class="button-container">
+    <div class="button-container hidden-content">
         <div id="attackPower" class="custom-font"><i class="fas fa-fist-raised"></i> 攻撃力: 1</div>
         <div id="damage" class="custom-font"><i class="fas fa-heartbeat"></i> ダメージ: 1</div>
         <button id="calculateBtn" class="custom-font"><i class="fas fa-calculator"></i> 計算</button>
         <button id="resetBtn" class="custom-font"><i class="fas fa-sync-alt"></i> リセット</button>
     </div>
-    
+    <main>
+        <h1>使い方</h1>
+        <section>
+            <h2>本ツールの使い方</h2>
+            <hr>
+            <p>ここに本ツールの使い方に関する詳細な説明を追加します。</p>
+            <p>主な機能や操作方法などを分かりやすく説明します。</p>
+            <br>
+            <!-- YouTubeの動画リンク -->
+            <h2>もちゆきさんにご紹介いただきました&#x1f973;</h2>
+            <p>旧サイトではございますが、分かりやすく解説されておりますので、ぜひご覧になってみてください。</p>
+            <br>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/pCIQQbtdhXM?si=8TUMhp4HCijzcA0m" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            
+            
+        </section>
+        
+        <section>
+            <br>
+            <h2>計算機の使い方</h2>
+            <hr>
+            <h2 style="color: rgb(255, 0, 0);">1.熟練度スキルをoffにする</h2>
+            <p>offにする熟練度スキルは以下の通りです。</p>
+            <p>武器の知識(全種)、武器の極意(対応する武器のみ)、盾の極意(直剣MODを使う場合)</p>
+            <br>
+            <h2 style="color: rgb(255, 0, 0);">2.攻撃力が%上昇するスキルを外す</h2>
+            <p>外すべきスキルは以下の通りです。</p>
+            <br>
+            <div class="image-container">
+                <p>攻撃力%上昇系</p>
+                <img src="img/20240411085308_1.jpg" alt="Image 3">
+                <br>
+                <p>歴戦の剣技4</p>
+                <img src="img/20240411085314_1.jpg" alt="Image 4">
+                <br>
+                <p>直剣MODを使う場合、防御力%上昇系</p>
+                <img src="img/20240411085318_1.jpg" alt="Image 1">
+                <br>
+                <p>外さなくてもよいスキルは以下の通りです。</p>
+                <br>
+                <p>アドバンストルーパー</p>
+                <img src="img/20240411085328_1.jpg" alt="Image 2">
+                <br>
+                <p>〇枚以上装備時の効果が発動していない場合</p>
+                <img src="img/20240411085308_1.jpg" alt="Image 3">
+                <br>
+                <p>直接ステータスに反映されていないもの</p>
+                <img src="img/20240411090700_1.jpg" alt="Image 4">
+                <br>
+                <h2 style="color: rgb(255, 0, 0);">3.実際にサイトに入力していきます</h2>
+                <br>
+                <p>今回はこの装備で計算していきます。</p>
+                <br>
+                <img src="img/20240411094852_1.jpg" alt="Image 5">
+                <br>
+                <p>指輪はこんな感じです。</p>
+                <img src="img/20240411092002_1.jpg" alt="Image 6">
+                <br>
+                <p>熟練度スキル、スキルを外しました。</p>
+                <img src="img/20240411092211_1.jpg" alt="Image 7">
+                <p>攻撃固定値は3639ですね。</p>
+                <p>ここから外したスキルの固定値も加算します。</p>
+                <br>
+                <p>【修練の学び】シノンの場合、</p>
+                <p>[パワーライズ3]の800と右上のAttack値、52を加算</p>
+                <p>加算できたら装備してください。</p>
+                <img src="img/20240411092338_1.jpg" alt="Image 8">
+                <br>
+                <p>【紅蓮の双刃】ライラの場合、</p>
+                <p>右上のAttack値、39を加算</p>
+                <p>加算できたら装備してください。</p>
+                <img src="img/20240411092959_1.jpg" alt="Image 9">
+                <br>
+                <p>【在りし日の日常】キリトの場合、</p>
+                <p>右上のAttack値、40を加算</p>
+                <p>加算できてもまだ装備しないでください。</p>
+                <img src="img/20240411093545_1.jpg" alt="Image 10">
+                <br>
+                <p>【福音カンタータ】キリトの場合、</p>
+                <p>[追加効果]の1000を加算。</p>
+                <img src="img/20240411093927_1.jpg" alt="Image 11">
+                <br>
+                <p>武器には乱数がありますので気になる方は</p>
+                <p>攻撃固定値-(最大値-最低値)÷2をしていただくとちょうど真ん中の値になります。</p>
+                <img src="img/20240411095543_1.jpg" alt="Image 12">
+                <p>今回は乱数を省いて計算します。</p>
+                <p>攻撃固定値の合計が5570になるので実際に入力します。</p>
+                <br>
+                <hr>
+                <p style="color: rgb(255, 0, 0);">次は攻撃上昇率(%)を入力していきます。</p>
+                <p>【修練の学び】シノンの20%+【紅蓮の双刃】ライラの34%+【突き進む英雄】キリトの13%+【鍛冶屋の恋心】リズベットの9%+飛閃が2枚で10%</p>
+                <p>攻撃上昇率(%)の合計が86%になるので実際に入力します。</p>
+                <br>
+                <hr>
+                <p style="color: rgb(255, 0, 0);">次は防御固定値を入力していきます。</p>
+                <p>現在の防御固定値は3332です。</p>
+                <img src="img/20240411100130_1.jpg" alt="Image 13">
+                <br>
+                <p>右上のDefense値、65を加算</p>
+                <p>加算できたら装備してください。</p>
+                <img src="img/20240411100108_1.jpg" alt="Image 14">
+                <br>
+                <p>防御固定値の合計が3397になるので実際に入力します。</p>
+                <br>
+                <hr>
+                <p style="color: rgb(255, 0, 0);">次は防御上昇率(%)を入力していきます。</p>
+                <p>【在りし日の日常】キリトの12.6%を実際に入力します。</p>
+                <br>
+                <hr>
+                <p style="color: rgb(255, 0, 0);">次はスキル威力(%)を入力していきます。</p>
+                <p>【福音カンタータ】キリトの1190%を実際に入力します。</p>
+                <img src="img/20240411101218_1.jpg" alt="Image 15">
+                <br>
+                <p style="color: rgb(255, 0, 0);">&#x26a0;注意&#x26a0;</p>
+                <p>スイッチ使用時スキル威力があがるものに関しては</p>
+                <p>すべてコンビネーションバフ(%)に入力してください。</p>
+                <p>今回は0%です。</p>
+                <br>
+                <img src="img/20240411101602_1.jpg" alt="Image 16">
+                <br>
+                <img src="img/20240411101613_1.jpg" alt="Image 17">
+                <br>
+                <img src="img/20240411101630_1.jpg" alt="Image 18">
+                <br>
+                <hr>
+                <p style="color: rgb(255, 0, 0);">次はダメージ倍率(%)を入力していきます。</p>
+                <p>【福音カンタータ】キリトの[追加効果]50%+【修練の学び】シノンの40%+【未来を乗せて】キリトの34%+【紅蓮の双刃】ライラの18%+指輪の4.5%インゴットの6.54%+心眼の7.5%+挟撃の15%</p>
+                <br>
+                <p>ダメージ倍率(%)の合計が175.54%になるので実際に入力します。</p>
+                <br>
+                <hr>
+                <p style="color: rgb(255, 0, 0);">次は覚醒率(%)を入力していきます。</p>
+                
+                <p>覚醒率の確認方法は以下の通りです。</p>
+                <p>赤いギザギザしてるボタンを押すだけ。</p>
+                <br>
+                <img src="img/20240411102833_1.jpg" alt="Image 19">
+                <p>今回は65%でしたね。実際に入力します。</p>
+                <br>
+                <img src="img/20240411102836_1.jpg" alt="Image 20">
+                <br>
+                <hr>
+                <p style="color: rgb(255, 0, 0);">他の入力フィールドやチェックボックス、レンジスライダーも調整します。</p>
+                <p>すべて入力した画面がこちらです。</p>
+                <p>画像が小さくて見えずらいかもしれません。ごめんなさい。</p>
+                <p>画像をタッチすると少しは見えやすくなるかもしれません。</p>
+                <a href="img/SAOIFダメージ計算ツール - Brave 2024_04_11 10_36_15.png" target="_blank">
+                    <img src="img/SAOIFダメージ計算ツール - Brave 2024_04_11 10_36_15.png" alt="Image 21">
+                </a>
+                <br>
+                <a href="img/SAOIFダメージ計算ツール - Brave 2024_04_11 10_36_26.png" target="_blank">
+                    <img src="img/SAOIFダメージ計算ツール - Brave 2024_04_11 10_36_26.png" alt="Image 22">
+                </a>
+                <br>
+                <p>攻撃力は30,538、ダメージは8,442,610になりました。</p>
+                <p>トライアルジムで実際に確認していきましょう。</p>
+                <p style="color: rgb(255, 0, 0);">offにした熟練度スキルを戻すのを忘れないようにしてください。</p>
+                <br>
+                <img src="img/Desktop 2024.04.11 - 10.50.36.02.DVR.mp4 - VLCメディアプレイヤー 2024_04_11 10_51_10.png" alt="Image 21">
+                <br>
+                <p>少しの誤差がありましたが、ほぼ正確な計算が行われましたね。</p>
+                <p>以上で計算の使い方の説明を終わります。</p>
+                
+                
+
+            </div>    
+                
+            
+
+            
+            
+
+        </section>
+
+        <!-- 必要に応じて他のセクションを追加 -->
+    </main>
     
     
     <!-- ここにコンテンツを追加します -->
@@ -4082,15 +4310,9 @@
             const damage = Math.max(1, totalDamage);
 
 
-            // 数値に3区切りのカンマを追加する関数
-            function addCommas(number) {
-                return new Intl.NumberFormat().format(number);
-            }
-
-            
-
-            document.getElementById('attackPower').innerHTML = `<i class="fas fa-fist-raised"></i> 攻撃力: ${addCommas(attackPower.toFixed(0))}`;
-            document.getElementById('damage').innerHTML = `<i class="fas fa-heartbeat"></i> ダメージ: ${addCommas(damage.toFixed(0))}`;
+            // 結果を表示
+            document.getElementById('attackPower').innerHTML = `<i class="fas fa-fist-raised"></i> 攻撃力: ${attackPower.toFixed(0)}`;
+            document.getElementById('damage').innerHTML = `<i class="fas fa-heartbeat"></i> ダメージ: ${damage.toFixed(0)}`;
 
             
 
