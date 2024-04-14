@@ -3522,6 +3522,36 @@
         }
 
         
+        .selectbox-3 {
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .selectbox-3::after {
+            position: absolute;
+            right: 15px;
+            width: 10px;
+            height: 7px;
+            background-color: #535353;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            content: '';
+            pointer-events: none;
+        }
+
+        .selectbox-3 select {
+            appearance: none;
+            min-width: 23px;
+            height: 1.8em;
+            padding: .4em calc(.8em + 30px) .4em .8em;
+            border: 1px solid #d0d0d0;
+            border-radius: 3px;
+            background-color: #fff;
+            color: #333333;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
 
         
 
@@ -3566,9 +3596,12 @@
         <a href="#notice"><i class="fas fa-exclamation-circle"></i> 注意事項</a>
         <a id="skillButton" href="#"><i class="far fa-hand-pointer"></i>熟練スキル</a>
         <a href="#" id="saveButton"><i class="fas fa-save"></i>データ保存</a>
-        <select id="savedSets">
-            <!-- ここに保存されたセットのオプションが追加されます -->
-        </select>
+        <div class="selectbox-3">
+            <select id="savedSets">
+              <!-- ここに保存されたセットのオプションが追加されます -->
+            </select>
+        </div>
+          
         <a id="loadSelectedSet"><i class="fas fa-download"></i> 選択したデータを呼び出す</a>
         <a id="deleteSelectedSet"><i class="fa-regular fa-trash-can"></i> 選択したデータを削除する</a>
         <a id="deleteAllSets"><i class="fas fa-trash-alt"></i>データをすべて削除する</a>
