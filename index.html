@@ -4132,8 +4132,19 @@
             document.getElementById('damage').innerHTML = `<i class="fas fa-heartbeat"></i> ダメージ: ${addCommas(damage.toFixed(0))}`;
 
             
+            
 
         });
+        // EnterキーまたはTabキーが押されたときの処理
+        function handleKeyPress(event) {
+            if (event.key === 'Enter' || event.key === 'Tab') {
+                // EnterキーまたはTabキーの場合は計算を実行する
+                document.getElementById('calculateBtn').click();
+            }
+        }
+
+        // EnterキーとTabキーが押されたときのイベントリスナーを追加
+        document.addEventListener('keydown', handleKeyPress);
 
         document.getElementById('resetBtn').addEventListener('click', function() {
             // 入力フィールドの値をリセット
