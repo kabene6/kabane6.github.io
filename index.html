@@ -3554,7 +3554,12 @@
 
 
 
-        
+        /* 強調表示用のスタイル */
+        .highlight {
+            border-color: #ff0000; /* ボーダーの色を赤色に変更 */
+            box-shadow: 0 0 5px #ff0000; /* 影を追加して強調 */
+        }
+
 
 
 
@@ -4152,6 +4157,18 @@
             // 計算結果を空にする
             document.getElementById('attackPower').innerHTML = `<i class="fas fa-fist-raised"></i> 攻撃力: 1`;
             document.getElementById('damage').innerHTML = `<i class="fas fa-heartbeat"></i> ダメージ: 1`;
+
+                // 強調表示を解除
+                const sliders = document.querySelectorAll('.range-slider input[type="range"]');
+                sliders.forEach(slider => {
+                    slider.classList.remove('highlight');
+                });
+
+                // 強調表示を解除
+                const sliderGroups = document.querySelectorAll('.range-slider-group input[type="range"]');
+                sliderGroups.forEach(slider => {
+                    slider.classList.remove('highlight');
+                });
         });
 
 
@@ -4732,6 +4749,11 @@
         // ボタンのクリックイベントに選択したセットを読み込む処理を追加
             document.getElementById('loadSelectedSet').addEventListener('click', function(event) {
                 event.preventDefault(); // デフォルトの動作をキャンセル
+
+                
+                
+
+                
                 
                 // 選択されたセット名を取得
                 const selectedSetName = selectElement.value;
@@ -4835,6 +4857,17 @@
                     document.getElementById('damageMultiplier').value = selectedSetData.damageMultiplier;
                     // 他のフィールドも同様に更新
                     document.getElementById('calculateBtn').click(); // 計算ボタンをクリック
+                    // 強調表示を解除
+                    const sliders = document.querySelectorAll('.range-slider input[type="range"]');
+                    sliders.forEach(slider => {
+                        slider.classList.remove('highlight');
+                    });
+
+                    // 強調表示を解除
+                    const sliderGroups = document.querySelectorAll('.range-slider-group input[type="range"]');
+                    sliderGroups.forEach(slider => {
+                        slider.classList.remove('highlight');
+                    });
                     alert('セットを読み込みました');
                 } else {
                     alert('セットが見つかりません');
@@ -4911,7 +4944,49 @@
         });
 
         
+
+        
+
        
+        
+
+        // レンジスライダーの値が変更されたときのイベントリスナーを追加
+        const sliders = document.querySelectorAll('.range-slider input[type="range"]');
+        sliders.forEach(slider => {
+            slider.addEventListener('input', function() {
+                // レンジスライダーの値を取得
+                const value = parseInt(this.value);
+
+                // レンジスライダーの値が1以上の場合に強調表示するクラスを追加または削除する
+                if (value >= 1) {
+                    this.classList.add('highlight');
+                } else {
+                    this.classList.remove('highlight');
+                }
+            });
+        });
+
+        // レンジスライダーの値が変更されたときのイベントリスナーを追加
+        const sliderGroups = document.querySelectorAll('.range-slider-group');
+        sliderGroups.forEach(group => {
+            const sliders = group.querySelectorAll('input[type="range"]');
+            sliders.forEach(slider => {
+                slider.addEventListener('input', function() {
+                    // レンジスライダーの値を取得
+                    const value = parseInt(this.value);
+
+                    // レンジスライダーの値が1以上の場合に強調表示するクラスを追加または削除する
+                    if (value >= 1) {
+                        this.classList.add('highlight');
+                    } else {
+                        this.classList.remove('highlight');
+                    }
+                });
+            });
+        });
+
+       
+    
 
 
        
