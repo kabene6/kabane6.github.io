@@ -4199,6 +4199,11 @@
         </div>
         
         <div class="input-field">
+            <label for="myHP">残りHP割合%【追加効果】</label>
+            <input type="number" id="myHP" name="myHP">
+        </div>
+
+        <div class="input-field">
             <label for="switchChain">スイッチチェイン数</label>
             <input type="number" id="switchChain" name="switchChain">
         </div>
@@ -4232,6 +4237,7 @@
             <label for="seal">烙印(スタック)</label>
             <input type="number" id="seal" name="seal">
         </div>
+        
         
     </div>
     <div class="checkboxes">
@@ -4291,8 +4297,35 @@
             <input type="checkbox" id="violentTiger" name="violentTiger">
             <label for="violentTiger">暴虎</label>
         </div>
+        <div class="input-field">
+            <label for="rekkafire_4">烈火４(スタック)</label>
+            <input type="number" id="rekkafire_4" name="rekkafire_4">
+        </div>
+
+        <div class="input-field">
+            <label for="strength_4">筋力増強４(スタック)</label>
+            <input type="number" id="strength_4" name="strength_4">
+        </div>
+
+        <div class="input-field">
+            <label for="ice_ou">氷甌４(スタック)</label>
+            <input type="number" id="ice_ou" name="ice_ou">
+        </div>
+
+        <div class="input-field">
+            <label for="knight_shield_4">騎士の盾４(スタック)</label>
+            <input type="number" id="knight_shield_4" name="knight_shield_4">
+        </div>
         
-        
+        <div class="input-field">
+            <label for="extreme_descent_3">極降臨３(スタック)</label>
+            <input type="number" id="extreme_descent_3" name="extreme_descent_3">
+        </div>
+
+        <div class="input-field">
+            <label for="attribute_pile_buff">属性パイル(スタック)</label>
+            <input type="number" id="attribute_pile_buff" name="attribute_pile_buff">
+        </div>
     </div>
     <div class="range-slider">
         <label for="rangeSlider" class="slider-label slider-label1">基礎の構え</label>
@@ -4472,6 +4505,9 @@
         <button id="closeAnnouncement" class="close-button">×</button>
         <p class="announcement-text">ver.1.2</p>
         <p class="announcement-text">新たに追加された熟練度スキルに対応しました。</p>
+        <p class="announcement-text">自身の残りHP割合×攻撃力○%上昇[追加効果]に対応しました。</p>
+        <p class="announcement-text">スタックバフ６種に対応しました。</p>
+        <p class="announcement-text">(烈火4、筋力増強4、氷甌4、騎士の盾4、極降臨3、属性パイル)</p>
         <p class="announcement-text">詳しくは<a href="https://x.com/6_sao_/status/1800959808213848379" target="_blank">こちら</a>まで</p>
 
     </div>
@@ -4515,9 +4551,10 @@
             const damageMultiplier = (parseFloat(document.getElementById('damageMultiplier').value) || 0) / 100;
             const awakeningRate = (parseFloat(document.getElementById('awakeningRate').value) || 0) / 100;
             const additionalDamage = parseFloat(document.getElementById('additionalDamage').value) || 0;
-            const maxHP = parseFloat(document.getElementById('maxHP').value) || 10000000;
+            const maxHP = parseFloat(document.getElementById('maxHP').value) || 1;
             const currentHP = parseFloat(document.getElementById('currentHP').value) || 1;
             const offTargetMod = (parseFloat(document.getElementById('offTargetMod').value) || 0) / 100;
+            const myHP = (parseFloat(document.getElementById('myHP').value) || 0) / 100;
             const switchChain = parseFloat(document.getElementById('switchChain').value) || 0;
             const comboBuff = (parseFloat(document.getElementById('comboBuff').value) || 0) / 100;
             const enemyDefense = parseFloat(document.getElementById('enemyDefense').value) || 0;
@@ -4540,8 +4577,17 @@
             const switch1Checked = document.getElementById('switch1').checked;
             const switch2Checked = document.getElementById('switch2').checked;
             const overchargeChecked = document.getElementById('overcharge').checked;
+            const rekkafireStack = parseFloat(document.getElementById('rekkafire_4').value) || 0;
+            const strengthStack = (parseFloat(document.getElementById('strength_4').value) || 0) / 100;
+            const iceOuStack = parseFloat(document.getElementById('ice_ou').value) || 0;
+            const knightShieldStack = (parseFloat(document.getElementById('knight_shield_4').value) || 0) / 100;
+            const extremeDescentStack = (parseFloat(document.getElementById('extreme_descent_3').value) || 0) / 100;
+            const attributePileBuffStack = (parseFloat(document.getElementById('attribute_pile_buff').value) || 0) / 100;
+
             
-            
+            if (currentHP > maxHP) {
+                alert("エラー：HPが最大HPを超えています！");
+            }
 
             // スイッチ1、スイッチ2、オーバーチャージの特殊効果を計算
             let specialEffectMultiplier = 1;
@@ -4644,7 +4690,7 @@
 
             // ダメージ倍率の計算
             let totalDamageMultiplier = damageMultiplier - enemyDamageBuff + result + damageMultiplierTotal + shieldRate * 0.05 + clubRate * 0.01 + swordRate * 0.01 + swordCombo * 0.01 + swordCritical * 0.01 + swordCritical1 * 0.01
-            + ClubeRate1 * 0.01 + daggerBase * 0.02 + bowRate1 * 0.01 + a30 * 0.01 + a31 * 0.02 + a33 * 0.015 + a36 * 0.015; 
+            + ClubeRate1 * 0.01 + daggerBase * 0.02 + bowRate1 * 0.01 + a30 * 0.01 + a31 * 0.02 + a33 * 0.015 + a36 * 0.015 + extremeDescentStack * 2 + attributePileBuffStack; 
 
             // 暴虎の効果を計算
             let violentTigerEffect = 0;
@@ -4673,7 +4719,7 @@
 
             // 攻撃基礎に暴虎の効果を加算
             let attackBase1 = attackBase + violentTigerEffect + sowrd1Combo + dagger50 * 3 + dagger100 * 10 + spearstep * 2 + Math.max(0,bow100 * 10 * (1-(currentHP /maxHP ))) + a32 * 10 + a34 * 25 + a38 * 5 + 
-            Math.max(0, Math.min(300,a40 * 30 * (1 / (maxHP / currentHP)))) + a42 * 10 + a43 * 25;
+            Math.max(0, Math.min(300,a40 * 30 * (1 / (maxHP / currentHP)))) + a42 * 10 + a43 * 25 + (rekkafireStack * 20);
 
             
 
@@ -4706,8 +4752,8 @@
             const a41 = parseFloat(document.getElementById('rangeSlider41').value) || 0;
             
             // 攻撃力の計算
-            const attackPower = Math.max(1, (attackBase1 + (defenseBase * (1 + defenseRate + shieldattack * 0.005)) * 2) * (1 + attackRate + weaponKnowledge * 0.05 + weaponattack * 0.01 + daggerRate * 0.01 + dagger396 * 0.001 + axe50 * 0.01 + axebreak * 0.0025 + spear1 * 0.01 + spearstep1 * 0.03 + bow50 * 0.01
-         + a35 * 0.015 + a37 * 0.015 + a39 * 0.015 + a41 * 0.015));
+            const attackPower = Math.max(1, (attackBase1 + ((defenseBase + (iceOuStack * 10)) * (1 + defenseRate + knightShieldStack + shieldattack * 0.005)) * 2) * (1 + attackRate + weaponKnowledge * 0.05 + weaponattack * 0.01 + daggerRate * 0.01 + dagger396 * 0.001 + axe50 * 0.01 + axebreak * 0.0025 + spear1 * 0.01 + spearstep1 * 0.03 + bow50 * 0.01
+         + a35 * 0.015 + a37 * 0.015 + a39 * 0.015 + a41 * 0.015 + myHP * (1 /(maxHP / currentHP)) + strengthStack));
 
             // ダメージの計算
             const damage1 = Math.max(0, Math.max(0, attackPower * totalSkillPower * (1 + awakeningRate) - enemyDefense) * (1 + totalDamageMultiplier));
@@ -5412,6 +5458,12 @@
                 enemyDamageBuff1: document.getElementById('enemyDamageBuff1').value,
                 chaosCollection: document.getElementById('chaosCollection').value,
                 seal: document.getElementById('seal').value,
+                rekkafireStack: document.getElementById('rekkafire_4').value,
+                strengthStack: document.getElementById('strength_4').value,
+                iceOuStack: document.getElementById('ice_ou').value,
+                knightShieldStack: document.getElementById('knight_shield_4').value,
+                extremeDescentStack: document.getElementById('extreme_descent_3').value,
+                attributePileBuffStack: document.getElementById('attribute_pile_buff').value,
                 weaponAttribute: document.getElementById('weaponAttribute').checked,
                 natureAttribute: document.getElementById('natureAttribute').checked,
                 switch1: document.getElementById('switch1').checked,
@@ -5564,6 +5616,12 @@
                     document.getElementById('enemyDamageBuff1').value = selectedSetData.enemyDamageBuff1;
                     document.getElementById('chaosCollection').value = selectedSetData.chaosCollection;
                     document.getElementById('seal').value = selectedSetData.seal;
+                    document.getElementById('rekkafire_4').value = selectedSetData.rekkafireStack;
+                    document.getElementById('strength_4').value = selectedSetData.strengthStack;
+                    document.getElementById('ice_ou').value = selectedSetData.iceOuStack;
+                    document.getElementById('knight_shield_4').value = selectedSetData.knightShieldStack;
+                    document.getElementById('extreme_descent_3').value = selectedSetData.extremeDescentStack;
+                    document.getElementById('attribute_pile_buff').value = selectedSetData.attributePileBuffStack;
                     document.getElementById('weaponAttribute').checked = selectedSetData.weaponAttribute;
                     document.getElementById('natureAttribute').checked = selectedSetData.natureAttribute;
 
