@@ -18,6 +18,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=RocknRoll+One&family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
     <style>
+        .footer-container {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            background-color: #f1f1f1;
+            padding: 20px 0; /* Add some padding for better spacing */
+            text-align: center;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+
         body {
             user-select: none;
         }
@@ -131,6 +151,7 @@
             padding-left: 20px; /* 左側の余白を追加 */
             padding-top: 75px; /* 上部の余白を追加 */
             float: left;
+            padding-bottom: 500px;
         }
 
 
@@ -1034,6 +1055,412 @@
             white-space: nowrap;
         }
 
+        .slider30 {
+            position: absolute;
+            top: 1120px; /* レンジスライダー2の位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .value30 {
+            position: absolute;
+            top: 1145px; /* レンジスライダー2の値の表示位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .slider-label30 {
+            position: absolute;
+            top: 1090px; /* 闘争本能ラベルの位置を調整 */
+            left: 50%; /* 中央に配置 */
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            white-space: nowrap;
+        }
+
+        .slider31 {
+            position: absolute;
+            top: 1200px; /* レンジスライダー2の位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .value31 {
+            position: absolute;
+            top: 1225px; /* レンジスライダー2の値の表示位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .slider-label31 {
+            position: absolute;
+            top: 1170px; /* 闘争本能ラベルの位置を調整 */
+            left: 50%; /* 中央に配置 */
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            white-space: nowrap;
+        }
+
+        .slider32 {
+            position: absolute;
+            top: 1280px; /* レンジスライダー2の位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .value32 {
+            position: absolute;
+            top: 1305px; /* レンジスライダー2の値の表示位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .slider-label32 {
+            position: absolute;
+            top: 1250px; /* 闘争本能ラベルの位置を調整 */
+            left: 50%; /* 中央に配置 */
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            white-space: nowrap;
+        }
+
+        .slider33 {
+            position: absolute;
+            top: 1360px; /* レンジスライダー2の位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .value33 {
+            position: absolute;
+            top: 1385px; /* レンジスライダー2の値の表示位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .slider-label33 {
+            position: absolute;
+            top: 1330px; /* 闘争本能ラベルの位置を調整 */
+            left: 50%; /* 中央に配置 */
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            white-space: nowrap;
+        }
+
+        .slider34 {
+            position: absolute;
+            top: 1440px; /* レンジスライダー2の位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .value34 {
+            position: absolute;
+            top: 1465px; /* レンジスライダー2の値の表示位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .slider-label34 {
+            position: absolute;
+            top: 1410px; /* 闘争本能ラベルの位置を調整 */
+            left: 50%; /* 中央に配置 */
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            white-space: nowrap;
+        }
+
+        .slider35 {
+            position: absolute;
+            top: 1520px; /* レンジスライダー2の位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .value35 {
+            position: absolute;
+            top: 1545px; /* レンジスライダー2の値の表示位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .slider-label35 {
+            position: absolute;
+            top: 1490px; /* 闘争本能ラベルの位置を調整 */
+            left: 50%; /* 中央に配置 */
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            white-space: nowrap;
+        }
+
+        .slider36 {
+            position: absolute;
+            top: 1600px; /* レンジスライダー2の位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .value36 {
+            position: absolute;
+            top: 1625px; /* レンジスライダー2の値の表示位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .slider-label36 {
+            position: absolute;
+            top: 1570px; /* 闘争本能ラベルの位置を調整 */
+            left: 50%; /* 中央に配置 */
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            white-space: nowrap;
+        }
+        
+        .slider37 {
+            position: absolute;
+            top: 1120px; /* レンジスライダー2の位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .value37 {
+            position: absolute;
+            top: 1145px; /* レンジスライダー2の値の表示位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .slider-label37 {
+            position: absolute;
+            top: 1090px; /* 闘争本能ラベルの位置を調整 */
+            left: 50%; /* 中央に配置 */
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            white-space: nowrap;
+        }
+
+        .slider38 {
+            position: absolute;
+            top: 1200px; /* レンジスライダー2の位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .value38 {
+            position: absolute;
+            top: 1225px; /* レンジスライダー2の値の表示位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .slider-label38 {
+            position: absolute;
+            top: 1170px; /* 闘争本能ラベルの位置を調整 */
+            left: 50%; /* 中央に配置 */
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            white-space: nowrap;
+        }
+
+        .slider39 {
+            position: absolute;
+            top: 1280px; /* レンジスライダー2の位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .value39 {
+            position: absolute;
+            top: 1305px; /* レンジスライダー2の値の表示位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .slider-label39 {
+            position: absolute;
+            top: 1250px; /* 闘争本能ラベルの位置を調整 */
+            left: 50%; /* 中央に配置 */
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            white-space: nowrap;
+        }
+
+        .slider40 {
+            position: absolute;
+            top: 1360px; /* レンジスライダー2の位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .value40 {
+            position: absolute;
+            top: 1385px; /* レンジスライダー2の値の表示位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .slider-label40 {
+            position: absolute;
+            top: 1330px; /* 闘争本能ラベルの位置を調整 */
+            left: 50%; /* 中央に配置 */
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            white-space: nowrap;
+        }
+
+        .slider41 {
+            position: absolute;
+            top: 1440px; /* レンジスライダー2の位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .value41 {
+            position: absolute;
+            top: 1465px; /* レンジスライダー2の値の表示位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .slider-label41 {
+            position: absolute;
+            top: 1410px; /* 闘争本能ラベルの位置を調整 */
+            left: 50%; /* 中央に配置 */
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            white-space: nowrap;
+        }
+
+        .slider42 {
+            position: absolute;
+            top: 1520px; /* レンジスライダー2の位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .value42 {
+            position: absolute;
+            top: 1545px; /* レンジスライダー2の値の表示位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .slider-label42 {
+            position: absolute;
+            top: 1490px; /* 闘争本能ラベルの位置を調整 */
+            left: 50%; /* 中央に配置 */
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            white-space: nowrap;
+        }
+
+        .slider43 {
+            position: absolute;
+            top: 1600px; /* レンジスライダー2の位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .value43 {
+            position: absolute;
+            top: 1625px; /* レンジスライダー2の値の表示位置を調整 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .slider-label43 {
+            position: absolute;
+            top: 1570px; /* 闘争本能ラベルの位置を調整 */
+            left: 50%; /* 中央に配置 */
+            transform: translateX(-50%);
+            font-family: 'フォント名', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            white-space: nowrap;
+        }
+
         .slider-label {
             font-family: 'Arial', sans-serif;
             font-size: 16px;
@@ -1103,7 +1530,7 @@
         .value26,
         .value27,
         .value28,
-        .value29 {
+        .value29,.value30 {
             font-family: 'Arial', sans-serif;
             font-size: 18px;
             color: #606060;
@@ -1114,6 +1541,41 @@
         #rangeSlider::-webkit-slider-thumb {
             background-color: red;
         }
+
+        /* IDがrangeSliderの動かす部分の色を赤に設定 */
+        #rangeSlider30::-webkit-slider-thumb {
+            background-color: rgb(20, 100, 0);
+        }
+
+        /* IDがrangeSliderの動かす部分の色を赤に設定 */
+        #rangeSlider31::-webkit-slider-thumb {
+            background-color: rgb(20, 100, 0);
+        }
+
+        /* IDがrangeSliderの動かす部分の色を赤に設定 */
+        #rangeSlider32::-webkit-slider-thumb {
+            background-color: rgb(20, 100, 0);
+        }
+
+        /* IDがrangeSliderの動かす部分の色を赤に設定 */
+        #rangeSlider33::-webkit-slider-thumb {
+            background-color: rgb(20, 100, 0);
+        }
+
+        /* IDがrangeSliderの動かす部分の色を赤に設定 */
+        #rangeSlider34::-webkit-slider-thumb,
+        #rangeSlider35::-webkit-slider-thumb,
+        #rangeSlider36::-webkit-slider-thumb,
+        #rangeSlider37::-webkit-slider-thumb,
+        #rangeSlider38::-webkit-slider-thumb,
+        #rangeSlider39::-webkit-slider-thumb,
+        #rangeSlider40::-webkit-slider-thumb,
+        #rangeSlider41::-webkit-slider-thumb,
+        #rangeSlider42::-webkit-slider-thumb,
+        #rangeSlider43::-webkit-slider-thumb {
+            background-color: rgb(183, 0, 255);
+        }
+
 
         /* IDがrangeSlider3の動かす部分の色を赤に設定 */
         #rangeSlider3::-webkit-slider-thumb {
@@ -1227,6 +1689,8 @@
             }
 
             @media screen and (max-width: 600px) {
+
+                
                 .slider-label1 {
                     position: absolute;
                     top: -30px;
@@ -3044,6 +3508,8 @@
                     white-space: nowrap;
                 }
 
+                
+
                 .slider-label {
                     font-family: 'Arial', sans-serif;
                     font-size: 16px;
@@ -3393,7 +3859,7 @@
         .value26,
         .value27,
         .value28,
-        .value29 {
+        .value29,.value30,.value31,.value32,.value33,.value34,.value35,.value36,.value37,.value38,.value39,.value40,.value41,.value42,.value43 {
             color: rgb(0, 0, 0);
             font-family: 'RocknRoll One', sans-serif;
             font-size: 16px;
@@ -3457,7 +3923,8 @@
         .value26,
         .value27,
         .value28,
-        .value29 {
+        .value29,
+        .value30,.value31,.value32,.value33,.value34,.value35,.value36,.value37,.value38,.value39,.value40,.value41,.value42,.value43 {
             color: inherit; /* 継承された色を使用 */
         }
 
@@ -3560,9 +4027,63 @@
             box-shadow: 0 0 5px #ff0000; /* 影を追加して強調 */
         }
 
+        .slider-label38 {
+            
+            font-size: 13px;
+            
+        }
+
+        .footer-container {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            background-color: #f1f1f1;
+            padding: 20px 0; /* Add some padding for better spacing */
+            text-align: center;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .announcement-container {
+            position: fixed; /* 画面固定位置に配置 */
+            top: 50%; /* 上端を画面の中央に配置 */
+            left: 50%; /* 左端を画面の中央に配置 */
+            transform: translate(-50%, -50%); /* 要素の中心を画面の中央に移動 */
+            background-color: #e6f2ff; /* 背景色を設定 */
+            padding: 20px; /* 内側の余白を追加 */
+            border-radius: 10px; /* 角丸を追加 */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* ボックスシャドウを追加 */
+            display: none; /* 初期状態では非表示 */
+        }
 
 
+        .close-button {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
 
+        .announcement-text {
+            color: black; /* テキストカラーを黒色に設定 */
+            font-family: 'RocknRoll One', sans-serif;
+            /* 他のスタイルをここに追加 */
+        }
+
+        .close-button {
+            color:#000000
+        }
     </style>
 </head>
 <!-- Google tag (gtag.js) -->
@@ -3771,6 +4292,7 @@
             <label for="violentTiger">暴虎</label>
         </div>
         
+        
     </div>
     <div class="range-slider">
         <label for="rangeSlider" class="slider-label slider-label1">基礎の構え</label>
@@ -3820,6 +4342,33 @@
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider15" class="slider15">
         <div class="value15" id="sliderValue15">0</div>
 
+        <label for="rangeSlider30" class="slider-label slider-label30">斬突打熟練(Lv.)10%</label>
+        <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider30" class="slider30">
+        <div class="value30" id="sliderValue30">0</div>
+
+        <label for="rangeSlider31" class="slider-label slider-label31">斬突打熟練(Lv.)20%</label>
+        <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider31" class="slider31">
+        <div class="value31" id="sliderValue31">0</div>
+
+        <label for="rangeSlider32" class="slider-label slider-label32">属性ライズ(LV.)</label>
+        <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider32" class="slider32">
+        <div class="value32" id="sliderValue32">0</div>
+
+        <label for="rangeSlider33" class="slider-label slider-label33">属性チャージ(Lv.)</label>
+        <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider33" class="slider33">
+        <div class="value33" id="sliderValue33">0</div>
+
+        <label for="rangeSlider34" class="slider-label slider-label34">ハードブレイク(Lv.)直剣</label>
+        <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider34" class="slider34">
+        <div class="value34" id="sliderValue34">0</div>
+
+        <label for="rangeSlider35" class="slider-label slider-label35">急所強襲(Lv.)細剣</label>
+        <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider35" class="slider35">
+        <div class="value35" id="sliderValue35">0</div>
+
+        <label for="rangeSlider36" class="slider-label slider-label36">急所への一突き(Lv.)細剣</label>
+        <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider36" class="slider36">
+        <div class="value36" id="sliderValue36">0</div>
     </div>
     <div class="range-slider-group">
 
@@ -3876,15 +4425,42 @@
         <label for="rangeSlider28" class="slider-label slider-label28">捕食者の眼光(Lv.)弓</label>
         <input type="range" min="0" max="10" value="0" id="rangeSlider28" class="slider28">
         <div class="value28" id="sliderValue28">0</div>
-
+        
         <label for="rangeSlider29" class="slider-label slider-label29">逆転の一撃(Lv.)弓</label>
         <input type="range" min="0" max="10" value="0" id="rangeSlider29" class="slider29">
         <div class="value29" id="sliderValue29">0</div>
+        
+        <label for="rangeSlider37" class="slider-label slider-label37">刻まれた一撃(Lv.)棍</label>
+        <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider37" class="slider37">
+        <div class="value37" id="sliderValue37">0</div>
 
+        <label for="rangeSlider38" class="slider-label slider-label38">追い打ちの一撃(スタック)短剣</label>
+        <input type="range" min="0" max="396" value="0" step="99" id="rangeSlider38" class="slider38">
+        <div class="value38" id="sliderValue38">0</div>
 
+        <label for="rangeSlider39" class="slider-label slider-label39">鋭利な一閃(Lv.)短剣</label>
+        <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider39" class="slider39">
+        <div class="value39" id="sliderValue39">0</div>
+
+        <label for="rangeSlider40" class="slider-label slider-label40">パワフルパワー(Lv.)斧</label>
+        <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider40" class="slider40">
+        <div class="value40" id="sliderValue40">0</div>
+
+        <label for="rangeSlider41" class="slider-label slider-label41">弱者への追撃(Lv.)槍</label>
+        <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider41" class="slider41">
+        <div class="value41" id="sliderValue41">0</div>
+
+        <label for="rangeSlider42" class="slider-label slider-label42">背後からの一撃(Lv.)弓</label>
+        <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider42" class="slider42">
+        <div class="value42" id="sliderValue42">0</div>
+
+        <label for="rangeSlider43" class="slider-label slider-label43">ハードブレイク(Lv.)弓</label>
+        <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider43" class="slider43">
+        <div class="value43" id="sliderValue43">0</div>
 
     </div>
     
+    <div style="height: 200px;"></div> <!-- 500pxの空白要素 -->
     <div class="button-container">
         <div id="attackPower" class="custom-font"><i class="fas fa-fist-raised"></i> 攻撃力: 1</div>
         <div id="damage" class="custom-font"><i class="fas fa-heartbeat"></i> ダメージ: 1</div>
@@ -3892,6 +4468,13 @@
         <button id="resetBtn" class="custom-font"><i class="fas fa-sync-alt"></i> リセット</button>
     </div>
     
+    <div id="announcement" class="announcement-container">
+        <button id="closeAnnouncement" class="close-button">×</button>
+        <p class="announcement-text">ver.1.2</p>
+        <p class="announcement-text">新たに追加された熟練度スキルに対応しました。</p>
+        <p class="announcement-text">詳しくは<a href="https://x.com/6_sao_/status/1800959808213848379" target="_blank">こちら</a>まで</p>
+
+    </div>
     
     
     <!-- ここにコンテンツを追加します -->
@@ -4035,7 +4618,10 @@
             }
 
             
-
+            const a30 = parseFloat(document.getElementById('rangeSlider30').value) || 0;
+            const a31 = parseFloat(document.getElementById('rangeSlider31').value) || 0;
+            const a33 = parseFloat(document.getElementById('rangeSlider33').value) || 0;
+            const a36 = parseFloat(document.getElementById('rangeSlider36').value) || 0;
             const shieldRate = parseFloat(document.getElementById('rangeSlider9').value) || 0;
             const clubRate = parseFloat(document.getElementById('rangeSlider10').value) || 0;
             const swordRate = parseFloat(document.getElementById('rangeSlider11').value) || 0;
@@ -4058,7 +4644,7 @@
 
             // ダメージ倍率の計算
             let totalDamageMultiplier = damageMultiplier - enemyDamageBuff + result + damageMultiplierTotal + shieldRate * 0.05 + clubRate * 0.01 + swordRate * 0.01 + swordCombo * 0.01 + swordCritical * 0.01 + swordCritical1 * 0.01
-            + ClubeRate1 * 0.01 + daggerBase * 0.02 + bowRate1 * 0.01; 
+            + ClubeRate1 * 0.01 + daggerBase * 0.02 + bowRate1 * 0.01 + a30 * 0.01 + a31 * 0.02 + a33 * 0.015 + a36 * 0.015; 
 
             // 暴虎の効果を計算
             let violentTigerEffect = 0;
@@ -4075,12 +4661,21 @@
             const dagger100 = parseFloat(document.getElementById('rangeSlider20').value) || 0;
             const spearstep = parseFloat(document.getElementById('rangeSlider24').value) || 0;
             const bow100 = parseFloat(document.getElementById('rangeSlider29').value) || 0;
+            const a32 = parseFloat(document.getElementById('rangeSlider32').value) || 0;
+            const a34 = parseFloat(document.getElementById('rangeSlider34').value) || 0;
+            const a38 = parseFloat(document.getElementById('rangeSlider38').value) || 0;
+            const a40 = parseFloat(document.getElementById('rangeSlider40').value) || 0;
+            const a42 = parseFloat(document.getElementById('rangeSlider42').value) || 0;
+            const a43 = parseFloat(document.getElementById('rangeSlider43').value) || 0;
 
             
 
 
             // 攻撃基礎に暴虎の効果を加算
-            let attackBase1 = attackBase + violentTigerEffect + sowrd1Combo + dagger50 * 3 + dagger100 * 10 + spearstep * 2 + Math.max(0,bow100 * 10 * (1-(currentHP /maxHP ))) ;
+            let attackBase1 = attackBase + violentTigerEffect + sowrd1Combo + dagger50 * 3 + dagger100 * 10 + spearstep * 2 + Math.max(0,bow100 * 10 * (1-(currentHP /maxHP ))) + a32 * 10 + a34 * 25 + a38 * 5 + 
+            Math.max(0, Math.min(300,a40 * 30 * (1 / (maxHP / currentHP)))) + a42 * 10 + a43 * 25;
+
+            
 
             const weaponKnowledge = parseFloat(document.getElementById('rangeSlider3').value) || 0;
 
@@ -4101,9 +4696,18 @@
             const spearstep1 = parseFloat(document.getElementById('rangeSlider26').value) || 0;
 
             const bow50 = parseFloat(document.getElementById('rangeSlider28').value) || 0;
+
+            const a35 = parseFloat(document.getElementById('rangeSlider35').value) || 0;
+
+            const a37 = parseFloat(document.getElementById('rangeSlider37').value) || 0;
+
+            const a39 = parseFloat(document.getElementById('rangeSlider39').value) || 0;
+
+            const a41 = parseFloat(document.getElementById('rangeSlider41').value) || 0;
             
             // 攻撃力の計算
-            const attackPower = Math.max(1, (attackBase1 + (defenseBase * (1 + defenseRate + shieldattack * 0.005)) * 2) * (1 + attackRate + weaponKnowledge * 0.05 + weaponattack * 0.01 + daggerRate * 0.01 + dagger396 * 0.001 + axe50 * 0.01 + axebreak * 0.0025 + spear1 * 0.01 + spearstep1 * 0.03 + bow50 * 0.01));
+            const attackPower = Math.max(1, (attackBase1 + (defenseBase * (1 + defenseRate + shieldattack * 0.005)) * 2) * (1 + attackRate + weaponKnowledge * 0.05 + weaponattack * 0.01 + daggerRate * 0.01 + dagger396 * 0.001 + axe50 * 0.01 + axebreak * 0.0025 + spear1 * 0.01 + spearstep1 * 0.03 + bow50 * 0.01
+         + a35 * 0.015 + a37 * 0.015 + a39 * 0.015 + a41 * 0.015));
 
             // ダメージの計算
             const damage1 = Math.max(0, Math.max(0, attackPower * totalSkillPower * (1 + awakeningRate) - enemyDefense) * (1 + totalDamageMultiplier));
@@ -4475,6 +5079,147 @@
             sliderValue29.textContent = rangeSlider29.value;
         });
 
+        // レンジスライダー30の要素を取得
+        const rangeSlider30 = document.getElementById('rangeSlider30');
+        const sliderValue30 = document.getElementById('sliderValue30');
+
+        // レンジスライダー30の値が変更されたときに発生するイベントをリッスン
+        rangeSlider30.addEventListener('input', function() {
+            // レンジスライダー30の値を取得して表示する要素にセット
+            sliderValue30.textContent = rangeSlider30.value;
+        });
+
+        // レンジスライダー31の要素を取得
+        const rangeSlider31 = document.getElementById('rangeSlider31');
+        const sliderValue31 = document.getElementById('sliderValue31');
+
+        // レンジスライダー31の値が変更されたときに発生するイベントをリッスン
+        rangeSlider31.addEventListener('input', function() {
+            // レンジスライダー31の値を取得して表示する要素にセット
+            sliderValue31.textContent = rangeSlider31.value;
+        });
+
+        // レンジスライダー32の要素を取得
+        const rangeSlider32 = document.getElementById('rangeSlider32');
+        const sliderValue32 = document.getElementById('sliderValue32');
+
+        // レンジスライダー32の値が変更されたときに発生するイベントをリッスン
+        rangeSlider32.addEventListener('input', function() {
+            // レンジスライダー32の値を取得して表示する要素にセット
+            sliderValue32.textContent = rangeSlider32.value;
+        });
+
+        // レンジスライダー33の要素を取得
+        const rangeSlider33 = document.getElementById('rangeSlider33');
+        const sliderValue33 = document.getElementById('sliderValue33');
+
+        // レンジスライダー33の値が変更されたときに発生するイベントをリッスン
+        rangeSlider33.addEventListener('input', function() {
+            // レンジスライダー33の値を取得して表示する要素にセット
+            sliderValue33.textContent = rangeSlider33.value;
+        });
+
+        // レンジスライダー34の要素を取得
+        const rangeSlider34 = document.getElementById('rangeSlider34');
+        const sliderValue34 = document.getElementById('sliderValue34');
+
+        // レンジスライダー34の値が変更されたときに発生するイベントをリッスン
+        rangeSlider34.addEventListener('input', function() {
+            // レンジスライダー34の値を取得して表示する要素にセット
+            sliderValue34.textContent = rangeSlider34.value;
+        });
+
+        // レンジスライダー35の要素を取得
+        const rangeSlider35 = document.getElementById('rangeSlider35');
+        const sliderValue35 = document.getElementById('sliderValue35');
+
+        // レンジスライダー35の値が変更されたときに発生するイベントをリッスン
+        rangeSlider35.addEventListener('input', function() {
+            // レンジスライダー35の値を取得して表示する要素にセット
+            sliderValue35.textContent = rangeSlider35.value;
+        });
+
+        // レンジスライダー36の要素を取得
+        const rangeSlider36 = document.getElementById('rangeSlider36');
+        const sliderValue36 = document.getElementById('sliderValue36');
+
+        // レンジスライダー36の値が変更されたときに発生するイベントをリッスン
+        rangeSlider36.addEventListener('input', function() {
+            // レンジスライダー36の値を取得して表示する要素にセット
+            sliderValue36.textContent = rangeSlider36.value;
+        });
+
+        // レンジスライダー37の要素を取得
+        const rangeSlider37 = document.getElementById('rangeSlider37');
+        const sliderValue37 = document.getElementById('sliderValue37');
+
+        // レンジスライダー37の値が変更されたときに発生するイベントをリッスン
+        rangeSlider37.addEventListener('input', function() {
+            // レンジスライダー37の値を取得して表示する要素にセット
+            sliderValue37.textContent = rangeSlider37.value;
+        });
+
+        // レンジスライダー38の要素を取得
+        const rangeSlider38 = document.getElementById('rangeSlider38');
+        const sliderValue38 = document.getElementById('sliderValue38');
+
+        // レンジスライダー38の値が変更されたときに発生するイベントをリッスン
+        rangeSlider38.addEventListener('input', function() {
+            // レンジスライダー38の値を取得して表示する要素にセット
+            sliderValue38.textContent = rangeSlider38.value;
+        });
+
+        // レンジスライダー39の要素を取得
+        const rangeSlider39 = document.getElementById('rangeSlider39');
+        const sliderValue39 = document.getElementById('sliderValue39');
+
+        // レンジスライダー39の値が変更されたときに発生するイベントをリッスン
+        rangeSlider39.addEventListener('input', function() {
+            // レンジスライダー39の値を取得して表示する要素にセット
+            sliderValue39.textContent = rangeSlider39.value;
+        });
+
+        // レンジスライダー40の要素を取得
+        const rangeSlider40 = document.getElementById('rangeSlider40');
+        const sliderValue40 = document.getElementById('sliderValue40');
+
+        // レンジスライダー40の値が変更されたときに発生するイベントをリッスン
+        rangeSlider40.addEventListener('input', function() {
+            // レンジスライダー40の値を取得して表示する要素にセット
+            sliderValue40.textContent = rangeSlider40.value;
+        });
+
+        // レンジスライダー41の要素を取得
+        const rangeSlider41 = document.getElementById('rangeSlider41');
+        const sliderValue41 = document.getElementById('sliderValue41');
+
+        // レンジスライダー41の値が変更されたときに発生するイベントをリッスン
+        rangeSlider41.addEventListener('input', function() {
+            // レンジスライダー41の値を取得して表示する要素にセット
+            sliderValue41.textContent = rangeSlider41.value;
+        });
+
+        // レンジスライダー42の要素を取得
+        const rangeSlider42 = document.getElementById('rangeSlider42');
+        const sliderValue42 = document.getElementById('sliderValue42');
+
+        // レンジスライダー42の値が変更されたときに発生するイベントをリッスン
+        rangeSlider42.addEventListener('input', function() {
+            // レンジスライダー42の値を取得して表示する要素にセット
+            sliderValue42.textContent = rangeSlider42.value;
+        });
+
+        // レンジスライダー43の要素を取得
+        const rangeSlider43 = document.getElementById('rangeSlider43');
+        const sliderValue43 = document.getElementById('sliderValue43');
+
+        // レンジスライダー43の値が変更されたときに発生するイベントをリッスン
+        rangeSlider43.addEventListener('input', function() {
+            // レンジスライダー43の値を取得して表示する要素にセット
+            sliderValue43.textContent = rangeSlider43.value;
+        });
+
+        
 
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -4709,6 +5454,20 @@
                 rangeSlider27: document.getElementById('rangeSlider27').value,
                 rangeSlider28: document.getElementById('rangeSlider28').value,
                 rangeSlider29: document.getElementById('rangeSlider29').value,
+                rangeSlider30: document.getElementById('rangeSlider30').value,
+                rangeSlider31: document.getElementById('rangeSlider31').value,
+                rangeSlider32: document.getElementById('rangeSlider32').value,
+                rangeSlider33: document.getElementById('rangeSlider33').value,
+                rangeSlider34: document.getElementById('rangeSlider34').value,
+                rangeSlider35: document.getElementById('rangeSlider35').value,
+                rangeSlider36: document.getElementById('rangeSlider36').value,
+                rangeSlider37: document.getElementById('rangeSlider37').value,
+                rangeSlider38: document.getElementById('rangeSlider38').value,
+                rangeSlider39: document.getElementById('rangeSlider39').value,
+                rangeSlider40: document.getElementById('rangeSlider40').value,
+                rangeSlider41: document.getElementById('rangeSlider41').value,
+                rangeSlider42: document.getElementById('rangeSlider42').value,
+                rangeSlider43: document.getElementById('rangeSlider43').value,
                 rangeSlider: document.getElementById('sliderValue').textContent,
                 rangeSlider3: document.getElementById('sliderValue3').textContent,
                 rangeSlider4: document.getElementById('sliderValue4').textContent,
@@ -4737,6 +5496,20 @@
                 rangeSlider27: document.getElementById('sliderValue27').textContent,
                 rangeSlider28: document.getElementById('sliderValue28').textContent,
                 rangeSlider29: document.getElementById('sliderValue29').textContent,
+                rangeSlider30: document.getElementById('sliderValue30').textContent,
+                rangeSlider31: document.getElementById('sliderValue31').textContent,
+                rangeSlider32: document.getElementById('sliderValue32').textContent,
+                rangeSlider33: document.getElementById('sliderValue33').textContent,
+                rangeSlider34: document.getElementById('sliderValue34').textContent,
+                rangeSlider35: document.getElementById('sliderValue35').textContent,
+                rangeSlider36: document.getElementById('sliderValue36').textContent,
+                rangeSlider37: document.getElementById('sliderValue37').textContent,
+                rangeSlider38: document.getElementById('sliderValue38').textContent,
+                rangeSlider39: document.getElementById('sliderValue39').textContent,
+                rangeSlider40: document.getElementById('sliderValue40').textContent,
+                rangeSlider41: document.getElementById('sliderValue41').textContent,
+                rangeSlider42: document.getElementById('sliderValue42').textContent,
+                rangeSlider43: document.getElementById('sliderValue43').textContent,
                 attackPower: document.getElementById('attackPower').value,
                 damageMultiplier: document.getElementById('damageMultiplier').value,
                 // 他のフィールドも同様に追加
@@ -4836,6 +5609,20 @@
                     document.getElementById('rangeSlider27').value = selectedSetData.rangeSlider27;
                     document.getElementById('rangeSlider28').value = selectedSetData.rangeSlider28;
                     document.getElementById('rangeSlider29').value = selectedSetData.rangeSlider29;
+                    document.getElementById('rangeSlider30').value = selectedSetData.rangeSlider30;
+                    document.getElementById('rangeSlider31').value = selectedSetData.rangeSlider31;
+                    document.getElementById('rangeSlider32').value = selectedSetData.rangeSlider32;
+                    document.getElementById('rangeSlider33').value = selectedSetData.rangeSlider33;
+                    document.getElementById('rangeSlider34').value = selectedSetData.rangeSlider34;
+                    document.getElementById('rangeSlider35').value = selectedSetData.rangeSlider35;
+                    document.getElementById('rangeSlider36').value = selectedSetData.rangeSlider36;
+                    document.getElementById('rangeSlider37').value = selectedSetData.rangeSlider37;
+                    document.getElementById('rangeSlider38').value = selectedSetData.rangeSlider38;
+                    document.getElementById('rangeSlider39').value = selectedSetData.rangeSlider39;
+                    document.getElementById('rangeSlider40').value = selectedSetData.rangeSlider40;
+                    document.getElementById('rangeSlider41').value = selectedSetData.rangeSlider41;
+                    document.getElementById('rangeSlider42').value = selectedSetData.rangeSlider42;
+                    document.getElementById('rangeSlider43').value = selectedSetData.rangeSlider43;
                     document.getElementById('sliderValue').textContent = selectedSetData.rangeSlider;
                     document.getElementById('sliderValue3').textContent = selectedSetData.rangeSlider3;
                     document.getElementById('sliderValue4').textContent = selectedSetData.rangeSlider4;
@@ -4864,6 +5651,21 @@
                     document.getElementById('sliderValue27').textContent = selectedSetData.rangeSlider27;
                     document.getElementById('sliderValue28').textContent = selectedSetData.rangeSlider28;
                     document.getElementById('sliderValue29').textContent = selectedSetData.rangeSlider29;
+                    document.getElementById('sliderValue30').textContent = selectedSetData.rangeSlider30;
+                    document.getElementById('sliderValue31').textContent = selectedSetData.rangeSlider31;
+                    document.getElementById('sliderValue32').textContent = selectedSetData.rangeSlider32;
+                    document.getElementById('sliderValue33').textContent = selectedSetData.rangeSlider33;
+                    document.getElementById('sliderValue34').textContent = selectedSetData.rangeSlider34;
+                    document.getElementById('sliderValue35').textContent = selectedSetData.rangeSlider35;
+                    document.getElementById('sliderValue36').textContent = selectedSetData.rangeSlider36;
+                    document.getElementById('sliderValue37').textContent = selectedSetData.rangeSlider37;
+                    document.getElementById('sliderValue38').textContent = selectedSetData.rangeSlider38;
+                    document.getElementById('sliderValue39').textContent = selectedSetData.rangeSlider39;
+                    document.getElementById('sliderValue40').textContent = selectedSetData.rangeSlider40;
+                    document.getElementById('sliderValue41').textContent = selectedSetData.rangeSlider41;
+                    document.getElementById('sliderValue42').textContent = selectedSetData.rangeSlider42;
+                    document.getElementById('sliderValue43').textContent = selectedSetData.rangeSlider43;
+
                     document.getElementById('attackPower').value = selectedSetData.attackPower;
                     document.getElementById('damageMultiplier').value = selectedSetData.damageMultiplier;
                     // 他のフィールドも同様に更新
@@ -4997,13 +5799,40 @@
         });
 
        
-    
+        document.addEventListener('DOMContentLoaded', function() {
+            var announcement = document.getElementById('announcement');
+            var closeAnnouncement = document.getElementById('closeAnnouncement');
+
+            // クッキーをチェックして、アナウンスを表示するかどうかを決定する
+            var hasClosedAnnouncement = getCookie('closedAnnouncement');
+            if (!hasClosedAnnouncement) {
+                announcement.style.display = 'block';
+            }
+
+            // 閉じるボタンのクリックイベントを追加
+            closeAnnouncement.addEventListener('click', function() {
+                announcement.style.display = 'none';
+                // クッキーに閉じたことを保存
+                document.cookie = 'closedAnnouncement=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/';
+            });
+
+            // クッキーから指定された名前の値を取得
+            function getCookie(name) {
+                var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+                if (match) {
+                    return match[2];
+                }
+                return null;
+            }
+        });
+
 
 
        
     </script>
-    <div style="height: 300px;"></div>
+    <div style="height: 500px;"></div> <!-- 500pxの空白要素 -->
     <footer id="notice" class="footer-container">
+        
         <p>ご利用にあたっての注意事項</p>
         <ul>
             <li>1.かならずしもダメージが正しいとは限りません。</li>
@@ -5015,11 +5844,10 @@
             <li>4.作成した計算式は、ゲーム内の仕様変更やアップデートによって</li>
             <li>&emsp;影響を受ける可能性があります。</li>
             <li>&emsp;そのため、最新の情報を確認したうえでご利用ください。</li>
-            <li style="margin-bottom: 20px;"> <!-- 下側の隙間を20pxに設定 -->
-            </li>
+            <li style="margin-bottom: 20px;"> <!-- 下側の隙間を20pxに設定 --></li>
             <li>以上の4つの点をご理解いただいた上で、ご利用ください。</li>
             <li>計算結果は参考程度として、十分な検証を行ってからご活用ください。</li>
-            <li style="margin-bottom: 20px;"> <!-- 下側の隙間を20pxに設定 -->
+            <li style="margin-bottom: 20px;"> <!-- 下側の隙間を20pxに設定 --></li>
             <li>このツールを作成するにあたり、多くの方々から貴重な協力をいただきました。</li>
             <li>特に、フレンさんには大変お世話になりました。心から感謝しています。</li>
         </ul>
@@ -5028,9 +5856,9 @@
             <li>ズームアウトができない場合は</li>
             <li>【︙】→【設定】→【ユーザー補助機能】→【強制的にズームを有効にする】</li>
             <li>を設定してください。</li>
-        </ul>    
-        
+        </ul>
     </footer>
+
     <!-- 空の境界 -->
     
 </body>
