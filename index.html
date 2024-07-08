@@ -5937,6 +5937,23 @@
                 }
                 return null;
             }
+
+            // クッキーを削除する関数
+            function deleteCookie(name) {
+                document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+            }
+
+            // 有効期限を過ぎた場合にクッキーを削除して再設定
+            var currentAnnouncementState = getCookie('closedAnnouncement');
+            if (currentAnnouncementState) {
+                // クッキーが存在する場合、有効期限を確認し、削除して再設定
+                var expiresDate = new Date(currentAnnouncementState);
+                if (expiresDate <= new Date()) {
+                    // 既存のクッキーを削除して再度アナウンスを表示する処理を記述
+                    deleteCookie('closedAnnouncement');
+                    announcement.style.display = 'block';
+                }
+            }
         });
 
 
