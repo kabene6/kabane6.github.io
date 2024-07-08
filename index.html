@@ -5923,8 +5923,10 @@
             // 閉じるボタンのクリックイベントを追加
             closeAnnouncement.addEventListener('click', function() {
                 announcement.style.display = 'none';
-                // クッキーに閉じたことを保存
-                document.cookie = 'closedAnnouncement=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/';
+                // クッキーに閉じたことを保存（有効期限を設定）
+                var expiresDate = new Date();
+                expiresDate.setFullYear(expiresDate.getFullYear() + 1); // 1年間有効
+                document.cookie = 'closedAnnouncement=true; expires=' + expiresDate.toUTCString() + '; path=/';
             });
 
             // クッキーから指定された名前の値を取得
@@ -5936,6 +5938,7 @@
                 return null;
             }
         });
+
 
         function showSkillDescription(title, description) {
             const descriptionElement = document.getElementById('skillDescription');
