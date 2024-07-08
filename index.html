@@ -4155,6 +4155,7 @@
         
             
         <a href="#notice"><i class="fas fa-exclamation-circle"></i> 注意事項</a>
+        <a id="updateButton" href="#"><i class="fas fa-sync-alt"></i>更新データを確認 </a>
         <a id="skillButton" href="#"><i class="far fa-hand-pointer"></i>熟練スキル</a>
         <a href="#" id="saveButton"><i class="fas fa-save"></i>データ保存</a>
         <div class="selectbox-3">
@@ -4558,9 +4559,9 @@
         <button id="closeAnnouncement" class="close-button">×</button>
         <p class="announcement-text">ver.1.2.1</p>
         <p class="announcement-text">熟練度スキルのスキル説明を追加しました。</p>
-        <p class="announcement-text">知りたいスキルのテキストをクリックすると、説明が表示されます(Lv.10時のスキル効果)。</p>
+        <p class="announcement-text">スキル名のテキストをクリックすると、そのスキルの効果（レベル10時の効果）が表示されます。</p>
         <p class="announcement-text">詳しくは<a href="https://x.com/6_sao_/status/1800980348597399924" target="_blank">こちら</a>まで</p>
-        <p class="announcement-text">ver.1.2　アップデート情報</p>
+        <p class="announcement-text">ver.1.2　更新情報</p>
         <p class="announcement-text">詳しくは<a href="https://x.com/6_sao_/status/1800980348597399924" target="_blank">こちら</a>まで</p>
 
     </div>
@@ -5913,6 +5914,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             var announcement = document.getElementById('announcement');
             var closeAnnouncement = document.getElementById('closeAnnouncement');
+            var updateButton = document.getElementById('updateButton');
 
             // クッキーをチェックして、アナウンスを表示するかどうかを決定する
             var hasClosedAnnouncement = getCookie('closedAnnouncement');
@@ -5929,6 +5931,13 @@
                 document.cookie = 'closedAnnouncement=true; expires=' + expiresDate.toUTCString() + '; path=/';
             });
 
+            // 更新データボタンのクリックイベントを追加
+            updateButton.addEventListener('click', function() {
+                // クッキーを削除して再度アナウンスを表示
+                deleteCookie('closedAnnouncement');
+                announcement.style.display = 'block';
+            });
+
             // クッキーから指定された名前の値を取得
             function getCookie(name) {
                 var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
@@ -5941,18 +5950,6 @@
             // クッキーを削除する関数
             function deleteCookie(name) {
                 document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
-            }
-
-            // 有効期限を過ぎた場合にクッキーを削除して再設定
-            var currentAnnouncementState = getCookie('closedAnnouncement');
-            if (currentAnnouncementState) {
-                // クッキーが存在する場合、有効期限を確認し、削除して再設定
-                var expiresDate = new Date(currentAnnouncementState);
-                if (expiresDate <= new Date()) {
-                    // 既存のクッキーを削除して再度アナウンスを表示する処理を記述
-                    deleteCookie('closedAnnouncement');
-                    announcement.style.display = 'block';
-                }
             }
         });
 
