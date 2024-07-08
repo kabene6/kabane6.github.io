@@ -4084,6 +4084,40 @@
         .close-button {
             color:#000000
         }
+
+        .skill-description {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 400px;
+            background-color: #e6f2ff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .description-content {
+            text-align: center;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .description-text,.description-title  {
+            font-family: 'RocknRoll One', sans-serif;
+            color: #000000; /* テキスト色設定 */
+        }
     </style>
 </head>
 <!-- Google tag (gtag.js) -->
@@ -4328,169 +4362,188 @@
         </div>
     </div>
     <div class="range-slider">
-        <label for="rangeSlider" class="slider-label slider-label1">基礎の構え</label>
+        <label for="rangeSlider" class="slider-label slider-label1" onclick="showSkillDescription('基礎の構え', '攻撃時、50の追加ダメージを与える　（全ての武器で有効)')">基礎の構え</label>
         <input type="range" min="0" max="7" value="0" step="1" id="rangeSlider">
         <div class="value" id="sliderValue">0</div>
-        <label for="rangeSlider3" class="slider-label slider-label3">武器の知識</label>
+
+        <label for="rangeSlider3" class="slider-label slider-label3" onclick="showSkillDescription('武器の知識', '攻撃力が5%上昇(全ての武器で有効)')">武器の知識</label>
         <input type="range" min="0" max="7" value="0" step="1" id="rangeSlider3" class="slider3">
         <div class="value3" id="sliderValue3">0</div>
-        <label for="rangeSlider4" class="slider-label slider-label4">剣技熟達</label>
+
+        <label for="rangeSlider4" class="slider-label slider-label4" onclick="showSkillDescription('剣技熟達', 'ソードスキルの威力をプラス10%(全ての武器で有効)')">剣技熟達</label>
         <input type="range" min="0" max="9" value="0" step="1" id="rangeSlider4" class="slider4">
         <div class="value4" id="sliderValue4">0</div>
-        <label for="rangeSlider5" class="slider-label slider-label5">武器の極意(Lv.)</label>
+
+        <label for="rangeSlider5" class="slider-label slider-label5" onclick="showSkillDescription('武器の極意', '武器装備時、攻撃力が10%上昇')">武器の極意(Lv.)</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider5" class="slider5">
         <div class="value5" id="sliderValue5">0</div>
-        <label for="rangeSlider6" class="slider-label slider-label6">盾の知識(Lv.)</label>
+
+        <label for="rangeSlider6" class="slider-label slider-label6" onclick="showSkillDescription('盾の知識', '防御力が5%上昇(全ての武器で有効)')">盾の知識(Lv.)</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider6" class="slider6">
         <div class="value6" id="sliderValue6">0</div>
-        <label for="rangeSlider7" class="slider-label slider-label7">武器技練熟(Lv.)</label>
+
+        <label for="rangeSlider7" class="slider-label slider-label7" onclick="showSkillDescription('武器技練熟', '武器装備時、ソードスキルの威力をプラス20%')">武器技練熟(Lv.)</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider7" class="slider7">
         <div class="value7" id="sliderValue7">0</div>
-        <label for="rangeSlider8" class="slider-label slider-label8">単体,全体剣技熟達(Lv.)</label>
+
+        <label for="rangeSlider8" class="slider-label slider-label8" onclick="showSkillDescription('単体,全体剣技熟達', '片手直剣,両手斧,弓装備時（単体）,両手槍装備時（全体）ソードスキルの威力をプラス25%')">単体,全体剣技熟達(Lv.)</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider8" class="slider8">
         <div class="value8" id="sliderValue8">0</div>
-        <label for="rangeSlider9" class="slider-label slider-label9">トランセンデント(Lv.)盾</label>
+
+        <label for="rangeSlider9" class="slider-label slider-label9" onclick="showSkillDescription('トランセンデント', '盾装備時、盾スキルのダメージが50%上昇')">トランセンデント(Lv.)盾</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider9" class="slider9">
         <div class="value9" id="sliderValue9">0</div>
-        <label for="rangeSlider10" class="slider-label slider-label10">パワフルブロー(Lv.)盾打</label>
+
+        <label for="rangeSlider10" class="slider-label slider-label10" onclick="showSkillDescription('パワフルブロー', '盾装備時、打属性の弱点ダメージが10%上昇')">パワフルブロー(Lv.)盾打</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider10" class="slider10">
         <div class="value10" id="sliderValue10">0</div>
-        <label for="rangeSlider11" class="slider-label slider-label11">フルストライク(Lv.)直剣</label>
+
+        <label for="rangeSlider11" class="slider-label slider-label11" onclick="showSkillDescription('フルストライク', '片手直剣装備時、斬属性の弱点ダメージが10%上昇')">フルストライク(Lv.)直剣</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider11" class="slider11">
         <div class="value11" id="sliderValue11">0</div>
-    
-        <label for="rangeSlider12" class="slider-label slider-label12">コンビネーション(Lv.)直剣</label>
+
+        <label for="rangeSlider12" class="slider-label slider-label12" onclick="showSkillDescription('コンビネーション', '片手直剣装備時、スイッチダメージが10%増加')">コンビネーション(Lv.)直剣</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider12" class="slider12">
         <div class="value12" id="sliderValue12">0</div>
-    
-        <label for="rangeSlider13" class="slider-label slider-label13">連撃(Hit数)細剣</label>
+
+        <label for="rangeSlider13" class="slider-label slider-label13" onclick="showSkillDescription('連撃', '片手細剣装備時、HIT数に応じて攻撃力が（1/1HIT)上昇　最大５０')">連撃(Hit数)細剣</label>
         <input type="range" min="0" max="50" value="0" step="1" id="rangeSlider13" class="slider13">
         <div class="value13" id="sliderValue13">0</div>
-        
-        <label for="rangeSlider14" class="slider-label slider-label14">弱点狙い(Lv.)細剣</label>
+
+        <label for="rangeSlider14" class="slider-label slider-label14" onclick="showSkillDescription('弱点狙い', '片手細剣装備時、突属性の弱点ダメージが10%上昇')">弱点狙い(Lv.)細剣</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider14" class="slider14">
         <div class="value14" id="sliderValue14">0</div>
 
-        <label for="rangeSlider15" class="slider-label slider-label15">電光石火(Lv.)細剣</label>
+        <label for="rangeSlider15" class="slider-label slider-label15" onclick="showSkillDescription('電光石火', '片手細剣装備時、クリティカルダメージが１０％上昇')">電光石火(Lv.)細剣</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider15" class="slider15">
         <div class="value15" id="sliderValue15">0</div>
 
-        <label for="rangeSlider30" class="slider-label slider-label30">斬突打熟練(Lv.)10%</label>
+        <label for="rangeSlider30" class="slider-label slider-label30" onclick="showSkillDescription('斬突打熟練 10%', '片手直剣,片手細剣,片手棍,弓装備時、斬,刺,打属性の弱点ダメージが10%上昇')">斬突打熟練(Lv.)10%</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider30" class="slider30">
         <div class="value30" id="sliderValue30">0</div>
 
-        <label for="rangeSlider31" class="slider-label slider-label31">斬突打熟練(Lv.)20%</label>
+        <label for="rangeSlider31" class="slider-label slider-label31" onclick="showSkillDescription('斬突打熟練 20%', '短剣,両手斧,装備時、斬,刺,打属性の弱点ダメージが20%上昇')">斬突打熟練(Lv.)20%</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider31" class="slider31">
         <div class="value31" id="sliderValue31">0</div>
 
-        <label for="rangeSlider32" class="slider-label slider-label32">属性ライズ(LV.)</label>
+        <label for="rangeSlider32" class="slider-label slider-label32" onclick="showSkillDescription('属性ライズ', '武器装備時、自然属性で攻撃時、攻撃力が100上昇(片手直剣,火&nbsp;片手細剣,水&nbsp;片手棍,風&nbsp;短剣,闇&nbsp;両手斧,土&nbsp;両手槍,風&nbsp;弓,聖)')">属性ライズ(LV.)</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider32" class="slider32">
         <div class="value32" id="sliderValue32">0</div>
 
-        <label for="rangeSlider33" class="slider-label slider-label33">属性チャージ(Lv.)</label>
+        <label for="rangeSlider33" class="slider-label slider-label33" onclick="showSkillDescription('属性チャージ', '武器装備時、自然属性ダメージが15%増加(片手直剣,火&nbsp;片手細剣,水&nbsp;片手棍,風&nbsp;短剣,闇&nbsp;両手斧,土&nbsp;両手槍,風&nbsp;弓,聖)')">属性チャージ(Lv.)</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider33" class="slider33">
         <div class="value33" id="sliderValue33">0</div>
 
-        <label for="rangeSlider34" class="slider-label slider-label34">ハードブレイク(Lv.)直剣</label>
+        <label for="rangeSlider34" class="slider-label slider-label34" onclick="showSkillDescription('ハードブレイク', '片手直剣装備時、ブレイク中の敵への攻撃力が250上昇')">ハードブレイク(Lv.)直剣</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider34" class="slider34">
         <div class="value34" id="sliderValue34">0</div>
 
-        <label for="rangeSlider35" class="slider-label slider-label35">急所強襲(Lv.)細剣</label>
+        <label for="rangeSlider35" class="slider-label slider-label35" onclick="showSkillDescription('急所強襲', '片手細剣装備時、クリティカルダメージ上昇のバフ効果中、攻撃力が15%上昇')">急所強襲(Lv.)細剣</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider35" class="slider35">
         <div class="value35" id="sliderValue35">0</div>
 
-        <label for="rangeSlider36" class="slider-label slider-label36">急所への一突き(Lv.)細剣</label>
+        <label for="rangeSlider36" class="slider-label slider-label36" onclick="showSkillDescription('急所への一突き', '片手細剣装備時、ソードスキル使用時のクリティカルダメージが15%上昇')">急所への一突き(Lv.)細剣</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider36" class="slider36">
         <div class="value36" id="sliderValue36">0</div>
+
+        <div id="skillDescription" class="skill-description">
+            <div class="description-content">
+                <span class="close-button" onclick="hideSkillDescription()">&times;</span>
+                <p id="descriptionTitle" class="description-title"></p>
+                <p id="descriptionText" class="description-text"></p>
+            </div>
+        </div>
+
     </div>
     <div class="range-slider-group">
-
-        
-
-        <label for="rangeSlider16" class="slider-label slider-label16">ハードヒット(Lv.)棍</label>
+        <label for="rangeSlider16" class="slider-label slider-label16" onclick="showSkillDescription('ハードヒット', '片手棍装備時、打属性の弱点ダメージが10%上昇')">ハードヒット(Lv.)棍</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider16" class="slider16">
         <div class="value16" id="sliderValue16">0</div>
 
-        <label for="rangeSlider17" class="slider-label slider-label17">報復(Lv.)短剣</label>
+        <label for="rangeSlider17" class="slider-label slider-label17" onclick="showSkillDescription('報復', '短剣装備時、HPが５０％以下の場合攻撃力が３０上昇')">報復(Lv.)短剣</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider17" class="slider17">
         <div class="value17" id="sliderValue17">0</div>
 
-        <label for="rangeSlider18" class="slider-label slider-label18">短剣の一撃(Lv.)短剣</label>
+        <label for="rangeSlider18" class="slider-label slider-label18" onclick="showSkillDescription('短剣の一撃', '短剣装備時、ターゲットが自身へ向いてないモンスターへのダメージ量が２０％上昇')">短剣の一撃(Lv.)短剣</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider18" class="slider18">
         <div class="value18" id="sliderValue18">0</div>
 
-        <label for="rangeSlider19" class="slider-label slider-label19">残虐な刃(Lv.)短剣</label>
+        <label for="rangeSlider19" class="slider-label slider-label19" onclick="showSkillDescription('残虐な刃', '短剣装備時、状態異常（麻痺、スタン、睡眠、呪い、毒、火傷、出血、凍傷）のかかっている敵に対して攻撃力が１０％上昇')">残虐な刃(Lv.)短剣</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider19" class="slider19">
         <div class="value19" id="sliderValue19">0</div>
 
-        <label for="rangeSlider20" class="slider-label slider-label20">状態異常特効(Lv.)短剣</label>
+        <label for="rangeSlider20" class="slider-label slider-label20" onclick="showSkillDescription('状態異常特効', '短剣装備時、状態異常（麻痺、スタン、睡眠、呪い、毒、火傷、出血、凍傷）のかかっている敵に対して攻撃力が100上昇')">状態異常特効(Lv.)短剣</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider20" class="slider20">
         <div class="value20" id="sliderValue20">0</div>
 
-        <label for="rangeSlider21" class="slider-label slider-label21">磨かれた一撃(スタック)短剣</label>
+        <label for="rangeSlider21" class="slider-label slider-label21" onclick="showSkillDescription('磨かれた一撃', '短剣装備時、状態異常（毒、火傷、出血、凍傷）の敵に対して攻撃力が上昇。1スタックにつき0.1%上昇')">磨かれた一撃(スタック)短剣</label>
         <input type="range" min="0" max="396" value="0" id="rangeSlider21" class="slider21" step="99">
         <div class="value21" id="sliderValue21">0</div>
 
-        <label for="rangeSlider22" class="slider-label slider-label22">一刀両断(Lv.)斧</label>
+        <label for="rangeSlider22" class="slider-label slider-label22" onclick="showSkillDescription('一刀両断', '両手斧装備時、敵のHPが５０％以上の時、攻撃力が１０％上昇')">一刀両断(Lv.)斧</label>
         <input type="range" min="0" max="10" value="0" id="rangeSlider22" class="slider22">
         <div class="value22" id="sliderValue22">0</div>
 
-        <label for="rangeSlider23" class="slider-label slider-label23">豪快な強襲(Lv.)斧</label>
+        <label for="rangeSlider23" class="slider-label slider-label23" onclick="showSkillDescription('豪快な強襲', '両手斧装備時、ブレイク中の敵への攻撃力が2.5％上昇')">豪快な強襲(Lv.)斧</label>
         <input type="range" min="0" max="10" value="0" id="rangeSlider23" class="slider23">
         <div class="value23" id="sliderValue23">0</div>
 
-        <label for="rangeSlider24" class="slider-label slider-label24">突進(Lv.)槍</label>
+        <label for="rangeSlider24" class="slider-label slider-label24" onclick="showSkillDescription('突進', '両手槍装備時、ステップ直後の攻撃力が２０上昇')">突進(Lv.)槍</label>
         <input type="range" min="0" max="10" value="0" id="rangeSlider24" class="slider24">
         <div class="value24" id="sliderValue24">0</div>
 
-        <label for="rangeSlider25" class="slider-label slider-label25">槍牙(Lv.)槍</label>
+        <label for="rangeSlider25" class="slider-label slider-label25" onclick="showSkillDescription('槍牙', '両手槍装備時、状態異常（麻痺、スタン、睡眠、呪い、毒、火傷、出血、凍傷）のかかっている敵に対して攻撃力が10%上昇')">槍牙(Lv.)槍</label>
         <input type="range" min="0" max="10" value="0" id="rangeSlider25" class="slider25">
         <div class="value25" id="sliderValue25">0</div>
 
-        <label for="rangeSlider26" class="slider-label slider-label26">槍舞(Lv.)槍</label>
+        <label for="rangeSlider26" class="slider-label slider-label26" onclick="showSkillDescription('槍舞', '両手槍装備時、ステップ直後の攻撃力が30%上昇')">槍舞(Lv.)槍</label>
         <input type="range" min="0" max="10" value="0" id="rangeSlider26" class="slider26">
         <div class="value26" id="sliderValue26">0</div>
 
-        <label for="rangeSlider27" class="slider-label slider-label27">正射(Lv.)弓</label>
+        <label for="rangeSlider27" class="slider-label slider-label27" onclick="showSkillDescription('正射', '弓装備時、突属性の弱点ダメージが10%上昇')">正射(Lv.)弓</label>
         <input type="range" min="0" max="10" value="0" id="rangeSlider27" class="slider27">
         <div class="value27" id="sliderValue27">0</div>
 
-        <label for="rangeSlider28" class="slider-label slider-label28">捕食者の眼光(Lv.)弓</label>
+        <label for="rangeSlider28" class="slider-label slider-label28" onclick="showSkillDescription('捕食者の眼光', '弓装備時、HPが５０％以下の敵に対して攻撃力が10%上昇')">捕食者の眼光(Lv.)弓</label>
         <input type="range" min="0" max="10" value="0" id="rangeSlider28" class="slider28">
         <div class="value28" id="sliderValue28">0</div>
-        
-        <label for="rangeSlider29" class="slider-label slider-label29">逆転の一撃(Lv.)弓</label>
+
+        <label for="rangeSlider29" class="slider-label slider-label29" onclick="showSkillDescription('逆転の一撃', '弓装備時、自身のHPが少ない程、攻撃力が上昇（100×(1-HPの割合)）')">逆転の一撃(Lv.)弓</label>
         <input type="range" min="0" max="10" value="0" id="rangeSlider29" class="slider29">
         <div class="value29" id="sliderValue29">0</div>
-        
-        <label for="rangeSlider37" class="slider-label slider-label37">刻まれた一撃(Lv.)棍</label>
+
+        <label for="rangeSlider37" class="slider-label slider-label37" onclick="showSkillDescription('刻まれた一撃', '片手棍装備時、デバフ（刻印、小刻印、死兆印、突衰印）状態の敵に対して、攻撃力が15%上昇')">刻まれた一撃(Lv.)棍</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider37" class="slider37">
         <div class="value37" id="sliderValue37">0</div>
 
-        <label for="rangeSlider38" class="slider-label slider-label38">追い打ちの一撃(スタック)短剣</label>
+        <label for="rangeSlider38" class="slider-label slider-label38" onclick="showSkillDescription('追い打ちの一撃', '短剣装備時、状態異常（毒、火傷、出血、凍傷）の敵に対して攻撃力が上昇。1スタックにつき5上昇')">追い打ちの一撃(スタック)短剣</label>
         <input type="range" min="0" max="396" value="0" step="99" id="rangeSlider38" class="slider38">
         <div class="value38" id="sliderValue38">0</div>
 
-        <label for="rangeSlider39" class="slider-label slider-label39">鋭利な一閃(Lv.)短剣</label>
+        <label for="rangeSlider39" class="slider-label slider-label39" onclick="showSkillDescription('鋭利な一閃', '短剣装備時、状態異常（毒）の敵に対して攻撃力が15%上昇')">鋭利な一閃(Lv.)短剣</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider39" class="slider39">
         <div class="value39" id="sliderValue39">0</div>
 
-        <label for="rangeSlider40" class="slider-label slider-label40">パワフルパワー(Lv.)斧</label>
+        <label for="rangeSlider40" class="slider-label slider-label40" onclick="showSkillDescription('パワフルパワー', '両手斧装備時、自身の残りHP割合×300攻撃力が上昇')">パワフルパワー(Lv.)斧</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider40" class="slider40">
         <div class="value40" id="sliderValue40">0</div>
 
-        <label for="rangeSlider41" class="slider-label slider-label41">弱者への追撃(Lv.)槍</label>
+        <label for="rangeSlider41" class="slider-label slider-label41" onclick="showSkillDescription('弱者への追撃', '両手槍装備時、デバフ状態の敵に対して攻撃力が15%上昇')">弱者への追撃(Lv.)槍</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider41" class="slider41">
         <div class="value41" id="sliderValue41">0</div>
 
-        <label for="rangeSlider42" class="slider-label slider-label42">背後からの一撃(Lv.)弓</label>
+        <label for="rangeSlider42" class="slider-label slider-label42" onclick="showSkillDescription('背後からの一撃', '弓装備時、ターゲットが自身へ、向いていないモンスターに対して攻撃力が100上昇')">背後からの一撃(Lv.)弓</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider42" class="slider42">
         <div class="value42" id="sliderValue42">0</div>
 
-        <label for="rangeSlider43" class="slider-label slider-label43">ハードブレイク(Lv.)弓</label>
+        <label for="rangeSlider43" class="slider-label slider-label43" onclick="showSkillDescription('ハードブレイク', '弓装備、ブレイク中の敵への攻撃力が250上昇')">ハードブレイク(Lv.)弓</label>
         <input type="range" min="0" max="10" value="0" step="1" id="rangeSlider43" class="slider43">
         <div class="value43" id="sliderValue43">0</div>
 
+        
+        
+
+        
     </div>
     
     <div style="height: 200px;"></div> <!-- 500pxの空白要素 -->
@@ -4503,11 +4556,11 @@
     
     <div id="announcement" class="announcement-container">
         <button id="closeAnnouncement" class="close-button">×</button>
-        <p class="announcement-text">ver.1.2</p>
-        <p class="announcement-text">新たに追加された熟練度スキルに対応しました。</p>
-        <p class="announcement-text">自身の残りHP割合×攻撃力○%上昇[追加効果]に対応しました。</p>
-        <p class="announcement-text">スタックバフ６種に対応しました。</p>
-        <p class="announcement-text">(烈火4、筋力増強4、氷甌4、騎士の盾4、極降臨3、属性パイル)</p>
+        <p class="announcement-text">ver.1.2.1</p>
+        <p class="announcement-text">熟練度スキルのスキル説明を追加しました。</p>
+        <p class="announcement-text">知りたいスキルのテキストをクリックすると、説明が表示されます(Lv.10時のスキル効果)。</p>
+        <p class="announcement-text">詳しくは<a href="https://x.com/6_sao_/status/1800980348597399924" target="_blank">こちら</a>まで</p>
+        <p class="announcement-text">ver.1.2　アップデート情報</p>
         <p class="announcement-text">詳しくは<a href="https://x.com/6_sao_/status/1800980348597399924" target="_blank">こちら</a>まで</p>
 
     </div>
@@ -5884,6 +5937,17 @@
             }
         });
 
+        function showSkillDescription(title, description) {
+            const descriptionElement = document.getElementById('skillDescription');
+            document.getElementById('descriptionTitle').textContent = title;
+            document.getElementById('descriptionText').textContent = description;
+            descriptionElement.style.display = 'block';
+        }
+
+        function hideSkillDescription() {
+            const descriptionElement = document.getElementById('skillDescription');
+            descriptionElement.style.display = 'none';
+        }
 
 
        
